@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.vercel
+
+# Agent and editor scratch
+.claude/settings.local.json
+*.local

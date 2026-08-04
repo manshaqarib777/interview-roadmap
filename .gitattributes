@@ -1,0 +1,17 @@
+# Normalise line endings on the way in, check out native. Without this, a commit
+# from Windows rewrites every line of a file and the diff becomes unreviewable.
+* text=auto eol=lf
+
+# Binary — never diff, never merge, never normalise.
+*.png binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Generated. Collapsed in PR diffs and marked non-mergeable: resolve a lockfile
+# conflict by re-running `npm install`, never by hand-merging hunks.
+package-lock.json -diff linguist-generated=true merge=binary
+
+# Content is prose. Diff it by paragraph so a reworded sentence doesn't show as
+# one enormous changed line.
+*.md diff=markdown
