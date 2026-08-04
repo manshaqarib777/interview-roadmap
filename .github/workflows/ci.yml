@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# A new push to the same branch makes the in-flight run obsolete. Cancel it
+# rather than paying for a result nobody will read — except on main, where every
+# commit's status is a record worth keeping.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Typecheck and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Pinned to the major the project is developed against, not "latest":
+          # a silent Node bump is not something CI should discover for you.
+          node-version: 22
+          cache: npm
+
+      # `ci` not `install` — installs exactly the lockfile, fails if
+      # package.json and the lock have drifted.
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # The real test in this repo. The build prerenders 109 pages and generates
+      # 104 Open Graph images, so a broken component, an undefined design token
+      # or a Satori-illegal style fails here.
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://interview-roadmap.vercel.app
+
+      # Catches the two regressions that are invisible in a green build:
+      # a sitemap that lost its lesson URLs, and robots.txt losing the sitemap
+      # reference — both silently de-index the site.
+      - name: Assert SEO routes rendered
+        run: |
+          set -euo pipefail
+          sitemap=.next/server/app/sitemap.xml.body
+          robots=.next/server/app/robots.txt.body
+          test -s "$sitemap" || { echo "::error::sitemap.xml is missing or empty"; exit 1; }
+          test -s "$robots"  || { echo "::error::robots.txt is missing or empty"; exit 1; }
+          urls=$(grep -c '<loc>' "$sitemap")
+          echo "sitemap contains $urls URLs"
+          if [ "$urls" -lt 100 ]; then
+            echo "::error::expected at least 100 sitemap URLs, found $urls"
+            exit 1
+          fi
+          grep -q 'Sitemap:' "$robots" || { echo "::error::robots.txt has no Sitemap line"; exit 1; }
