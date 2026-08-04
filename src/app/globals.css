@@ -1,0 +1,1616 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4 is CSS-first: this block replaces tailwind.config.js entirely.
+   Every --color-* here becomes a utility (bg-card, text-muted-foreground,
+   border-border, ring-ring …).
+
+   `inline` is load-bearing. Without it Tailwind treats `var(--primary)` as an
+   opaque value it can't reason about and silently drops opacity modifiers —
+   `bg-primary/12` would compile to a fully opaque background. `inline`
+   substitutes the reference so it can build the color-mix(). */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+
+  --color-ring: var(--ring);
+
+  /* One addition to the set: a third text level, derived from muted so it
+     stays in the system. Used for timestamps, counters and hints. */
+  --color-faint: var(--faint);
+
+  --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, 'SF Mono', Menlo, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ================================================================= *
+ * Tokens
+ * ================================================================= */
+:root {
+  /* ChatGPT light: pure white canvas, #f9f9f9 rail, #f4f4f4 fills.
+     Neutrals only — no cool or warm tint anywhere in the greys. */
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+  --card: #f9f9f9;
+  --card-foreground: #0d0d0d;
+  --secondary: #ececec;
+  --secondary-foreground: #3d3d3d;
+  --muted: #f4f4f4;
+  --muted-foreground: #5d5d5d;
+  --border: #e3e3e3;
+  --input: #cdcdcd;
+
+  /* The rail sits one step off the canvas, like ChatGPT's conversation list. */
+  --sidebar: #f9f9f9;
+
+  /* ChatGPT keeps exactly one hue for interactive text (its link blue) and
+     one for brand (its green). Everything structural stays monochrome. */
+  --primary: #2964aa;
+  --primary-foreground: #ffffff;
+  --primary-hover: #1d4a80;
+  --accent: #10a37f;
+  --accent-foreground: #ffffff;
+  --accent-hover: #0d8a6a;
+
+  /* Solid buttons are black-on-white in ChatGPT, never coloured. */
+  --solid: #0d0d0d;
+  --solid-foreground: #ffffff;
+  --solid-hover: #2f2f2f;
+
+  --success: #0d8a6a;
+  --warning: #b8720a;
+  --destructive: #e02e2a;
+  --ring: #2964aa;
+
+  /* Callout washes — near-neutral, a trace of hue only in the title. */
+  --note-bg: #f2f6fb;
+  --note-fg: #2964aa;
+  --pitfall-bg: #fbf5ec;
+  --pitfall-fg: #b8720a;
+  --deep-bg: #f9f9f9;
+  --deep-fg: #3d3d3d;
+  --recap-bg: #f4f4f4;
+
+  --faint: #8f8f8f;
+  --glow: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --brand-grad: linear-gradient(135deg, #0d0d0d 0%, #3d3d3d 60%, #5d5d5d 100%);
+  --hero: var(--brand-grad);
+  --code-bg: #f9f9f9;
+  --code-head: #efefef;
+  --grid: rgba(13, 13, 13, 0.04);
+  --hairline: rgba(13, 13, 13, 0.07);
+  --hairline-2: rgba(13, 13, 13, 0.035);
+  --grain-opacity: 0;
+  --shadow-sm: 0 1px 2px rgba(13, 13, 13, 0.04);
+  --shadow-md: 0 4px 14px -4px rgba(13, 13, 13, 0.08);
+  --shadow-lg: 0 12px 30px -10px rgba(13, 13, 13, 0.12);
+  color-scheme: light;
+}
+
+.dark {
+  /* ChatGPT dark: #212121 canvas, #171717 rail, #303030 fills, #ececec text.
+     Pure greys — the old palette's navy tint is gone on purpose. */
+  --background: #212121;
+  --foreground: #ececec;
+  --card: #2f2f2f;
+  --card-foreground: #ececec;
+  --secondary: #373737;
+  --secondary-foreground: #d9d9d9;
+  --muted: #303030;
+  --muted-foreground: #b4b4b4;
+  --border: #3d3d3d;
+  --input: #4d4d4d;
+
+  --sidebar: #171717;
+
+  --primary: #7ab7ff;
+  --primary-foreground: #0d0d0d;
+  --primary-hover: #a3cfff;
+  --accent: #19c37d;
+  --accent-foreground: #0d0d0d;
+  --accent-hover: #3ad79a;
+
+  --solid: #ffffff;
+  --solid-foreground: #0d0d0d;
+  --solid-hover: #ececec;
+
+  --success: #19c37d;
+  --warning: #e0a34d;
+  --destructive: #ff8583;
+  --ring: #7ab7ff;
+
+  --note-bg: #23303d;
+  --note-fg: #a3cfff;
+  --pitfall-bg: #332b1f;
+  --pitfall-fg: #e0a34d;
+  --deep-bg: #2a2a2a;
+  --deep-fg: #d9d9d9;
+  --recap-bg: #2f2f2f;
+
+  --faint: #8f8f8f;
+  --glow: color-mix(in srgb, var(--foreground) 14%, transparent);
+  --brand-grad: linear-gradient(135deg, #ffffff 0%, #d9d9d9 60%, #8f8f8f 100%);
+  --hero: var(--brand-grad);
+  /* A near-black code block on a #212121 page reads as a hole punched in the
+     surface. ChatGPT's own code surface is a raised grey, so this is the card
+     tone with the tab bar one step lighter. */
+  --code-bg: #2f2f2f;
+  --code-head: #383838;
+  --grid: rgba(236, 236, 236, 0.035);
+  --hairline: rgba(236, 236, 236, 0.08);
+  --hairline-2: rgba(236, 236, 236, 0.035);
+  --grain-opacity: 0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px -4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 36px -12px rgba(0, 0, 0, 0.65);
+  color-scheme: dark;
+}
+
+/* Per-module accents. ChatGPT's own UI is monochrome, so these are pulled
+   back to muted, low-chroma hues that sit quietly on the neutral surfaces —
+   enough to tell five modules apart, not enough to read as decoration.
+   Declared as named tokens so the graph canvas can read them from JS. */
+:root {
+  --acc-amber: #a1701a;
+  --acc-sky: #2964aa;
+  --acc-cyan: #17798a;
+  --acc-violet: #6b5fa8;
+  --acc-emerald: #0d8a6a;
+}
+.dark {
+  --acc-amber: #e0a34d;
+  --acc-sky: #7ab7ff;
+  --acc-cyan: #5cc6d6;
+  --acc-violet: #a99cf0;
+  --acc-emerald: #19c37d;
+}
+
+.acc-amber { --acc: var(--acc-amber); }
+.acc-sky { --acc: var(--acc-sky); }
+.acc-cyan { --acc: var(--acc-cyan); }
+.acc-violet { --acc: var(--acc-violet); }
+.acc-emerald { --acc: var(--acc-emerald); }
+
+* { border-color: var(--border); }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+::selection { background: var(--glow); color: var(--foreground); }
+
+/* The focus ring lives in the base layer on purpose.
+ *
+ * Unlayered, it beat every `outline-none` utility in the app purely by source
+ * order — which is why the command palette's input, which asks for no outline
+ * because the dialog itself signals focus, was drawing a bright blue rectangle
+ * around itself. Utilities always win over `base`, so a component can now opt
+ * out without an `!important` arms race, and everything else still gets a
+ * visible keyboard focus indicator. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* Respect the OS setting — animation here communicates state, but it is
+   never the only channel, so removing it loses nothing. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ================================================================= *
+ * FX layer — the difference between "styled" and "premium"
+ * ================================================================= */
+
+/* Animatable custom properties, for the rotating conic border. */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* --- Film grain -------------------------------------------------- *
+ * A flat dark surface reads as cheap. ~3% of monochrome noise over
+ * everything is the single highest-yield trick for making it read as
+ * a designed object. Fixed + pointer-events:none so it costs nothing. */
+.grain { display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Hairline gradient borders ----------------------------------- *
+ * A solid 1px border is flat. A border that catches light along its
+ * top edge and fades toward the bottom reads as a physical surface. */
+.edge {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(160deg, var(--hairline) 0%, var(--hairline-2) 35%, transparent 70%) border-box;
+}
+
+.edge-glow {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    var(--brand-grad) border-box;
+}
+
+/* --- Cursor spotlight -------------------------------------------- *
+ * --mx/--my are written by a single rAF-throttled listener (fx.tsx).
+ * The card lights up where the pointer is. Communicates "this is
+ * interactive" before you click anything. */
+.spot { position: relative; isolation: isolate; }
+.spot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out-expo);
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--foreground) 7%, transparent),
+    transparent 62%
+  );
+}
+.spot:hover::before { opacity: 1; }
+
+/* --- Rotating conic border, for the one featured card ------------- */
+.beam {
+  position: relative;
+  isolation: isolate;
+}
+.beam::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    color-mix(in srgb, var(--foreground) 55%, transparent) 40deg,
+    color-mix(in srgb, var(--foreground) 22%, transparent) 90deg,
+    transparent 150deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: spin-border 14s linear infinite;
+  opacity: 0.55;
+}
+@keyframes spin-border { to { --angle: 360deg; } }
+
+/* --- Mesh gradient backdrop -------------------------------------- */
+.mesh {
+  position: absolute;
+  inset: -40% -20% auto -20%;
+  height: 640px;
+  pointer-events: none;
+  filter: blur(72px);
+  opacity: 0.5;
+  background:
+    radial-gradient(38% 44% at 18% 38%, color-mix(in srgb, var(--foreground) 14%, transparent), transparent 68%),
+    radial-gradient(32% 40% at 62% 22%, color-mix(in srgb, var(--foreground) 9%, transparent), transparent 66%),
+    radial-gradient(34% 42% at 84% 52%, color-mix(in srgb, var(--foreground) 11%, transparent), transparent 68%);
+  animation: mesh-drift 26s ease-in-out infinite alternate;
+}
+@keyframes mesh-drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1) rotate(0deg); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.12) rotate(4deg); }
+}
+
+/* --- Gradient text with a slow sheen ------------------------------ */
+.grad-text {
+  background: var(--brand-grad);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheen 9s ease-in-out infinite;
+}
+@keyframes sheen {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* --- Micro-label: the mono/uppercase/tracked tell ----------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* --- Ring for the primary action ---------------------------------- *
+ * Monochrome: a hairline plus a plain drop shadow, no coloured bloom. */
+.glow-ring {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--foreground) 14%, transparent),
+    var(--shadow-md);
+}
+
+/* --- Animated status dot ------------------------------------------ */
+.pulse-dot { position: relative; }
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes ping {
+  0%   { transform: scale(1); opacity: 0.7; }
+  75%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* --- Scanline sweep, used on the graph canvas --------------------- */
+.scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--foreground) 5%, transparent) 50%,
+    transparent 100%
+  );
+  height: 40%;
+  animation: scan 7s linear infinite;
+}
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(350%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam::before, .mesh, .grad-text, .pulse-dot::after, .scan::after { animation: none; }
+  .grad-text { background-position: 0 50%; }
+}
+
+/* ================================================================= *
+ * Surfaces
+ * ================================================================= */
+.panel {
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(160deg, var(--hairline) 0%, var(--hairline-2) 38%, transparent 72%) border-box;
+}
+
+/* Raycast-style icon tile: rounded square, tinted with the item's accent. */
+.tile {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: var(--acc, var(--primary));
+  background: color-mix(in srgb, var(--acc, var(--primary)) 13%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acc, var(--primary)) 22%, transparent);
+  transition: transform 0.2s var(--ease-spring), background-color 0.2s;
+}
+.group:hover > .tile, a:hover > .tile, button:hover > .tile {
+  transform: scale(1.06) rotate(-2deg);
+  background: color-mix(in srgb, var(--acc, var(--primary)) 20%, transparent);
+}
+
+/* Floating card — more elevation and rounding than a plain panel. */
+.float {
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+}
+.float:hover { box-shadow: var(--shadow-lg); }
+
+/* The hero gradient */
+.hero-grad { background: var(--hero); }
+.hero-text {
+  background: var(--hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--background) 72%, transparent);
+  backdrop-filter: blur(14px) saturate(1.6);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
+}
+
+/* Hairline sheen along the top edge — the Linear/Raycast tell. */
+.sheen { position: relative; }
+.sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--foreground) 18%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+.aurora {
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 520px;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 22% 40%, color-mix(in srgb, var(--foreground) 10%, transparent), transparent 70%),
+    radial-gradient(34% 44% at 78% 32%, color-mix(in srgb, var(--foreground) 7%, transparent), transparent 70%);
+  filter: blur(60px);
+  opacity: 0.7;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1); }
+  to { transform: translate3d(3%, 3%, 0) scale(1.08); }
+}
+
+/* ================================================================= *
+ * Buttons & micro-interactions
+ * ================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 550;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.16s var(--ease-out-expo),
+    border-color 0.16s,
+    color 0.16s,
+    transform 0.12s var(--ease-out-expo),
+    box-shadow 0.16s;
+  will-change: transform;
+}
+.btn:active { transform: scale(0.975); }
+
+/* ChatGPT's solid button is black in light mode and white in dark — never a
+   brand colour, and never with a coloured glow under it. */
+.btn-primary {
+  background: var(--solid);
+  color: var(--solid-foreground);
+}
+.btn-primary:hover { background: var(--solid-hover); }
+
+/* The one place a hue is allowed on a filled control: the green CTA. */
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+.btn-accent:hover { background: var(--accent-hover); }
+
+.btn-ghost { color: var(--muted-foreground); border-color: var(--border); background: transparent; }
+.btn-ghost:hover { background: var(--muted); color: var(--foreground); border-color: var(--input); }
+
+.btn-subtle { color: var(--muted-foreground); }
+.btn-subtle:hover { background: var(--muted); color: var(--foreground); }
+
+kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--input);
+  background: var(--muted);
+  color: var(--faint);
+}
+
+.lift { transition: transform 0.22s var(--ease-out-expo), box-shadow 0.22s, border-color 0.22s; }
+.lift:hover {
+  transform: translateY(-2px);
+  border-color: var(--input);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ================================================================= *
+ * Prose — react.dev typography scale
+ * ================================================================= */
+.prose {
+  font-size: var(--reader-size, 17px);
+  line-height: var(--reader-leading, 1.7);
+  color: var(--foreground);
+}
+
+.prose > * + * { margin-top: 1.25em; }
+.prose > *:first-child { margin-top: 0; }
+
+/* The oversized opening paragraph react.dev puts under every title. */
+.intro {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--faint);
+  margin-bottom: 2rem;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-top: 2.5em;
+  line-height: 1.3;
+}
+.prose h4 { font-size: 1.125rem; font-weight: 700; margin-top: 2em; }
+
+.prose p { text-wrap: pretty; }
+.prose strong { font-weight: 700; }
+
+.prose a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.prose a:hover {
+  border-bottom-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.prose ul, .prose ol { padding-left: 1.6rem; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li::marker { color: var(--faint); }
+.prose li + li { margin-top: 0.5em; }
+.prose li > ul, .prose li > ol { margin-top: 0.5em; }
+
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--card);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  color: var(--foreground);
+}
+.dark .prose :not(pre) > code { background: #424242; }
+
+/* Tables live further down, next to the rest of the reader chrome. */
+
+.prose hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+.prose img { border-radius: 12px; max-width: 100%; }
+
+/* ================================================================= *
+ * Callouts — Note / Pitfall / Deep Dive / Recap
+ * ================================================================= */
+.callout {
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+.callout > * + * { margin-top: 0.8em; }
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+.callout p, .callout li { font-size: 1rem; }
+.callout :not(pre) > code { background: rgba(0, 0, 0, 0.06); }
+.dark .callout :not(pre) > code { background: rgba(255, 255, 255, 0.1); }
+
+.callout-note { background: var(--note-bg); }
+.callout-note .callout-title { color: var(--note-fg); }
+
+.callout-pitfall { background: var(--pitfall-bg); }
+.callout-pitfall .callout-title { color: var(--pitfall-fg); }
+
+.callout-deep { background: var(--deep-bg); }
+.callout-deep .callout-title { color: var(--deep-fg); }
+
+.callout-recap { background: var(--recap-bg); }
+
+/* "You will learn" — the card react.dev opens every page with. */
+.will-learn {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0 2.5rem;
+}
+.will-learn h2, .will-learn .callout-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+.will-learn ul { padding-left: 1.4rem; margin: 0; }
+.will-learn li { font-size: 1.0625rem; }
+
+/* Collapsible Deep Dive / solutions */
+.prose details {
+  border-radius: 16px;
+  background: var(--card);
+  padding: 0 1.5rem;
+  margin: 1.5rem 0;
+}
+.callout-deep details { background: transparent; padding: 0; }
+.prose details[open] { padding-bottom: 1.25rem; }
+.prose summary {
+  cursor: pointer;
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--primary);
+  user-select: none;
+}
+.prose summary::-webkit-details-marker { display: none; }
+.prose summary::before {
+  content: '';
+  width: 0; height: 0;
+  border-left: 6px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: transform 0.2s var(--ease-out-expo);
+}
+.prose details[open] summary::before { transform: rotate(90deg); }
+
+.prose input[type='checkbox'] { margin-right: 0.5rem; accent-color: var(--primary); }
+.prose li:has(> input[type='checkbox']) { list-style: none; margin-left: -1.3rem; }
+
+/* ================================================================= *
+ * Code surface — Sandpack layout: file tab, split editor/console,
+ * collapse footer
+ * ================================================================= */
+.code-wrap {
+  position: relative;
+  border-radius: 12px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+/* --- header: file tab left, labelled actions right ---------------- */
+.code-head {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  min-height: 44px;
+  background: var(--code-head);
+}
+
+.code-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1.15rem;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--code-bg);
+  border-bottom: 2px solid var(--primary);
+}
+
+.code-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  padding: 0 10px;
+}
+
+.code-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 9px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 7px;
+  color: var(--faint);
+  white-space: nowrap;
+  transition: color 0.14s, background-color 0.14s, transform 0.1s;
+}
+.code-tool:hover { color: var(--foreground); background: color-mix(in srgb, var(--foreground) 8%, transparent); }
+.code-tool:active { transform: scale(0.95); }
+.code-tool[data-primary='true'] { color: var(--primary); }
+
+/* --- split body: editor | console --------------------------------- */
+.code-body { display: flex; align-items: stretch; }
+.code-editor { flex: 1 1 auto; min-width: 0; position: relative; }
+
+.code-wrap[data-split='true'] .code-editor { flex: 1 1 62%; }
+.code-wrap[data-split='true'] .code-out {
+  flex: 0 0 38%;
+  min-height: 9rem;
+  border-left: 1px solid var(--border);
+  border-top: none;
+}
+
+/* Live editor: a caret and a soft focus wash, no jumpy border. */
+.code-wrap pre code[contenteditable] { caret-color: var(--primary); }
+.code-wrap:focus-within { box-shadow: 0 0 0 3px var(--glow); }
+.code-wrap pre code[contenteditable]:focus { outline: none; }
+@media (max-width: 720px) {
+  .code-body { flex-direction: column; }
+  .code-wrap[data-split='true'] .code-out {
+    flex: 1 1 auto;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.code-wrap pre {
+  margin: 0 !important;
+  background: transparent !important;
+  padding: 0.9rem 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  tab-size: 2;
+}
+.code-wrap pre code {
+  font-family: var(--font-mono);
+  display: grid;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.code-wrap pre code .line { padding: 0 1.15rem; }
+
+/* Line numbers: spacing only, no rule — the rule adds visual noise. */
+.code-wrap[data-numbered='true'] pre code { counter-reset: ln; }
+.code-wrap[data-numbered='true'] pre code .line { padding-left: 0; }
+.code-wrap[data-numbered='true'] pre code .line::before {
+  counter-increment: ln;
+  content: counter(ln);
+  display: inline-block;
+  width: 3.4rem;
+  padding-right: 1.1rem;
+  text-align: right;
+  color: color-mix(in srgb, var(--faint) 70%, transparent);
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Highlighted lines: ```js {2,5-7} */
+.code-wrap pre code .line[data-hl='true'] {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: inset 2px 0 0 var(--primary);
+}
+
+/* --- collapse ------------------------------------------------------ */
+.code-editor[data-collapsed='true'] { max-height: 20rem; overflow: hidden; }
+.code-editor[data-collapsed='true']::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4rem;
+  pointer-events: none;
+  background: linear-gradient(transparent, var(--code-bg));
+}
+
+.code-foot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 1.15rem;
+  border-top: 1px solid var(--border);
+  background: var(--code-head);
+  font-size: 13px;
+  color: var(--muted-foreground);
+  transition: color 0.14s, background-color 0.14s;
+}
+.code-foot:hover { color: var(--foreground); }
+
+/* --- console ------------------------------------------------------- */
+.code-out {
+  border-top: 1px solid var(--border);
+  background: var(--code-head);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  max-height: 22rem;
+  overflow: auto;
+}
+.code-out-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 1.15rem;
+  background: inherit;
+  color: var(--faint);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.code-out-body { padding: 4px 1.15rem 12px; }
+.code-out-line {
+  display: flex;
+  gap: 8px;
+  padding: 1px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.code-out-line::before { content: '›'; color: var(--faint); flex-shrink: 0; }
+
+/* Shiki dual theme via class, no runtime cost */
+html.dark .shiki, html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+}
+html:not(.dark) .shiki, html:not(.dark) .shiki span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+}
+
+/* Prose inside a flashcard answer: same rules, quieter and tighter. */
+.prose.prose-card {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+.prose.prose-card > * + * { margin-top: 0.8em; }
+
+/* …and inside a quiz prompt: reading size, full contrast. */
+.prose.prose-quiz {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.prose.prose-quiz > * + * { margin-top: 0.6em; }
+
+/* ================================================================= *
+ * Tables
+ *
+ * The markdown pipeline wraps every table in `.table-wrap`. The frame
+ * carries the border, the radius and the horizontal scroll; the table
+ * stays a real table so it fills that frame edge to edge.
+ * ================================================================= */
+.prose .table-wrap {
+  margin: 1.75rem 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.prose table {
+  width: 100%;
+  min-width: 30rem;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9em;
+}
+.prose thead { background: var(--muted); }
+.prose th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 0.7rem 1rem;
+  white-space: nowrap;
+}
+.prose td {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+/* Breathing room against the frame's rounded edges. */
+.prose th:first-child, .prose td:first-child { padding-left: 1.15rem; }
+.prose th:last-child, .prose td:last-child { padding-right: 1.15rem; }
+/* The leading column is a row label — keep it from collapsing to a sliver. */
+.prose tbody td:first-child { color: var(--foreground); }
+.prose tbody tr { transition: background-color 0.12s; }
+.prose tbody tr:hover { background: var(--muted); }
+/* Inline code inside a cell shouldn't break mid-token. */
+.prose td code, .prose th code { white-space: nowrap; }
+
+/* Callouts — blockquotes carry the "in plain words" boxes */
+.prose blockquote {
+  border: 1px solid var(--border);
+  border-left: 2.5px solid var(--primary);
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 12px 12px 0;
+  color: var(--muted-foreground);
+  font-size: 0.96em;
+}
+.prose blockquote strong { color: var(--foreground); }
+.prose blockquote > * + * { margin-top: 0.65em; }
+
+/* details / solution reveals */
+.prose details {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 0 1.05rem;
+  transition: border-color 0.18s, background-color 0.18s;
+}
+.prose details:hover { border-color: var(--input); }
+.prose details[open] { padding-bottom: 1.05rem; background: var(--muted); }
+.prose summary {
+  cursor: pointer;
+  padding: 0.8rem 0;
+  font-weight: 570;
+  font-size: 0.9em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  user-select: none;
+  transition: color 0.14s;
+}
+.prose summary:hover { color: var(--foreground); }
+.prose summary::-webkit-details-marker { display: none; }
+.prose summary::before {
+  content: '';
+  width: 0; height: 0;
+  border-left: 5px solid var(--primary);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  transition: transform 0.2s var(--ease-spring);
+}
+.prose details[open] summary::before { transform: rotate(90deg); }
+.prose details[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+
+.prose hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+.prose img { border-radius: 10px; max-width: 100%; }
+.prose input[type='checkbox'] { margin-right: 0.5rem; accent-color: var(--primary); }
+.prose li:has(> input[type='checkbox']) { list-style: none; margin-left: -1.1rem; }
+
+/* ================================================================= *
+ * Reading preferences (set as inline vars by the prefs store)
+ * ================================================================= */
+.reader { max-width: var(--reader-width, 56rem); margin-inline: auto; }
+
+/* ================================================================= *
+ * Utilities
+ * ================================================================= */
+.scroll-thin { scrollbar-width: thin; scrollbar-color: var(--input) transparent; }
+.scroll-thin::-webkit-scrollbar { width: 7px; height: 7px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--input); border-radius: 99px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+.num { font-variant-numeric: tabular-nums; }
+
+.shimmer {
+  background: linear-gradient(90deg, var(--muted) 25%, var(--secondary) 37%, var(--muted) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+@keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+.pop { animation: pop 0.34s var(--ease-spring); }
+
+/* Focus mode strips the shell down to the words. */
+body[data-focus='true'] .chrome { opacity: 0; pointer-events: none; }
+.chrome { transition: opacity 0.3s var(--ease-out-expo); }
+body[data-focus='true'] .chrome:hover,
+body[data-focus='true'] .chrome:focus-within { opacity: 1; pointer-events: auto; }
+
+@media print {
+  .no-print { display: none !important; }
+  .prose details > *:not(summary) { display: block !important; }
+}
+
+/* ================================================================= *
+ * Section reveal — 12px and 400ms. Enough to feel alive, not enough
+ * to interrupt a sentence.
+ * ================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s var(--ease-out-expo), transform 0.45s var(--ease-out-expo);
+}
+.reveal[data-shown='true'] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Skeleton loader */
+.skeleton {
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--muted) 25%, var(--secondary) 37%, var(--muted) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ================================================================= *
+ * Navigation active states — a filled rounded pill, not a rule.
+ * ================================================================= */
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 7px 12px;
+  transition: background-color 0.15s, color 0.15s;
+}
+.nav-pill:hover { background: var(--muted); color: var(--foreground); }
+/* ChatGPT marks the current item with a grey fill, not a coloured one. */
+.nav-pill[data-active='true'] {
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+  color: var(--foreground);
+  font-weight: 500;
+}
+.dark .nav-pill[data-active='true'] { background: color-mix(in srgb, var(--foreground) 13%, transparent); }
+
+/* ================================================================= *
+ * Chrome — topbar and sidebar
+ *
+ * The frame is what makes a product read as expensive. Three rules:
+ * hairlines instead of borders, one focal element per region, and
+ * hover states that feel physical rather than painted on.
+ * ================================================================= */
+
+/* Rail width is a variable, not a constant, because the rail collapses.
+   It is set on <html> before first paint (see NO_FLASH in layout.tsx) so the
+   frame never shifts on hydration — React never owns this number. */
+:root {
+  --topbar-h: 64px;
+  --rail-w: 280px;
+}
+html[data-rail='collapsed'] { --rail-w: 64px; }
+
+.topbar {
+  height: var(--topbar-h);
+  /* Denser than the usual glass. At 78% the prose scrolling underneath stayed
+     legible through the bar, which read as a rendering fault rather than as
+     depth. 95% plus a heavier blur keeps a trace of translucency without
+     letting a single word through. */
+  background: color-mix(in srgb, var(--background) 95%, transparent);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent);
+}
+
+/* The rail is full-height, so the bar and the content start to the right of
+   it — the brand sits in the rail, not in the bar. */
+@media (min-width: 1024px) {
+  .topbar { margin-left: var(--rail-w); transition: margin-left 0.24s var(--ease-out-expo); }
+  .main { padding-left: var(--rail-w); transition: padding-left 0.24s var(--ease-out-expo); }
+}
+.main { min-height: calc(100dvh - var(--topbar-h)); }
+
+/* --- Breadcrumb bar ----------------------------------------------- */
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+.crumb {
+  max-width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.14s;
+}
+a.crumb:hover { color: var(--foreground); }
+.crumb-sep { color: var(--faint); flex-shrink: 0; }
+.crumb-current {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 9px 0 6px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  transition: background-color 0.14s, color 0.14s;
+}
+.back-btn:hover { background: var(--muted); color: var(--foreground); }
+
+/* --- Status pill --------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.pill-done {
+  background: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+}
+
+/* ================================================================= *
+ * Page shell — content column plus an optional right rail
+ *
+ * One grid for every page, so the rail lands in the same place whether
+ * you're on the dashboard, a lesson or the saved list.
+ * ================================================================= */
+.page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 96rem;
+  padding: 1.75rem 1rem 5rem;
+}
+@media (min-width: 640px) { .page { padding-inline: 1.75rem; } }
+
+.page-cols {
+  display: grid;
+  align-items: start;
+  gap: 1.75rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 1280px) {
+  .page-cols { grid-template-columns: minmax(0, 1fr) 19rem; gap: 2rem; }
+}
+/* The rail is not sticky and never scrolls inside itself: a contents list of
+   17 entries is meant to be read at a glance, and a nested scrollbar hides
+   however many entries didn't fit. It scrolls with the page instead. */
+.page-aside { display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* Below the two-column breakpoint the rail stacks. On a lesson that rail
+   holds the reader's actions and metadata — the strip that used to sit above
+   the prose — so it goes first rather than to the bottom of a long page. */
+@media (max-width: 1279px) {
+  .page-aside-first { order: -1; }
+}
+
+/* Rail cards: flat panels, no elevation — the rail is reference material,
+   it should recede behind the content column. */
+.rail-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 0.9rem 1rem 1rem;
+}
+.rail-card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.35rem;
+}
+.meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  font-size: 12.5px;
+}
+.meta-row + .meta-row { border-top: 1px solid color-mix(in srgb, var(--foreground) 5%, transparent); }
+.meta-key { color: var(--faint); white-space: nowrap; }
+.meta-val { min-width: 0; text-align: right; color: var(--foreground); }
+
+/* The brand mark is an SVG component now — see components/logo.tsx. */
+
+/* Right-hand icon cluster. The wide search field it used to sit next to is
+   gone — the bar carries location now, and search is ⌘K. */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  color: var(--faint);
+  transition: background-color 0.15s, color 0.15s, transform 0.12s;
+}
+.icon-btn:hover { background: var(--muted); color: var(--foreground); }
+.icon-btn:active { transform: scale(0.92); }
+
+/* The collapse chevron points wherever it will move the rail: left to tuck it
+   away, right to bring it back. */
+.rail-chevron { transform: rotate(180deg); transition: transform 0.24s var(--ease-out-expo); }
+html[data-rail='collapsed'] .rail-chevron { transform: rotate(0deg); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.divider-v { width: 1px; height: 20px; background: color-mix(in srgb, var(--foreground) 10%, transparent); }
+
+/* --- Sidebar ------------------------------------------------------ *
+ * Two states, both driven by attributes on <html> rather than React state:
+ * `data-rail` collapses it to an icon strip on desktop, `data-drawer` slides
+ * it in over the content on mobile. Same markup in every state, so nothing
+ * can mismatch during hydration. */
+.sidebar {
+  /* Mobile is always the full drawer — only desktop honours the collapse. */
+  width: 280px;
+  background: var(--sidebar);
+  border-right: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent);
+  transform: translateX(-100%);
+  transition: transform 0.3s var(--ease-out-expo), width 0.24s var(--ease-out-expo);
+}
+html[data-drawer='open'] .sidebar { transform: none; }
+
+.sidebar-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+html[data-drawer='open'] .sidebar-scrim { opacity: 1; pointer-events: auto; }
+
+@media (min-width: 1024px) {
+  .sidebar { width: var(--rail-w); transform: none; }
+  .sidebar-scrim { display: none; }
+}
+
+/* Collapsed: labels, counters and nested lists go, glyphs stay centred. */
+@media (min-width: 1024px) {
+  html[data-rail='collapsed'] .rail-label { display: none; }
+  html[data-rail='collapsed'] .side-row,
+  html[data-rail='collapsed'] .rail-center { justify-content: center; padding-inline: 0; }
+  html[data-rail='collapsed'] .rail-pad { padding-inline: 0.65rem; }
+  html[data-rail='collapsed'] .side-row[data-active='true']::before { left: -5px; }
+}
+
+/* Progress swaps representation with the rail: bar when there's width for a
+   label, ring when there is only room for a glyph. */
+.rail-full { display: block; }
+.rail-mini { display: none; }
+@media (min-width: 1024px) {
+  html[data-rail='collapsed'] .rail-full { display: none; }
+  html[data-rail='collapsed'] .rail-mini { display: grid; place-items: center; }
+}
+
+/* The count badge shrinks to a dot when there's no room for digits. */
+.rail-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  color: var(--muted-foreground);
+  font-size: 10.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.rail-dot {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted-foreground);
+}
+@media (min-width: 1024px) {
+  html[data-rail='collapsed'] .rail-dot { display: block; }
+}
+
+/* Fade the list under the sticky header and above the footer instead of
+   letting rows collide with the edges. */
+.rail-scroll {
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 20px), transparent 100%);
+}
+
+.side-label {
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Row: filled pill plus a left accent bar when active — the bar is what
+   makes the current position readable at a glance while scanning. */
+.side-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border-radius: 9px;
+  padding: 7px 10px;
+  font-size: 13.5px;
+  color: var(--muted-foreground);
+  transition: background-color 0.15s, color 0.15s;
+}
+.side-row:hover { background: var(--muted); color: var(--foreground); }
+
+.side-row[data-active='true'] {
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+  color: var(--foreground);
+  font-weight: 500;
+}
+.dark .side-row[data-active='true'] { background: color-mix(in srgb, var(--foreground) 14%, transparent); }
+
+.side-row[data-active='true']::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 3px;
+  height: 18px;
+  border-radius: 0 3px 3px 0;
+  background: var(--foreground);
+}
+
+/* Indent guide for nested lesson lists. */
+.side-nest {
+  margin-left: 21px;
+  padding-left: 11px;
+  border-left: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+/* Small square tile for module glyphs. */
+.side-tile {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  color: var(--acc, var(--primary));
+  background: color-mix(in srgb, var(--acc, var(--primary)) 12%, transparent);
+}
+
+.side-foot {
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent);
+  background: var(--sidebar);
+}
+
+/* ================================================================= *
+ * Step debugger
+ * ================================================================= */
+.dbg {
+  border-top: 1px solid var(--border);
+  background: var(--code-head);
+  font-size: 12.5px;
+}
+
+.dbg-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.dbg-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.dbg-step {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.dbg-close {
+  display: grid;
+  place-items: center;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  color: var(--faint);
+  transition: background-color .14s, color .14s;
+}
+.dbg-close:hover { background: var(--muted); color: var(--foreground); }
+
+.dbg-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.dbg-btn {
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  color: var(--muted-foreground);
+  transition: background-color .14s, color .14s, transform .1s;
+}
+.dbg-btn:hover { background: var(--muted); color: var(--foreground); }
+.dbg-btn:active { transform: scale(.92); }
+.dbg-play[data-on='true'] { color: var(--primary); background: color-mix(in srgb, var(--primary) 12%, transparent); }
+
+.dbg-scrub {
+  flex: 1;
+  height: 3px;
+  margin-left: 8px;
+  appearance: none;
+  border-radius: 99px;
+  background: var(--input);
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.dbg-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.dbg-col { padding: 12px 14px; min-width: 0; }
+.dbg-col + .dbg-col { border-left: 1px solid var(--border); }
+
+.dbg-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 7px;
+}
+
+.dbg-var {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 3px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  min-width: 0;
+}
+.dbg-var-name { color: var(--foreground); flex-shrink: 0; }
+.dbg-var-val {
+  color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dbg-var[data-state='tdz'] .dbg-var-val,
+.dbg-var[data-state='out-of-scope'] .dbg-var-val { color: var(--faint); font-style: italic; }
+
+.dbg-badge {
+  flex-shrink: 0;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  background: color-mix(in srgb, var(--warning) 18%, transparent);
+  color: var(--warning);
+}
+.dbg-var[data-state='out-of-scope'] .dbg-badge {
+  background: color-mix(in srgb, var(--faint) 15%, transparent);
+  color: var(--faint);
+}
+
+.dbg-frame {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  margin-bottom: 3px;
+}
+.dbg-frame:first-child { color: var(--foreground); box-shadow: inset 2px 0 0 var(--primary); }
+
+.dbg-console { max-height: 9rem; overflow: auto; }
+.dbg-log {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 1px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--foreground);
+}
+.dbg-log-warn { color: var(--warning); }
+.dbg-log-error { color: var(--destructive); }
+.dbg-dim { color: var(--faint); font-style: italic; }
+
+.dbg-error { padding: 16px 14px; color: var(--destructive); }
+
+/* Current line, highlighted in the already-rendered source. */
+.code-wrap pre code .line[data-dbg='true'] {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+@media (max-width: 720px) {
+  .dbg-body { grid-template-columns: 1fr; }
+  .dbg-col + .dbg-col { border-left: none; border-top: 1px solid var(--border); }
+}
