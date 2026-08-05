@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { InterviewCard, Step } from '@/lib/content';
+import type { NarrationNotes } from '@/lib/narration';
 import {
   BY_N,
   DIFFICULTY_LABEL,
@@ -16,6 +17,7 @@ import { useStore } from '@/lib/store';
 import { useEnhancedCode } from './enhance-code';
 import { CompleteCard, EmptyState, InterviewCards, Quiz } from './lesson-parts';
 import { MetaRow, RailCard } from './rail';
+import { ReadAloud } from './read-aloud';
 import { ReaderToolbar } from './reader-toolbar';
 
 type Props = {
@@ -67,6 +69,14 @@ export function LessonReader({ lesson }: Props) {
   const sections = useMemo(
     () => (interview ? lesson.steps.filter((s) => s.cards.length > 0) : lesson.steps),
     [interview, lesson.steps],
+  );
+
+  // One lookup for the whole page: the narrator walks the rendered DOM in
+  // document order and only needs what it can't read off it, keyed by the id
+  // stamped on each block at build time.
+  const narrationNotes = useMemo(
+    () => Object.assign({}, ...sections.map((s) => s.narration)) as NarrationNotes,
+    [sections],
   );
 
   // Re-key on the mode: swapping cards for prose replaces the DOM the
@@ -164,7 +174,10 @@ export function LessonReader({ lesson }: Props) {
               id={s.id}
               className={`reveal scroll-mt-28 ${s.kind === 'objectives' ? 'will-learn' : ''}`}
             >
+              {/* The narrator announces the step it is moving into, so a
+                  listener knows where they are without watching the page. */}
               <h2
+                data-narrate={`${s.id}-title`}
                 className={
                   s.kind === 'objectives'
                     ? 'mb-3 text-[1.375rem] font-bold'
@@ -221,6 +234,8 @@ export function LessonReader({ lesson }: Props) {
        * page opens on the first sentence instead of on a row of stats. */}
       <aside className="page-aside page-aside-first chrome no-print">
         <ReaderToolbar lesson={lesson} />
+
+        <ReadAloud bodyRef={bodyRef} notes={narrationNotes} />
 
         <RailCard title="General">
           <MetaRow label="Module">{lesson.module.short}</MetaRow>

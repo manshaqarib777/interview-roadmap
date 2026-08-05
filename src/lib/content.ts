@@ -18,6 +18,7 @@ import {
   isRunnable,
   narrateCode,
   parseAuthored,
+  speakable,
   type NarrationNote,
   type NarrationNotes,
   type Sidecar,
@@ -295,7 +296,7 @@ function narrate(opts: NarrateOpts) {
           // One of the few places the spoken form has to differ from the
           // text: without the commas, the last word of one column and the
           // first of the next are read as a single phrase.
-          if (cells.length) stamp(child, { kind: 'say', text: `${cells.join(', ')}.` });
+          if (cells.length) stamp(child, { kind: 'say', text: speakable(`${cells.join(', ')}.`) });
           continue;
         }
 

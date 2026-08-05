@@ -34,6 +34,11 @@ export type State = {
     width: number; // rem
     focus: boolean;
     interview: boolean;
+    /** Read aloud */
+    rate: number; // 0.6–1.6× speech rate
+    voiceURI: string;
+    checkpoints: boolean;
+    narrateDebug: boolean;
   };
 };
 
@@ -43,7 +48,17 @@ const INITIAL: State = {
   bookmarks: [],
   days: [],
   lastLesson: null,
-  prefs: { size: 17, leading: 1.7, width: 46, focus: false, interview: false },
+  prefs: {
+    size: 17,
+    leading: 1.7,
+    width: 46,
+    focus: false,
+    interview: false,
+    rate: 1,
+    voiceURI: '',
+    checkpoints: true,
+    narrateDebug: true,
+  },
 };
 
 let snapshot: State = INITIAL;
@@ -129,6 +144,14 @@ function sanitize(input: unknown): State {
       width: clamp(prefs.width, 38, 62, INITIAL.prefs.width),
       focus: prefs.focus === true,
       interview: prefs.interview === true,
+      rate: clamp(prefs.rate, 0.6, 1.6, INITIAL.prefs.rate),
+      // A voice that no longer exists on this machine falls back to the
+      // narrator's own pick rather than failing to speak.
+      voiceURI: typeof prefs.voiceURI === 'string' ? prefs.voiceURI.slice(0, 200) : '',
+      // Default-on preferences have to test for `!== false`, or every reader
+      // who saved a preference before this field existed gets it turned off.
+      checkpoints: prefs.checkpoints !== false,
+      narrateDebug: prefs.narrateDebug !== false,
     },
   };
 }

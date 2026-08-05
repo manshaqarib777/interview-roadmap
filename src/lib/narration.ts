@@ -25,8 +25,6 @@ export type NarratedLine = {
   code: string;
   /** the spoken explanation */
   say: string;
-  /** where `say` came from — surfaced in the generator's coverage report */
-  from: 'authored' | 'generated' | 'mechanical';
 };
 
 /**
@@ -91,6 +89,23 @@ export function verbalize(code: string): string {
   let say = line.replace(/\/\/.*$/, '');
   for (const [re, word] of SYMBOLS) say = say.replace(re, word);
   return say.trim();
+}
+
+/**
+ * Symbols a speech synthesiser reads as silence.
+ *
+ * Only applied where the spoken text is already allowed to differ from what's
+ * on screen — comparison tables, which is where arrows cluster. In prose the
+ * utterance text has to stay character-identical to the element's own text, or
+ * the offsets from a `boundary` event mark the wrong words.
+ */
+export function speakable(text: string): string {
+  return text
+    .replace(/\s*[→⇒]\s*/g, ' becomes ')
+    .replace(/\s*[←⇐]\s*/g, ' from ')
+    .replace(/\s*↔\s*/g, ' both ways ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 /* ---------------------------------------------------------------- */
@@ -170,13 +185,7 @@ export function narrateCode(
     .split('\n')
     .map((code, i) => {
       const n = i + 1;
-      const say = authored.get(n) ?? generated[String(n)] ?? verbalize(code);
-      const from: NarratedLine['from'] = authored.has(n)
-        ? 'authored'
-        : generated[String(n)]
-          ? 'generated'
-          : 'mechanical';
-      return { n, code, say, from };
+      return { n, code, say: authored.get(n) ?? generated[String(n)] ?? verbalize(code) };
     })
     // A blank line has nothing to say and a pause there sounds like a fault.
     .filter((l) => l.say.trim().length > 0);

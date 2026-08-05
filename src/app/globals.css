@@ -1614,3 +1614,46 @@ html[data-drawer='open'] .sidebar-scrim { opacity: 1; pointer-events: auto; }
   .dbg-body { grid-template-columns: 1fr; }
   .dbg-col + .dbg-col { border-left: none; border-top: 1px solid var(--border); }
 }
+
+/* ---------------------------------------------------------------- *
+ * Read aloud
+ *
+ * Position while narrating is a kind of progress, so it takes the
+ * accent. The debugger's current line is blue, and both can be lit at
+ * once — narration steps a snippet while a reader has the debugger
+ * open — so they must not be the same colour.
+ * ---------------------------------------------------------------- */
+
+[data-narrating='true']:not(pre) {
+  border-radius: 8px;
+  box-shadow: inset 3px 0 0 var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  padding-left: 12px;
+  margin-left: -15px;
+  transition: background 0.25s ease;
+}
+
+/* Rows can't take padding without breaking the table's column widths. */
+tr[data-narrating='true'] {
+  padding-left: 0;
+  margin-left: 0;
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* The line being explained, inside the already-rendered source. */
+.code-wrap pre code .line[data-narrating='true'] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* The sentence being spoken. Painted by the Custom Highlight API, so it
+   marks a range without adding an element the code enhancer would then
+   have to survive. Browsers without it keep the block highlight above. */
+::highlight(narrator-sentence) {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-narrating='true']:not(pre) { transition: none; }
+}
