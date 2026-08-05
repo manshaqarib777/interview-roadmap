@@ -276,6 +276,9 @@ export class Narrator {
   /* ---- cue playback --------------------------------------------- */
 
   private async speakProse(cue: Cue) {
+    // The only edit allowed to prose: a non-breaking space swapped for a
+    // plain one, which some engines read as a stumble. One character for one
+    // character, so every offset a `boundary` event reports still lines up.
     const text =
       cue.note?.kind === 'say' ? cue.note.text : (cue.el.textContent ?? '').replace(/ /g, ' ');
     if (!text.trim()) return;
