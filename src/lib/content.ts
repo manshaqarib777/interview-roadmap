@@ -14,6 +14,15 @@ import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 
 import {
+  hashCode,
+  isRunnable,
+  narrateCode,
+  parseAuthored,
+  type NarrationNote,
+  type NarrationNotes,
+  type Sidecar,
+} from './narration';
+import {
   BY_N,
   LESSON_INDEX,
   MODULES,
@@ -67,6 +76,8 @@ export type Step = {
   questionsHtml: string[];
   /** Only for kind === 'interview' — what Interview Mode flips through */
   cards: InterviewCard[];
+  /** Read aloud: what can't be read off the page, keyed by `data-narrate` */
+  narration: NarrationNotes;
 };
 
 export type InterviewCard = {
@@ -196,8 +207,152 @@ function tables() {
   };
 }
 
-async function toHtml(md: string): Promise<string> {
-  const file = await unified()
+/* ---------------------------------------------------------------- */
+/* narration                                                          */
+/* ---------------------------------------------------------------- */
+
+type HNode = Record<string, unknown>;
+
+/** Blocks the narrator reads as a unit. A `li` is hit before the `p` inside
+ *  it, and stamping stops the walk — otherwise a loose list narrates twice. */
+const PROSE_TAGS = new Set(['p', 'li', 'h3', 'h4', 'h5', 'h6']);
+
+/** Concatenated exactly as the DOM will, so a character offset from a
+ *  `boundary` event lands on the same character in the rendered text node. */
+function textOf(node: HNode): string {
+  if (node.type === 'text') return String(node.value ?? '');
+  return ((node.children as HNode[]) ?? []).map(textOf).join('');
+}
+
+type NarrateOpts = {
+  notes: NarrationNotes;
+  /** code hash → authored line notes, lifted out of the markdown */
+  authored: Map<string, Map<number, string>>;
+  sidecar: Sidecar;
+  prefix: string;
+};
+
+/**
+ * Stamp `data-narrate` on every readable block and collect what to say.
+ *
+ * Runs after Shiki so a code block is inspected in its final shape: the source
+ * is read back out of the highlighted tokens, which is also exactly what the
+ * `.line` elements the panel highlights contain.
+ */
+function narrate(opts: NarrateOpts) {
+  // Two closures, matching `callouts` and `tables` above: unified calls the
+  // outer one as the attacher and uses what it returns as the transformer.
+  return () => (tree: HNode) => {
+    let seq = 0;
+
+    /** Stamping is what makes a block narratable; the note is optional. */
+    const stamp = (node: HNode, note?: NarrationNote) => {
+      const id = `${opts.prefix}-${(seq += 1)}`;
+      node.properties = { ...(node.properties as object), 'data-narrate': id };
+      if (note) opts.notes[id] = note;
+    };
+
+    const walk = (node: HNode) => {
+      for (const child of ((node.children as HNode[]) ?? [])) {
+        const tag = child.tagName as string | undefined;
+
+        if (tag === 'pre') {
+          const code = ((child.children as HNode[]) ?? []).find((c) => c.tagName === 'code');
+          const source = textOf(code ?? child).replace(/\n$/, '');
+          const lang =
+            /language-([\w+-]+)/.exec(
+              String(((code?.properties as HNode)?.className as string[])?.join(' ') ?? ''),
+            )?.[1] ?? '';
+          if (source.trim()) {
+            stamp(child, {
+              kind: 'code',
+              source,
+              lang,
+              runnable: isRunnable(lang),
+              lines: narrateCode(
+                source,
+                lang,
+                opts.authored.get(hashCode(source)) ?? new Map(),
+                opts.sidecar,
+              ),
+            });
+          }
+          continue;
+        }
+
+        if (tag && PROSE_TAGS.has(tag)) {
+          // No note: the narrator reads the element's own text. A bare "—" or
+          // a stray bullet isn't worth an utterance.
+          if (textOf(child).trim().length > 2) stamp(child);
+          continue;
+        }
+
+        if (tag === 'tr') {
+          const cells = ((child.children as HNode[]) ?? [])
+            .filter((c) => c.tagName === 'td' || c.tagName === 'th')
+            .map((c) => textOf(c).replace(/\s+/g, ' ').trim())
+            .filter(Boolean);
+          // One of the few places the spoken form has to differ from the
+          // text: without the commas, the last word of one column and the
+          // first of the next are read as a single phrase.
+          if (cells.length) stamp(child, { kind: 'say', text: `${cells.join(', ')}.` });
+          continue;
+        }
+
+        walk(child);
+      }
+    };
+
+    walk(tree);
+  };
+}
+
+/**
+ * The generated line explanations, read once per build.
+ *
+ * Absent or unparseable is a normal state — nobody has run the generator yet,
+ * or this is a fresh clone — and narration falls back to the mechanical layer
+ * rather than failing the build.
+ */
+const loadSidecar = cache(async (): Promise<Sidecar> => {
+  try {
+    return JSON.parse(
+      await fs.readFile(path.join(CONTENT_ROOT, 'narration.json'), 'utf8'),
+    ) as Sidecar;
+  } catch {
+    return {};
+  }
+});
+
+/**
+ * Lift ```narrate fences out of the markdown and key them to the code block
+ * they follow, so the author's own words win over anything generated.
+ * The fence never reaches the renderer — it is narration, not content.
+ */
+function liftAuthoredNarration(md: string): {
+  body: string;
+  authored: Map<string, Map<number, string>>;
+} {
+  const authored = new Map<string, Map<number, string>>();
+  let previous = '';
+
+  const body = md.replace(
+    /```([\w+-]*)[^\n]*\n([\s\S]*?)```/g,
+    (whole, lang: string, inner: string) => {
+      if (lang.toLowerCase() === 'narrate') {
+        if (previous) authored.set(hashCode(previous), parseAuthored(inner));
+        return '';
+      }
+      previous = inner.replace(/\n$/, '');
+      return whole;
+    },
+  );
+
+  return { body, authored };
+}
+
+async function toHtml(md: string, narration?: NarrateOpts): Promise<string> {
+  const pipeline = unified()
     .use(p(remarkParse))
     .use(p(remarkGfm))
     .use(p(remarkRehype), { allowDangerousHtml: true } as never)
@@ -213,7 +368,14 @@ async function toHtml(md: string): Promise<string> {
       themes: { light: 'github-light', dark: 'github-dark-dimmed' },
       defaultColor: false,
       fallbackLanguage: 'text',
-    } as never)
+    } as never);
+
+  // After Shiki, so a code block is inspected in the shape the reader will
+  // highlight. Cards and quiz prompts pass no collector — they are never
+  // narrated in place, so they cost no extra work.
+  if (narration) pipeline.use(p(narrate(narration)));
+
+  const file = await pipeline
     .use(p(rehypeStringify), { allowDangerousHtml: true } as never)
     .process(md);
   return String(file);
@@ -374,29 +536,35 @@ export const getLesson = cache(
     const steps: Step[] = [];
     let cards: InterviewCard[] = [];
     let totalWords = 0;
+    const sidecar = await loadSidecar();
 
     for (const [index, s] of raws.entries()) {
       if (!s.body) continue;
       const kind = kindOf(s.title);
-      const words = s.body.split(/\s+/).filter(Boolean).length;
+      const { body, authored } = liftAuthoredNarration(s.body);
+      const words = body.split(/\s+/).filter(Boolean).length;
       totalWords += words;
+      const narration: NarrationNotes = {};
 
       // Only interview steps are card-parsed: elsewhere a bold lead-in
       // followed by a blockquote is ordinary prose, not a question.
-      const stepCards = kind === 'interview' ? await renderCards(parseCards(s.body)) : [];
+      const stepCards = kind === 'interview' ? await renderCards(parseCards(body)) : [];
       if (stepCards.length) cards = [...cards, ...stepCards];
+
+      const prefix = `n${index}`;
+      const html = await toHtml(body, { notes: narration, authored, sidecar, prefix });
 
       steps.push({
         id: `step-${index}`,
         index: steps.length,
         title: cleanTitle(s.title),
         kind,
-        html: await toHtml(s.body),
+        html,
         words,
         seconds: Math.max(20, Math.round((words / WPM) * 60)),
-        questionsHtml:
-          kind === 'quiz' ? await Promise.all(parseQuestions(s.body).map(toHtml)) : [],
+        questionsHtml: kind === 'quiz' ? await Promise.all(parseQuestions(body).map((q) => toHtml(q))) : [],
         cards: stepCards,
+        narration,
       });
     }
 
