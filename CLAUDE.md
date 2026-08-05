@@ -37,6 +37,7 @@ npm run dev        # http://localhost:3000
 npm run build      # prerenders 109 pages + 104 OG images (~50s)
 npm run typecheck  # tsc --noEmit
 npm run verify     # typecheck + build — run this before every commit
+npm run narrate    # regenerate code narration (needs ANTHROPIC_API_KEY)
 ```
 
 There is **no ESLint setup** in this project (`next lint` was removed in Next 16 and
@@ -53,6 +54,8 @@ wire it into `verify` and CI in the same change.
 | `src/lib/curriculum.ts` | The 104-lesson table + derived indexes. Pure data, no I/O. |
 | `src/lib/content.ts` | Reads `content/*.md`, parses to steps/cards, highlights code. Build-time only, `cache()`d. |
 | `src/lib/seo.ts` | Every title, description, canonical and JSON-LD node. One source of truth. |
+| `src/lib/narration.ts` | Pure narration logic — line verbalising, authored overrides, the content hash. No I/O, no `server-only`: the generator script imports it too. |
+| `src/lib/narrator.ts` | Read aloud. Speech queue, sentence highlight, scroll sync, checkpoints. Client-only. |
 | `src/lib/store.ts` | All learner state (progress, bookmarks, prefs) in localStorage. |
 | `src/lib/og.tsx` | Shared pieces for generated Open Graph cards (Satori-safe CSS only). |
 | `src/app/layout.tsx` | The frame: rail, breadcrumb bar, site-wide JSON-LD, pre-paint script. |
@@ -72,6 +75,21 @@ wire it into `verify` and CI in the same change.
   re-render that re-applied `dangerouslySetInnerHTML` would destroy an open debugger.
 - **`dynamicParams = false`** on the lesson route: unknown slugs 404 instead of
   attempting a runtime render.
+- **`data-narrate` on every readable block** is how Read aloud finds its place.
+  Reading order and prose text come from the DOM at speak time, so narration
+  survives Interview Mode swapping the subtree and `useEnhancedCode` rewriting
+  every `<pre>`. Only what *isn't* in the markup ships as data — per-line code
+  explanations, and a spoken form for table rows. Don't serialise the prose a
+  second time; the two copies will disagree.
+- **The sentence highlight uses the CSS Custom Highlight API**, not a wrapper
+  element. Marking a range without touching the DOM is the only way to
+  highlight inside a code panel without destroying an open debugger. If you
+  reach for `<span>` here, you will break the debugger and not notice for weeks.
+- **The narrator speaks the element's exact `textContent`.** A `boundary` event
+  gives a character offset into the utterance; if the spoken text has been
+  "improved" (arrows expanded, whitespace collapsed) every offset after the
+  edit marks the wrong words. Rewriting for the speaker is confined to
+  `kind: 'say'` notes, which are highlighted at block level only.
 
 ---
 
@@ -160,6 +178,32 @@ Every lesson is one `.md` file in `content/<module>/`, and follows the same
   See `kindOf()` in `content.ts` before renaming a heading.
 - Code fences: ` ```js {2,5-7} ` highlights lines. JS/TS blocks get Run/Debug.
 - After adding a lesson file, add its row to `curriculum.ts` **and** `README.md`.
+
+### Narrating a code block
+
+Read aloud explains code line by line. What it says resolves in this order:
+
+1. **Authored** — a ` ```narrate ` fence directly after the code fence. Line
+   numbers, or ranges, then what to say. This always wins, and it is the only
+   layer written in your voice:
+
+   ````
+   ```narrate
+   2: the closure captures count here
+   5-7: the binding outlives the call that created it
+   ```
+   ````
+
+2. **Generated** — `content/narration.json`, written by `npm run narrate` and
+   committed. Keyed by a hash of the code, so editing the prose around a block
+   doesn't invalidate it and moving a snippet between lessons carries its
+   narration along. Regenerating only pays for blocks whose source changed.
+3. **Mechanical** — derived from the syntax. It says *what* a line is, never
+   *why*, which is the opposite of how this repo teaches. It exists so nothing
+   is ever silent. If a block matters, write the `narrate` fence.
+
+Generation is deliberate and occasional — never a build step, never per
+request. Nothing calls an API at runtime, and the site builds with no key set.
 
 ---
 
