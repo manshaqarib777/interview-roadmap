@@ -19,7 +19,7 @@ import type { NarrationNotes, NarrationNote } from './narration';
  * asked to do.
  */
 
-export type NarratorStatus = 'idle' | 'speaking' | 'paused' | 'checkpoint';
+export type NarratorStatus = 'idle' | 'speaking' | 'paused' | 'checkpoint' | 'blocked';
 
 export type NarratorState = {
   status: NarratorStatus;
@@ -30,6 +30,8 @@ export type NarratorState = {
   sectionId: string | null;
   /** set when the narrator has paused to ask whether to carry on */
   checkpoint: { title: string; nextTitle: string | null } | null;
+  /** why nothing is being said, when status is 'blocked' */
+  error: string | null;
 };
 
 export type NarratorPrefs = {
@@ -195,7 +197,14 @@ export class Narrator {
   private keepAlive: ReturnType<typeof setInterval> | undefined;
   private paused = false;
 
-  state: NarratorState = { status: 'idle', at: -1, total: 0, sectionId: null, checkpoint: null };
+  state: NarratorState = {
+    status: 'idle',
+    at: -1,
+    total: 0,
+    sectionId: null,
+    checkpoint: null,
+    error: null,
+  };
 
   constructor(private emit: (state: NarratorState) => void) {}
 
@@ -203,8 +212,16 @@ export class Narrator {
     this.prefs = prefs;
   }
 
-  async ready() {
-    this.voices = await loadVoices();
+  /**
+   * Voices are handed in from the component, which resolves them on mount.
+   *
+   * `play()` must not await anything before its first `speak()`: Chrome and
+   * Safari only honour speech inside the user-activation window opened by the
+   * click, and a single `await` closes it. Loading the voice list lazily on
+   * first play looks harmless and silently breaks every first play.
+   */
+  setVoices(voices: SpeechSynthesisVoice[]) {
+    this.voices = voices;
   }
 
   /**
@@ -230,27 +247,62 @@ export class Narrator {
 
   /* ---- speech primitives ---------------------------------------- */
 
-  private say(text: string, onBoundary?: (index: number) => void): Promise<void> {
+  /**
+   * Speak one utterance. Resolves true only if it was actually voiced.
+   *
+   * The return value is the whole point. A browser that accepts an utterance
+   * and then drops it — no audio device, no installed voice, a wedged synth —
+   * fires `end` immediately and reports nothing wrong. Treating that as
+   * success is what turns a lesson into a flicker: every cue "finishes" in
+   * microseconds and the narrator races the length of the page in silence.
+   * So an utterance only counts as spoken if `start` fired first.
+   */
+  private say(text: string, onBoundary?: (index: number) => void): Promise<boolean> {
     return new Promise((resolve) => {
-      const clean = text.trim();
-      if (!clean) return resolve();
+      if (!text.trim()) return resolve(true);
 
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = this.prefs.rate;
       const voice = pickVoice(this.voices, this.prefs.voiceURI);
       if (voice) utterance.voice = voice;
 
-      // `end` and `error` both resolve: cancel() fires one or the other
+      let started = false;
+      let settled = false;
+      const finish = (ok: boolean) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(watchdog);
+        resolve(ok);
+      };
+
+      utterance.onstart = () => {
+        started = true;
+      };
+      // `end` and `error` both settle: cancel() fires one or the other
       // depending on the browser, and a narrator that hangs on a cancelled
       // utterance never stops.
-      utterance.onend = () => resolve();
-      utterance.onerror = () => resolve();
-      if (onBoundary) {
-        utterance.onboundary = (e) => onBoundary(e.charIndex);
-      }
+      utterance.onend = () => finish(started);
+      utterance.onerror = () => finish(false);
+      if (onBoundary) utterance.onboundary = (e) => onBoundary(e.charIndex);
+
+      // Some failures are silent in both directions: no `start`, no `end`, no
+      // `error`. Without a watchdog the loop would hang on the first block
+      // instead of racing through it — the opposite bug, equally dead.
+      const watchdog = setTimeout(() => {
+        if (!started && !speechSynthesis.speaking) finish(false);
+      }, 3000);
 
       speechSynthesis.speak(utterance);
     });
+  }
+
+  /** Give up, explain why, and leave the page as it was. */
+  private block(error: string) {
+    this.token += 1;
+    this.stopKeepAlive();
+    speechSynthesis.cancel();
+    this.clearMarks();
+    this.update({ status: 'blocked', at: -1, sectionId: null, checkpoint: null, error });
   }
 
   /**
@@ -275,13 +327,13 @@ export class Narrator {
 
   /* ---- cue playback --------------------------------------------- */
 
-  private async speakProse(cue: Cue) {
+  private async speakProse(cue: Cue): Promise<boolean> {
     // The only edit allowed to prose: a non-breaking space swapped for a
     // plain one, which some engines read as a stumble. One character for one
     // character, so every offset a `boundary` event reports still lines up.
     const text =
-      cue.note?.kind === 'say' ? cue.note.text : (cue.el.textContent ?? '').replace(/ /g, ' ');
-    if (!text.trim()) return;
+      cue.note?.kind === 'say' ? cue.note.text : (cue.el.textContent ?? '').replace(/\u00a0/g, ' ');
+    if (!text.trim()) return true;
 
     cue.el.dataset.narrating = 'true';
     keepInView(cue.el);
@@ -290,14 +342,18 @@ export class Narrator {
     // would mark the wrong characters — those blocks get the block highlight
     // and nothing finer.
     const trackable = cue.note?.kind !== 'say';
-    await this.say(text, trackable ? (i) => markSentence(cue.el, ...sentenceAt(text, i)) : undefined);
+    const spoke = await this.say(
+      text,
+      trackable ? (i) => markSentence(cue.el, ...sentenceAt(text, i)) : undefined,
+    );
 
     clearSentence();
     delete cue.el.dataset.narrating;
+    return spoke;
   }
 
-  private async speakCode(cue: Cue) {
-    if (cue.note?.kind !== 'code') return;
+  private async speakCode(cue: Cue): Promise<boolean> {
+    if (cue.note?.kind !== 'code') return true;
     const { lines, source, runnable } = cue.note;
 
     cue.el.dataset.narrating = 'true';
@@ -320,25 +376,25 @@ export class Narrator {
         keepInView(el);
       }
     };
+    const done = (spoke: boolean) => {
+      lineEls.forEach((el) => delete el.dataset.narrating);
+      delete cue.el.dataset.narrating;
+      return spoke;
+    };
 
     if (runnable && this.prefs.debug) {
       const narrated = await this.speakExecution(cue, source, mark);
-      if (narrated) {
-        lineEls.forEach((el) => delete el.dataset.narrating);
-        delete cue.el.dataset.narrating;
-        return;
-      }
+      if (narrated !== null) return done(narrated);
     }
 
-    await this.say('Here is the code.');
+    let spoke = await this.say('Here is the code.');
     for (const line of lines) {
-      if (!this.alive) return;
+      if (!this.alive) return done(spoke);
       mark(line.n);
-      await this.say(line.say);
+      spoke = (await this.say(line.say)) && spoke;
     }
 
-    lineEls.forEach((el) => delete el.dataset.narrating);
-    delete cue.el.dataset.narrating;
+    return done(spoke);
   }
 
   /**
@@ -350,30 +406,30 @@ export class Narrator {
    * `trace` directly rather than the mounted debugger panel — the panel is the
    * reader's to steer, and two things stepping the same timeline would fight.
    *
-   * Returns false when there is nothing worth narrating, so the caller can
-   * fall back to reading the lines.
+   * Returns null when there is nothing worth narrating, so the caller can fall
+   * back to reading the lines; otherwise whether it was actually voiced.
    */
   private async speakExecution(
     cue: Cue,
     source: string,
     mark: (n: number) => void,
-  ): Promise<boolean> {
+  ): Promise<boolean | null> {
     let frames: Frame[];
     try {
       const result = await trace(source);
-      if (result.error || result.frames.length < 2) return false;
+      if (result.error || result.frames.length < 2) return null;
       frames = result.frames;
     } catch {
-      return false;
+      return null;
     }
     if (!this.alive) return true;
 
-    await this.say('Let me run this and talk through what happens.');
+    let spoke = await this.say('Let me run this and talk through what happens.');
 
     let previous = new Map<string, string>();
     // Long traces are a loop the listener does not need narrated forty times.
     for (const frame of frames.slice(0, 40)) {
-      if (!this.alive) return true;
+      if (!this.alive) return spoke;
       mark(frame.line);
 
       const changed = frame.vars.filter(
@@ -390,40 +446,97 @@ export class Narrator {
       const parts = [`Line ${frame.line}.`, said, logged && `It logs ${logged}.`].filter(Boolean);
       // A frame that changed nothing and printed nothing is a step the
       // listener gains nothing from hearing.
-      if (parts.length > 1) await this.say(parts.join(' '));
+      if (parts.length > 1) spoke = (await this.say(parts.join(' '))) && spoke;
     }
 
     if (frames.length > 40 && this.alive) {
-      await this.say('The rest of the run repeats the same steps.');
+      spoke = (await this.say('The rest of the run repeats the same steps.')) && spoke;
     }
-    return true;
+    return spoke;
   }
 
   private get alive() {
     return this.state.status === 'speaking' || this.state.status === 'paused';
   }
 
+  private clearMarks() {
+    clearSentence();
+    for (const cue of this.cues) {
+      delete cue.el.dataset.narrating;
+      cue.el.querySelectorAll<HTMLElement>('.line').forEach((el) => delete el.dataset.narrating);
+    }
+  }
+
   /* ---- transport ------------------------------------------------ */
 
-  async play(from = Math.max(0, this.state.at)) {
+  /**
+   * Not async, and deliberately so.
+   *
+   * Everything up to the first `speak()` runs inside the click that called it.
+   * Chrome and Safari only honour speech while the user activation from that
+   * click is live, and a single `await` — resolving the voice list, say —
+   * closes the window and gets the utterance dropped with no error at all.
+   */
+  play(from = Math.max(0, this.state.at)) {
     if (!supported() || !this.cues.length) return;
-    if (!this.voices.length) await this.ready();
 
-    speechSynthesis.cancel();
+    // A synchronous re-read, in case the list arrived after the mount-time
+    // resolve gave up on it. `getVoices()` costs nothing and doesn't await, so
+    // it can't cost us the user activation.
+    if (!this.voices.length) this.voices = speechSynthesis.getVoices();
+
+    if (!this.voices.length) {
+      // Chrome on Linux exposes voices only when speech-dispatcher is running
+      // and reachable; elsewhere an empty list means none are installed. Either
+      // way there is nothing to speak with, and saying so beats a silent race.
+      this.block(
+        'No speech voices are available in this browser. On Linux, install speech-dispatcher and a voice such as espeak-ng, then restart the browser.',
+      );
+      return;
+    }
+
+    // cancel() immediately before speak() wedges the queue in Chrome — the new
+    // utterance is accepted and never starts. Only cancel if there is really
+    // something to stop, and let it settle before speaking.
+    const dirty = speechSynthesis.speaking || speechSynthesis.pending;
+    if (dirty) speechSynthesis.cancel();
+    // A synth left paused by an earlier navigation stays paused, and every
+    // later utterance queues behind it in silence.
+    speechSynthesis.resume();
+
     this.paused = false;
     const mine = ++this.token;
-    this.update({ status: 'speaking', checkpoint: null });
+    this.update({ status: 'speaking', checkpoint: null, error: null });
     this.startKeepAlive();
+
+    void this.run(mine, from, dirty);
+  }
+
+  private async run(mine: number, from: number, settle: boolean) {
+    if (settle) await new Promise((r) => setTimeout(r, 60));
+
+    let failures = 0;
 
     for (let i = from; i < this.cues.length; i += 1) {
       if (mine !== this.token) return;
       const cue = this.cues[i];
       this.update({ at: i, sectionId: cue.section?.id ?? null });
 
-      if (cue.note?.kind === 'code') await this.speakCode(cue);
-      else await this.speakProse(cue);
+      const spoke =
+        cue.note?.kind === 'code' ? await this.speakCode(cue) : await this.speakProse(cue);
 
       if (mine !== this.token) return;
+
+      // Two silent blocks in a row is not a quirk of one utterance, it is the
+      // synthesiser refusing to speak. Stopping here is what keeps a broken
+      // setup from strobing through the whole lesson in a second.
+      failures = spoke ? 0 : failures + 1;
+      if (failures >= 2) {
+        this.block(
+          'The browser accepted the narration but never played it. Check the tab is not muted, then try a different voice.',
+        );
+        return;
+      }
 
       // Checkpoint at the seam between two steps: the pause after a hard idea
       // is where it lands, and a wall of speech gives the listener nowhere to
@@ -480,11 +593,7 @@ export class Narrator {
     this.paused = false;
     this.stopKeepAlive();
     speechSynthesis.cancel();
-    clearSentence();
-    for (const cue of this.cues) {
-      delete cue.el.dataset.narrating;
-      cue.el.querySelectorAll<HTMLElement>('.line').forEach((el) => delete el.dataset.narrating);
-    }
-    this.update({ status: 'idle', at: -1, sectionId: null, checkpoint: null });
+    this.clearMarks();
+    this.update({ status: 'idle', at: -1, sectionId: null, checkpoint: null, error: null });
   }
 }

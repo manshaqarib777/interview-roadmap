@@ -33,6 +33,7 @@ export function ReadAloud({
     total: 0,
     sectionId: null,
     checkpoint: null,
+    error: null,
   });
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [panel, setPanel] = useState(false);
@@ -43,7 +44,13 @@ export function ReadAloud({
     if (!supported()) return;
     const narrator = new Narrator(setState);
     narratorRef.current = narrator;
-    void loadVoices().then(setVoices);
+    // Resolved here, on mount, and handed straight to the narrator: `play()`
+    // must reach its first `speak()` without awaiting anything, or the click's
+    // user activation has expired by the time it gets there.
+    void loadVoices().then((found) => {
+      setVoices(found);
+      narrator.setVoices(found);
+    });
     return () => {
       // Speech is global to the tab, not to this component: without this a
       // lesson keeps talking over the next one after a client-side navigation.
@@ -72,13 +79,14 @@ export function ReadAloud({
     // built and Interview Mode has settled, so the queue matches the page the
     // reader is actually looking at.
     narrator.index(root, notes);
-    void narrator.play(0);
+    narrator.play(0);
   }, [bodyRef, notes]);
 
   if (!available) return null;
 
   const speaking = state.status === 'speaking';
-  const active = state.status !== 'idle';
+  const blocked = state.status === 'blocked';
+  const active = state.status !== 'idle' && !blocked;
 
   return (
     <>
@@ -86,9 +94,10 @@ export function ReadAloud({
         <div className="rail-card flex items-center gap-0.5 p-1.5">
           <button
             onClick={() => {
-              if (state.status === 'idle') play();
-              else if (speaking) narratorRef.current?.pause();
-              else narratorRef.current?.continue();
+              if (speaking) narratorRef.current?.pause();
+              else if (state.status === 'paused' || state.status === 'checkpoint')
+                narratorRef.current?.continue();
+              else play();
             }}
             title={state.status === 'idle' ? 'Read aloud' : speaking ? 'Pause' : 'Continue'}
             aria-label={state.status === 'idle' ? 'Read aloud' : speaking ? 'Pause' : 'Continue'}
@@ -109,7 +118,7 @@ export function ReadAloud({
               )}
             </Icon>
             <span className="truncate">
-              {state.status === 'idle' ? 'Read aloud' : speaking ? 'Reading…' : 'Paused'}
+              {speaking ? 'Reading…' : state.status === 'idle' || blocked ? 'Read aloud' : 'Paused'}
             </span>
           </button>
 
@@ -140,6 +149,14 @@ export function ReadAloud({
             </Icon>
           </button>
         </div>
+
+        {/* A narrator that can't be heard has to say so. The failure it
+            replaces looked like the page flickering once and going quiet. */}
+        {blocked && state.error && (
+          <p className="mt-1.5 rounded-lg border border-[var(--warning)]/40 bg-[var(--warning)]/8 px-2.5 py-2 text-[11.5px] leading-snug text-muted-foreground">
+            {state.error}
+          </p>
+        )}
 
         <AnimatePresence>
           {panel && (
