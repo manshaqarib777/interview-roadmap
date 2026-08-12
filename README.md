@@ -81,6 +81,11 @@ layers interaction on top. Editing a `.md` file is all it takes to update a page
 | M10 | **Next.js App Router** | 4 (L83–L96) | You can explain the render + cache path of a single request end to end |
 | M11 | **Production Concerns** | 4–5 | Auth, forms, testing, a11y, error boundaries — all shipped, not just read |
 | M12 | **Interview Ready** | 5 | Three portfolio projects + clean mock interviews |
+| M13 | **Laravel Fundamentals** | 6 (L105–L110) | You can trace a request from `public/index.php` to a response and explain where the container, providers, facades and contracts fit |
+| M14 | **Routing & Request Handling** | 6 (L111–L114) | You can map any URL to its controller through middleware, model binding and form requests — and explain why controllers stay thin |
+| M15 | **Eloquent & the Database** | 6 (L115–L121) | You can model any relationship, kill N+1 with eager loading, and design a schema with migrations and transactions |
+| M16 | **Auth, Queues & Async** | 6 (L122–L129) | You can explain auth vs authorization, why queues exist, how caching invalidation works, and the full test pyramid |
+| M17 | **Senior & Full-Stack** | 6 (L130–L134) | You can answer the senior scenarios — slow API, overselling, dead Redis, broken deploy, leaking tenants — with a decision rule, not a guess |
 
 Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 
@@ -256,10 +261,64 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 103 | Portfolio projects | [`103-portfolio-projects.md`](./content/05-interview-prep/103-portfolio-projects.md) | ✅ Written |
 | 104 | Mock interview playbook | [`104-mock-interviews.md`](./content/05-interview-prep/104-mock-interviews.md) | ✅ Written |
 
+## Module 6 — Laravel
+> Folder: [`06-laravel/`](./content/06-laravel/) · [Module overview](./content/06-laravel/00-module-overview.md)
+
+### Milestone M13 — Laravel Fundamentals
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 105 | What is Laravel? | [`105-what-is-laravel.md`](./content/06-laravel/105-what-is-laravel.md) | ✅ Written |
+| 106 | Request Lifecycle | [`106-request-lifecycle.md`](./content/06-laravel/106-request-lifecycle.md) | ✅ Written |
+| 107 | Application Structure & Bootstrapping | [`107-app-structure.md`](./content/06-laravel/107-app-structure.md) | ✅ Written |
+| 108 | The Service Container & Dependency Injection | [`108-service-container.md`](./content/06-laravel/108-service-container.md) | ✅ Written |
+| 109 | Service Providers | [`109-service-providers.md`](./content/06-laravel/109-service-providers.md) | ✅ Written |
+| 110 | Facades & Contracts | [`110-facades-contracts.md`](./content/06-laravel/110-facades-contracts.md) | ✅ Written |
+
+### Milestone M14 — Routing & Request Handling
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 111 | Routing | [`111-routing.md`](./content/06-laravel/111-routing.md) | ✅ Written |
+| 112 | Middleware | [`112-middleware.md`](./content/06-laravel/112-middleware.md) | ✅ Written |
+| 113 | Controllers, Requests & Responses | [`113-controllers.md`](./content/06-laravel/113-controllers.md) | ✅ Written |
+| 114 | Blade | [`114-blade.md`](./content/06-laravel/114-blade.md) | ✅ Written |
+
+### Milestone M15 — Eloquent & the Database
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 115 | Eloquent ORM | [`115-eloquent.md`](./content/06-laravel/115-eloquent.md) | ✅ Written |
+| 116 | Eloquent Relationships | [`116-eloquent-relationships.md`](./content/06-laravel/116-eloquent-relationships.md) | ✅ Written |
+| 117 | Eager Loading & the N+1 Problem | [`117-n1-problem.md`](./content/06-laravel/117-n1-problem.md) | ✅ Written |
+| 118 | Query Optimization & the Query Builder | [`118-query-optimization.md`](./content/06-laravel/118-query-optimization.md) | ✅ Written |
+| 119 | Migrations, Schema & Seeders | [`119-migrations.md`](./content/06-laravel/119-migrations.md) | ✅ Written |
+| 120 | Database Transactions & Concurrency | [`120-transactions.md`](./content/06-laravel/120-transactions.md) | ✅ Written |
+| 121 | Validation & Form Requests | [`121-validation.md`](./content/06-laravel/121-validation.md) | ✅ Written |
+
+### Milestone M16 — Auth, Queues & Async
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 122 | Authentication | [`122-authentication.md`](./content/06-laravel/122-authentication.md) | ✅ Written |
+| 123 | Authorization | [`123-authorization.md`](./content/06-laravel/123-authorization.md) | ✅ Written |
+| 124 | Queues & Jobs | [`124-queues.md`](./content/06-laravel/124-queues.md) | ✅ Written |
+| 125 | Events, Listeners & Observers | [`125-events-observers.md`](./content/06-laravel/125-events-observers.md) | ✅ Written |
+| 126 | Notifications, Mail & Scheduling | [`126-notifications-mail.md`](./content/06-laravel/126-notifications-mail.md) | ✅ Written |
+| 127 | Caching & Redis | [`127-caching-redis.md`](./content/06-laravel/127-caching-redis.md) | ✅ Written |
+| 128 | Rate Limiting & Security | [`128-security.md`](./content/06-laravel/128-security.md) | ✅ Written |
+| 129 | Testing, Factories & Mocking | [`129-testing.md`](./content/06-laravel/129-testing.md) | ✅ Written |
+
+### Milestone M17 — Senior & Full-Stack
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 130 | Service Layer, Repositories & SOLID | [`130-solid-patterns.md`](./content/06-laravel/130-solid-patterns.md) | ✅ Written |
+| 131 | Laravel Performance & Deployment | [`131-performance-deployment.md`](./content/06-laravel/131-performance-deployment.md) | ✅ Written |
+| 132 | Laravel + React / Inertia | [`132-inertia.md`](./content/06-laravel/132-inertia.md) | ✅ Written |
+| 133 | Laravel API + Next.js & Payments | [`133-api-nextjs-stripe.md`](./content/06-laravel/133-api-nextjs-stripe.md) | ✅ Written |
+| 134 | Multi-Tenancy & System Design | [`134-multitenancy.md`](./content/06-laravel/134-multitenancy.md) | ✅ Written |
+
 ---
 
-**All 104 lessons are written.** Work through them in order, mark them off in
+**All 134 lessons are written.** Work through them in order, mark them off in
 [`PROGRESS.md`](./PROGRESS.md), and claim each milestone when you can meet its
-"claim it when" criterion. The final lesson, the [Mock Interview
+"claim it when" criterion. The final frontend lesson, the [Mock Interview
 Playbook](./content/05-interview-prep/104-mock-interviews.md), tells you how to rehearse the whole
-thing.
+thing — and the final Laravel lesson, [Multi-Tenancy & System Design](./content/06-laravel/134-multitenancy.md),
+closes the backend half.

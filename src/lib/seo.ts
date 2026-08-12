@@ -22,12 +22,12 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://interview-
   .replace(/\/+$/, '');
 
 export const SITE_NAME = 'Interview Roadmap';
-export const SITE_TAGLINE = 'React · TypeScript · Next.js interview prep';
+export const SITE_TAGLINE = 'React · TypeScript · Next.js · Laravel interview prep';
 export const AUTHOR = 'Interview Roadmap';
 export const LOCALE = 'en_US';
 
 export const SITE_DESCRIPTION =
-  'Senior-level frontend interview revision: 104 concepts across JavaScript, TypeScript, React and Next.js, each revisable in under ten minutes with runnable code, a step debugger and interview flashcards.';
+  'Senior-level full-stack interview revision: JavaScript, TypeScript, React, Next.js and Laravel concepts, each revisable in under ten minutes with runnable code, a step debugger and interview flashcards.';
 
 /** Absolute URL for a site-relative path. */
 export function url(path = '/') {

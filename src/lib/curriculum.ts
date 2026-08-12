@@ -268,8 +268,75 @@ const prep = rows([
 ]);
 
 /* ------------------------------------------------------------------ */
+/* Module 6 — Laravel                                                   */
+/* ------------------------------------------------------------------ */
 
-export type Accent = 'amber' | 'sky' | 'cyan' | 'violet' | 'emerald';
+const laravel = rows([
+  [105, 'What is Laravel?', '105-what-is-laravel', 1, 70, [28],
+    'MVC, the container, and why the framework exists — the orientation answer that frames everything else.'],
+  [106, 'Request Lifecycle', '106-request-lifecycle', 3, 85, [105],
+    'public/index.php to a response — the single most-asked Laravel question, and the map for every other topic.'],
+  [107, 'Application Structure & Bootstrapping', '107-app-structure', 2, 62, [106],
+    'bootstrap/app.php, service providers, and where each kind of code lives in a Laravel app.'],
+  [108, 'The Service Container & Dependency Injection', '108-service-container', 4, 92, [106],
+    'The IoC container is the heart of Laravel. Senior interviews probe this directly.'],
+  [109, 'Service Providers', '109-service-providers', 3, 78, [107, 108],
+    'register() vs boot() — the lifecycle that wires the whole framework together.'],
+  [110, 'Facades & Contracts', '110-facades-contracts', 3, 74, [108],
+    'Are facades static? What are contracts? Both are container lookups wearing different clothes.'],
+  [111, 'Routing', '111-routing', 2, 88, [106, 108],
+    'Routes, parameters, model binding, groups, resource routes — the map from URL to controller.'],
+  [112, 'Middleware', '112-middleware', 3, 84, [106, 111],
+    'The onion layers around your routes: auth, throttling, CORS — and what $next($request) really does.'],
+  [113, 'Controllers, Requests & Responses', '113-controllers', 2, 80, [111, 112],
+    'Thin controllers, form requests, and why business logic never belongs here.'],
+  [114, 'Blade', '114-blade', 2, 76, [105],
+    'Templates, components, slots, and the escaping rule that keeps XSS out.'],
+  [115, 'Eloquent ORM', '115-eloquent', 3, 90, [106, 108],
+    'Models, fillable/guarded, casts, accessors, scopes — the largest Laravel interview topic.'],
+  [116, 'Eloquent Relationships', '116-eloquent-relationships', 4, 88, [115],
+    'One-to-one through polymorphic: which relation for which shape, and how each maps to SQL.'],
+  [117, 'Eager Loading & the N+1 Problem', '117-n1-problem', 4, 95, [115, 116],
+    'The most-asked Laravel performance question — why User::all() with a loop is O(N+1) queries.'],
+  [118, 'Query Optimization & the Query Builder', '118-query-optimization', 3, 86, [117],
+    'whereHas, withCount, chunk, cursors, indexes, EXPLAIN — turning a slow endpoint into a fast one.'],
+  [119, 'Migrations, Schema & Seeders', '119-migrations', 2, 82, [115],
+    'Schema building, indexes, factories, seeders, and the migrate command family.'],
+  [120, 'Database Transactions & Concurrency', '120-transactions', 4, 89, [118, 119],
+    'Atomicity, locking, overselling, and the two-users-buy-the-last-item scenario.'],
+  [121, 'Validation & Form Requests', '121-validation', 3, 83, [113],
+    'Rules, custom rules, authorize(), and validation inside Form Requests.'],
+  [122, 'Authentication', '122-authentication', 3, 87, [112, 113],
+    'Guards, sessions, Sanctum vs Passport vs Fortify — who are you?'],
+  [123, 'Authorization', '123-authorization', 3, 81, [122],
+    'Gates, policies, roles and permissions — what are you allowed to do?'],
+  [124, 'Queues & Jobs', '124-queues', 4, 93, [108, 122],
+    'Why you never send email in a request: workers, retries, backoff, failures.'],
+  [125, 'Events, Listeners & Observers', '125-events-observers', 3, 79, [115, 124],
+    'Decoupling with events, and model-lifecycle observers — and when each fits.'],
+  [126, 'Notifications, Mail & Scheduling', '126-notifications-mail', 2, 68, [124, 125],
+    'Notification channels, mailables, and the scheduler standing in for cron.'],
+  [127, 'Caching & Redis', '127-caching-redis', 3, 85, [118],
+    'Cache drivers, TTL, tags, remember(), and why Redis beats the database for hot ephemeral data.'],
+  [128, 'Rate Limiting & Security', '128-security', 3, 84, [122, 127],
+    'SQLi, XSS, CSRF, mass assignment, uploads — the attack surface and how Laravel covers each.'],
+  [129, 'Testing, Factories & Mocking', '129-testing', 4, 88, [115, 121],
+    'Unit vs feature vs HTTP tests, RefreshDatabase, and what to mock and why.'],
+  [130, 'Service Layer, Repositories & SOLID', '130-solid-patterns', 4, 80, [108, 123],
+    'When a service layer earns its place, when a repository is over-abstraction, and the SOLID examples.'],
+  [131, 'Laravel Performance & Deployment', '131-performance-deployment', 3, 82, [124, 127, 118],
+    'The "your API is slow" answer, plus caching, workers, and a safe production rollout.'],
+  [132, 'Laravel + React / Inertia', '132-inertia', 3, 78, [48, 86, 121],
+    'Server-side routing with React pages — and why Inertia beats a separate SPA + REST API.'],
+  [133, 'Laravel API + Next.js & Payments', '133-api-nextjs-stripe', 4, 85, [132, 122, 26],
+    'Laravel as an API for Next.js, and Stripe webhooks — never trust the frontend about money.'],
+  [134, 'Multi-Tenancy & System Design', '134-multitenancy', 5, 86, [118, 120, 130],
+    'Tenant isolation, the SaaS architectures, and the senior scenario questions that decide the offer.'],
+]);
+
+/* ------------------------------------------------------------------ */
+
+export type Accent = 'amber' | 'sky' | 'cyan' | 'violet' | 'emerald' | 'red';
 
 export type Milestone = {
   id: string;
@@ -366,6 +433,24 @@ export const MODULES: ModuleDef[] = [
     milestones: [
       { id: 'M11', title: 'Production Concerns', range: [97, 102], claimWhen: 'Auth, forms, testing, a11y and error boundaries — shipped, not just read.' },
       { id: 'M12', title: 'Interview Ready', range: [103, 104], claimWhen: 'Three portfolio projects plus clean mock interviews.' },
+    ],
+  },
+  {
+    slug: 'laravel',
+    dir: '06-laravel',
+    num: 6,
+    title: 'Laravel',
+    short: 'Laravel',
+    blurb:
+      'Backend interviews are won on the request lifecycle, the container, and Eloquent — and lost on N+1 and silent failures.',
+    accent: 'red',
+    lessons: laravel,
+    milestones: [
+      { id: 'M13', title: 'Laravel Fundamentals', range: [105, 110], claimWhen: 'You can trace a request from public/index.php to a response and explain where the container, providers, facades and contracts fit.' },
+      { id: 'M14', title: 'Routing & Request Handling', range: [111, 114], claimWhen: 'You can map any URL to its controller through middleware, model binding and form requests — and explain why controllers stay thin.' },
+      { id: 'M15', title: 'Eloquent & the Database', range: [115, 121], claimWhen: 'You can model any relationship, kill N+1 with eager loading, and design a schema with migrations and transactions.' },
+      { id: 'M16', title: 'Auth, Queues & Async', range: [122, 129], claimWhen: 'You can explain auth vs authorization, why queues exist, how caching invalidation works, and the full test pyramid.' },
+      { id: 'M17', title: 'Senior & Full-Stack', range: [130, 134], claimWhen: 'You can answer the senior scenarios — slow API, overselling, dead Redis, broken deploy, leaking tenants — with a decision rule, not a guess.' },
     ],
   },
 ];

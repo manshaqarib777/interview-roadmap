@@ -29,7 +29,7 @@ export default function Image() {
             {TOTAL_LESSONS} concepts. Ten minutes each.
           </div>
           <div style={{ display: 'flex', fontSize: 28, color: '#b4b4b4', maxWidth: 900 }}>
-            Senior-level frontend interview revision — definition, mental model, internals,
+            Senior-level full-stack interview revision — definition, mental model, internals,
             trade-offs, cheat sheet.
           </div>
           <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>

@@ -180,6 +180,7 @@
   --acc-cyan: #17798a;
   --acc-violet: #6b5fa8;
   --acc-emerald: #0d8a6a;
+  --acc-red: #b0432e;
 }
 .dark {
   --acc-amber: #e0a34d;
@@ -187,6 +188,7 @@
   --acc-cyan: #5cc6d6;
   --acc-violet: #a99cf0;
   --acc-emerald: #19c37d;
+  --acc-red: #ef6a4e;
 }
 
 .acc-amber { --acc: var(--acc-amber); }
@@ -194,6 +196,7 @@
 .acc-cyan { --acc: var(--acc-cyan); }
 .acc-violet { --acc: var(--acc-violet); }
 .acc-emerald { --acc: var(--acc-emerald); }
+.acc-red { --acc: var(--acc-red); }
 
 * { border-color: var(--border); }
 

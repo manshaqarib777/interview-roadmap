@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getWrittenLessons } from '@/lib/content';
-import { LESSON_INDEX, TOTAL_LESSONS, hrefOf } from '@/lib/curriculum';
+import { LESSON_INDEX, MODULES, TOTAL_LESSONS, hrefOf } from '@/lib/curriculum';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, breadcrumbNode, graph } from '@/lib/seo';
 import { JsonLd } from '@/components/json-ld';
 import { Achievements, ContinueCard, DashboardRail, ModuleGrid, StatsRow } from './dashboard-client';
@@ -43,7 +43,7 @@ export default async function DashboardPage() {
 
       <div className="page relative">
         <header className="mb-7">
-          <p className="eyebrow mb-3">104 concepts · 5 modules · revise each in 10 min</p>
+          <p className="eyebrow mb-3">{TOTAL_LESSONS} concepts · {MODULES.length} modules · revise each in 10 min</p>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="max-w-2xl text-[2rem] leading-[1.12] font-bold tracking-tight text-balance sm:text-[2.4rem]">
               Interview revision, not a textbook
@@ -51,7 +51,7 @@ export default async function DashboardPage() {
             <span className="pill">In progress</span>
           </div>
           <p className="mt-1.5 max-w-xl text-[15px] text-muted-foreground">
-            {TOTAL_LESSONS} concepts across JavaScript, TypeScript, React and Next.js. Each one
+            {TOTAL_LESSONS} concepts across JavaScript, TypeScript, React, Next.js and Laravel. Each one
             is built to be revised in under ten minutes — definition, mental model, internals,
             trade-offs, cheat sheet.
           </p>

@@ -364,6 +364,7 @@ export function achievementsOf(s: State, moduleDone: Record<string, boolean>): A
     { id: 'ts', label: 'TypeScript', hint: 'Complete Module 2', earned: Boolean(moduleDone.typescript) },
     { id: 'react', label: 'React', hint: 'Complete Module 3', earned: Boolean(moduleDone.react) },
     { id: 'next', label: 'Next.js', hint: 'Complete Module 4', earned: Boolean(moduleDone.nextjs) },
-    { id: 'ready', label: 'Interview Ready', hint: 'Complete all 104', earned: s.done.length >= 104 },
+    { id: 'laravel', label: 'Laravel', hint: 'Complete Module 6', earned: Boolean(moduleDone.laravel) },
+    { id: 'ready', label: 'Interview Ready', hint: `Complete all ${TOTAL_LESSONS}`, earned: s.done.length >= TOTAL_LESSONS },
   ];
 }

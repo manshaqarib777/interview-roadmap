@@ -141,6 +141,48 @@ exercise runs correctly.
 - [ ] L103 — Portfolio projects
 - [ ] L104 — Mock interview playbook
 
+## Module 6 — Laravel
+
+### M13 · Laravel Fundamentals
+- [ ] L105 — What is Laravel?
+- [ ] L106 — Request lifecycle
+- [ ] L107 — Application structure & bootstrapping
+- [ ] L108 — Service container & dependency injection
+- [ ] L109 — Service providers
+- [ ] L110 — Facades & contracts
+
+### M14 · Routing & Request Handling
+- [ ] L111 — Routing
+- [ ] L112 — Middleware
+- [ ] L113 — Controllers, requests & responses
+- [ ] L114 — Blade
+
+### M15 · Eloquent & the Database
+- [ ] L115 — Eloquent ORM
+- [ ] L116 — Eloquent relationships
+- [ ] L117 — Eager loading & the N+1 problem
+- [ ] L118 — Query optimization & the query builder
+- [ ] L119 — Migrations, schema & seeders
+- [ ] L120 — Database transactions & concurrency
+- [ ] L121 — Validation & form requests
+
+### M16 · Auth, Queues & Async
+- [ ] L122 — Authentication
+- [ ] L123 — Authorization
+- [ ] L124 — Queues & jobs
+- [ ] L125 — Events, listeners & observers
+- [ ] L126 — Notifications, mail & scheduling
+- [ ] L127 — Caching & Redis
+- [ ] L128 — Rate limiting & security
+- [ ] L129 — Testing, factories & mocking
+
+### M17 · Senior & Full-Stack
+- [ ] L130 — Service layer, repositories & SOLID
+- [ ] L131 — Laravel performance & deployment
+- [ ] L132 — Laravel + React / Inertia
+- [ ] L133 — Laravel API + Next.js & payments
+- [ ] L134 — Multi-tenancy & system design
+
 ---
 
 ## Interview Readiness Checklist
@@ -169,6 +211,14 @@ exercise runs correctly.
 - [ ] Data fetching
 - [ ] Server Actions
 - [ ] Caching & revalidation
+
+### Laravel
+- [ ] Request lifecycle & the service container
+- [ ] Eloquent, relationships & N+1
+- [ ] Queues, events & caching
+- [ ] Auth, authorization & Sanctum vs Passport
+- [ ] Testing (unit, feature, HTTP)
+- [ ] Senior scenarios (slow API, overselling, multi-tenancy)
 
 ### Practical
 - [ ] Build complete features independently

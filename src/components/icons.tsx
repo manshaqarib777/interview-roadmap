@@ -2,7 +2,7 @@ import {
   ArrowLeft, ArrowRight, Atom, BookOpen, Bookmark, Braces, Check, CheckCircle2,
   ChevronDown, ChevronRight, Clock, Command, Copy, Eye, Flame, Gauge, Layers,
   Lock, Menu, MessageSquare, Minus, Moon, Network, Pencil, Play, Plus,
-  RotateCcw, Search, SlidersHorizontal, Sparkles, Square, Sun, Target, Terminal,
+  RotateCcw, Search, Server, SlidersHorizontal, Sparkles, Square, Sun, Target, Terminal,
   Triangle, Trophy, Type, X, Zap, type LucideIcon,
 } from 'lucide-react';
 
@@ -24,6 +24,7 @@ const MAP = {
   type: Type, atom: Atom, triangle: Triangle, message: MessageSquare,
   clock: Clock, trophy: Trophy, eye: Eye, sliders: SlidersHorizontal,
   menu: Menu, x: X, plus: Plus, minus: Minus, gauge: Gauge, lock: Lock,
+  server: Server,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof MAP;
@@ -63,4 +64,5 @@ export const MODULE_ICON: Record<string, IconName> = {
   react: 'atom',
   nextjs: 'triangle',
   'interview-prep': 'message',
+  laravel: 'server',
 };
