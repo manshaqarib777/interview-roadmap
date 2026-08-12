@@ -262,7 +262,7 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 104 | Mock interview playbook | [`104-mock-interviews.md`](./content/05-interview-prep/104-mock-interviews.md) | ✅ Written |
 
 ## Module 6 — Laravel
-> Folder: [`06-laravel/`](./content/06-laravel/) · [Module overview](./content/06-laravel/00-module-overview.md)
+> Folder: [`06-laravel/`](./content/06-laravel/) · [Module overview](./content/06-laravel/00-module-overview.md) · [Master checklist](./content/06-laravel/laravel-interview-master-checklist.md) · [Topics breakdown](./content/06-laravel/topics-breakdown.md)
 
 ### Milestone M13 — Laravel Fundamentals
 | # | Lesson | File | Status |
