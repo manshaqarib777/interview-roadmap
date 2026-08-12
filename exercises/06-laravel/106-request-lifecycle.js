@@ -63,9 +63,8 @@ function task2() {
 // request short-circuits (no route work) and an authenticated one
 // passes through.
 function requiresAuth(req, next) {
-  // your code here
-  // If req.user is missing, return { status: 401, body: 'Unauthorized' }
-  // WITHOUT calling next(). Otherwise pass through to next(req).
+  if (!req.user) return { status: 401, body: 'Unauthorized' }; // block before the route
+  return next(req);                                            // pass through
 }
 
 const guarded = [
@@ -96,7 +95,8 @@ function task4() {
     'load config',
     'register exceptions',
     'register facades',
-    // your code here — add the two missing steps, in the right order
+    'register providers',
+    'boot providers',
   ];
   bootstrap(steps);
 }

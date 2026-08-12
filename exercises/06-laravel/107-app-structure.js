@@ -61,10 +61,12 @@ function fixedProviders() {
     {
       name: 'B',
       register: (c) => {
-        // your code here — bind ONLY (don't resolve A yet)
+        // bind ONLY — don't resolve A yet
+        c.b = { ping: () => 'pong' };
       },
       boot: (c) => {
-        // your code here — this runs after ALL registers, so A exists now
+        // this runs after ALL registers, so A exists now
+        c.b = c.a.ping();
       },
     },
   ];
@@ -88,10 +90,7 @@ function task2() {
 // app, then verify the routes and middleware config are in place.
 // Implement buildApp() so all three checks print true.
 function buildApp(routes, middleware) {
-  // your code here
-  // Return an object shaped like { routes: ..., middleware: ... } —
-  // the wiring `bootstrap/app.php` would configure.
-  return {};
+  return { routes, middleware };
 }
 
 function task3() {
@@ -122,9 +121,7 @@ function loadProviders(manifest) {
 }
 
 function resolveProviders(manifest, container) {
-  // your code here
-  // Return the list of provider names in manifest order, by resolving
-  // each one from the container: container.get(name) → the provider object
+  return manifest.map((p) => container.get(p.name).name);
 }
 
 function task4() {
@@ -145,9 +142,9 @@ const ROUTES = [
 ];
 
 function routeFor(method, path) {
-  // your code here
-  // Find the matching entry; return `method path → controller`.
-  // If none matches, return `404 — no route for method path`.
+  const route = ROUTES.find((r) => r.method === method && r.path === path);
+  if (!route) return `404 — no route for ${method} ${path}`;
+  return `${route.method} ${route.path} → ${route.controller}`;
 }
 
 function task5() {

@@ -15,6 +15,10 @@ caching, rate limiting — so you still get the predict-then-run loop.
 
 ## Module map
 
+Each milestone below has **two views of the same material**: the numbered lessons (L105–L134, the
+teaching spine) and the [checklist topics](./topics/), where every one of the 75 interview topics
+from the [master checklist](./laravel-interview-master-checklist.md) has its own lesson-style file.
+
 - **M13 · Laravel Fundamentals (L105–L110)** — how the framework is put together.
   What Laravel is, the request lifecycle, application structure & bootstrapping, the service
   container & DI, service providers, facades & contracts.

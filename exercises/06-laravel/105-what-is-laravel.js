@@ -76,9 +76,7 @@ class UserController {
 }
 
 function resolve(className, container) {
-  // your code here
-  // Hint: build the class like:  new className(mailer)
-  //       and get the mailer from the container with container.resolve('mailer')
+  return new className(container.resolve('mailer'));
 }
 
 function task3() {
@@ -127,9 +125,10 @@ class SmartContainer {
     this.bindings[key] = factory;
   }
   resolve(key) {
-    // your code here
-    // Keep a per-key cached instance: build once, return the same object.
-    // Hint: use this.shared[key] — check for a cache hit before building.
+    if (!(key in this.shared)) {
+      this.shared[key] = this.bindings[key](this); // build once
+    }
+    return this.shared[key]; // every later resolve reuses the same object
   }
 }
 

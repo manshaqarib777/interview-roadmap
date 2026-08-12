@@ -94,7 +94,7 @@ function createSingletonContainer() {
       }
 
       const instance = entry.factory(this);
-      // your code here  (cache singletons in `shared`)
+      if (entry.singleton) shared.set(name, instance); // cache for next resolve
       return instance;
     },
   };
