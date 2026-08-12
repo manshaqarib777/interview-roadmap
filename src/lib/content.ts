@@ -31,6 +31,13 @@ import {
   hrefOf,
   type IndexedLesson,
 } from './curriculum';
+import {
+  TOPIC_BY_SLUG,
+  TOPIC_INDEX,
+  hrefOfTopic,
+  topicFile,
+  type TopicRef,
+} from './topics';
 
 /**
  * Markdown → *steps*, not one long page.
@@ -97,6 +104,25 @@ export type Lesson = IndexedLesson & {
   cards: InterviewCard[];
   prev: IndexedLesson | null;
   next: IndexedLesson | null;
+};
+
+/**
+ * A rendered checklist topic — the TopicRef plus what getTopic() parses out of
+ * the file's markdown. Topics are reference pages, not curriculum lessons, so
+ * there is no written/estimate state: the file exists or the page 404s.
+ */
+export type Topic = TopicRef & {
+  /** Parsed from the file's H1 — the file is canonical, never the table */
+  title: string;
+  /** Parsed from the `**Checklist anchor:**` line — dense concept list */
+  description: string;
+  steps: Step[];
+  minutes: number;
+  words: number;
+  cards: InterviewCard[];
+  /** Titles come from the files, so prev/next carry them (TopicRef has none) */
+  prev: TopicRef & { title: string } | null;
+  next: TopicRef & { title: string } | null;
 };
 
 /* ---------------------------------------------------------------- */
@@ -505,6 +531,59 @@ async function readLesson(l: IndexedLesson): Promise<string | null> {
   }
 }
 
+/**
+ * The shared markdown → steps pipeline, used by both lessons and topics.
+ *
+ * Everything above the first `##` is treated as front-matter prose — for
+ * lessons that's the lede, for topics the metadata header (title, checklist
+ * anchor, owning-lesson links) is stripped before this is called.
+ */
+async function stepsFromMd(content: string, prefixBase: string) {
+  const raws = splitOnH2(content);
+
+  const steps: Step[] = [];
+  let cards: InterviewCard[] = [];
+  let totalWords = 0;
+  const sidecar = await loadSidecar();
+
+  for (const [index, s] of raws.entries()) {
+    if (!s.body) continue;
+    const kind = kindOf(s.title);
+    const { body, authored } = liftAuthoredNarration(s.body);
+    const words = body.split(/\s+/).filter(Boolean).length;
+    totalWords += words;
+    const narration: NarrationNotes = {};
+
+    // Only interview steps are card-parsed: elsewhere a bold lead-in
+    // followed by a blockquote is ordinary prose, not a question.
+    const stepCards = kind === 'interview' ? await renderCards(parseCards(body)) : [];
+    if (stepCards.length) cards = [...cards, ...stepCards];
+
+    const prefix = `${prefixBase}${index}`;
+    const html = await toHtml(body, { notes: narration, authored, sidecar, prefix });
+
+    steps.push({
+      id: `step-${index}`,
+      index: steps.length,
+      title: cleanTitle(s.title),
+      kind,
+      html,
+      words,
+      seconds: Math.max(20, Math.round((words / WPM) * 60)),
+      questionsHtml: kind === 'quiz' ? await Promise.all(parseQuestions(body).map((q) => toHtml(q))) : [],
+      cards: stepCards,
+      narration,
+    });
+  }
+
+  return {
+    steps,
+    cards,
+    words: totalWords,
+    minutes: Math.max(1, Math.round(totalWords / WPM)),
+  };
+}
+
 export const getLesson = cache(
   async (moduleSlug: string, fileSlug: string): Promise<Lesson | null> => {
     const entry = LESSON_INDEX.find((l) => l.module.slug === moduleSlug && l.file === fileSlug);
@@ -530,55 +609,110 @@ export const getLesson = cache(
     }
 
     const { content } = matter(raw);
-    // Everything above the first ## is front-matter prose; the reader shows it
-    // as the lesson lede rather than a step.
-    const raws = splitOnH2(content);
-
-    const steps: Step[] = [];
-    let cards: InterviewCard[] = [];
-    let totalWords = 0;
-    const sidecar = await loadSidecar();
-
-    for (const [index, s] of raws.entries()) {
-      if (!s.body) continue;
-      const kind = kindOf(s.title);
-      const { body, authored } = liftAuthoredNarration(s.body);
-      const words = body.split(/\s+/).filter(Boolean).length;
-      totalWords += words;
-      const narration: NarrationNotes = {};
-
-      // Only interview steps are card-parsed: elsewhere a bold lead-in
-      // followed by a blockquote is ordinary prose, not a question.
-      const stepCards = kind === 'interview' ? await renderCards(parseCards(body)) : [];
-      if (stepCards.length) cards = [...cards, ...stepCards];
-
-      const prefix = `n${index}`;
-      const html = await toHtml(body, { notes: narration, authored, sidecar, prefix });
-
-      steps.push({
-        id: `step-${index}`,
-        index: steps.length,
-        title: cleanTitle(s.title),
-        kind,
-        html,
-        words,
-        seconds: Math.max(20, Math.round((words / WPM) * 60)),
-        questionsHtml: kind === 'quiz' ? await Promise.all(parseQuestions(body).map((q) => toHtml(q))) : [],
-        cards: stepCards,
-        narration,
-      });
-    }
+    const { steps, cards, words, minutes } = await stepsFromMd(content, 'n');
 
     return {
       ...base,
       written: true,
       steps,
       cards,
-      words: totalWords,
-      minutes: Math.max(1, Math.round(totalWords / WPM)),
+      words,
+      minutes,
     };
   },
 );
+
+/**
+ * Rewrite the markdown links that only make sense in the source tree into the
+ * site's URLs. The topic files link to lessons with `../NNN-<file>.md` (relative
+ * to topics/); served at /topics/<slug>/ those are dead. All topic lesson links
+ * are Laravel lessons, so the module slug is a constant.
+ */
+function topicLinkRewrite(md: string): string {
+  return md
+    .replace(/\]\(\.\.\/(\d{3}-[\w-]+)\.md\)/g, '](/lessons/laravel/$1)')
+    .replace(/\]\(\.\/topics\/(\d{2}-[\w-]+)\.md\)/g, (_, file: string) => {
+      const slug = file.replace(/^\d{2}-/, '');
+      return `](/topics/${slug})`;
+    });
+}
+
+const TOPIC_DIR = '06-laravel/topics';
+
+/**
+ * The topic header: everything above the first `---`. Parses the H1 into the
+ * title and the `**Checklist anchor:**` line into the description; both fall
+ * back gracefully so a content bug degrades instead of breaking the build.
+ */
+function parseTopicHeader(raw: string): { title: string; description: string; body: string } {
+  const sep = raw.indexOf('\n---');
+  const header = (sep === -1 ? raw : raw.slice(0, sep)).trim();
+  const body = (sep === -1 ? '' : raw.slice(sep + 4)).trim();
+
+  const h1 = /^# Topic \d+ — (.+)$/m.exec(header);
+  const anchor = /^\*\*Checklist anchor:\*\*\s*(.+)$/m.exec(header);
+
+  return {
+    title: (h1?.[1] ?? '').trim() || 'Laravel Topic',
+    description: (anchor?.[1] ?? '').trim() || 'Laravel interview revision topic.',
+    body,
+  };
+}
+
+async function readTopicFile(t: TopicRef): Promise<string | null> {
+  try {
+    return await fs.readFile(path.join(CONTENT_ROOT, TOPIC_DIR, topicFile(t.n, t.slug)), 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+/** One topic, fully rendered — the TopicReader's input. */
+export const getTopic = cache(async (slug: string): Promise<Topic | null> => {
+  const ref = TOPIC_BY_SLUG.get(slug);
+  if (!ref) return null;
+
+  const i = TOPIC_INDEX.findIndex((t) => t.n === ref.n);
+  const raw = await readTopicFile(ref);
+  if (!raw) return null;
+
+  const { title, description, body } = parseTopicHeader(raw);
+  const { steps, cards, words, minutes } = await stepsFromMd(topicLinkRewrite(body), 't');
+
+  // The topic list defines order; titles come from each neighbour's file.
+  const withTitle = async (ref: TopicRef | null) => {
+    if (!ref) return null;
+    const rawNeighbour = await readTopicFile(ref);
+    const t = rawNeighbour ? parseTopicHeader(rawNeighbour).title : `Topic ${ref.n}`;
+    return { ...ref, title: t };
+  };
+
+  return {
+    ...ref,
+    title,
+    description,
+    steps,
+    cards,
+    words,
+    minutes,
+    prev: await withTitle(TOPIC_INDEX[i - 1] ?? null),
+    next: await withTitle(TOPIC_INDEX[i + 1] ?? null),
+  };
+});
+
+/**
+ * Header-only read of every topic — the /topics index. No full pipeline, so it
+ * stays cheap even as the topic count grows.
+ */
+export const getTopics = cache(async (): Promise<{ ref: TopicRef; title: string; description: string }[]> => {
+  return Promise.all(
+    TOPIC_INDEX.map(async (t) => {
+      const raw = await readTopicFile(t);
+      const { title, description } = raw ? parseTopicHeader(raw) : { title: `Topic ${t.n}`, description: '' };
+      return { ref: t, title, description };
+    }),
+  );
+});
 
 export const getWrittenLessons = cache(async (): Promise<number[]> => {
   const written: number[] = [];
@@ -598,6 +732,9 @@ export const getWrittenLessons = cache(async (): Promise<number[]> => {
 });
 
 export type SearchRow = {
+  /** Distinguishes lessons from topics: they share a number space, so the
+   *  palette needs to tell them apart for keys and groups. */
+  kind: 'lesson' | 'topic';
   n: number;
   title: string;
   module: string;
@@ -613,7 +750,7 @@ export type SearchRow = {
 export const getSearchIndex = cache(async (): Promise<SearchRow[]> => {
   const { SYNONYMS } = await import('./curriculum');
 
-  return Promise.all(
+  const lessons = await Promise.all(
     LESSON_INDEX.map(async (l) => {
       const raw = await readLesson(l);
       const body = raw
@@ -627,6 +764,7 @@ export const getSearchIndex = cache(async (): Promise<SearchRow[]> => {
       const headings = raw ? [...raw.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1]) : [];
 
       return {
+        kind: 'lesson' as const,
         n: l.n,
         title: l.title,
         module: l.module.short,
@@ -643,6 +781,36 @@ export const getSearchIndex = cache(async (): Promise<SearchRow[]> => {
       };
     }),
   );
+
+  // Topics share the lesson shape so the palette can search both — the terms
+  // haystack is title + checklist anchor + headings + prose, same as lessons.
+  const topics = await Promise.all(
+    TOPIC_INDEX.map(async (t) => {
+      const raw = await readTopicFile(t);
+      const { title, description, body } = raw ? parseTopicHeader(raw) : { title: `Topic ${t.n}`, description: '', body: '' };
+      const headings = body ? [...body.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1]) : [];
+      const prose = body
+        .replace(/```[\s\S]*?```/g, ' ')
+        .replace(/[#>*_|`-]/g, ' ')
+        .replace(/\s+/g, ' ');
+
+      return {
+        kind: 'topic' as const,
+        n: t.n,
+        title,
+        module: 'Laravel',
+        moduleSlug: 'laravel',
+        href: hrefOfTopic(t),
+        difficulty: t.tier,
+        frequency: 0,
+        written: Boolean(raw),
+        terms: [title, description, ...headings, prose.slice(0, 2500)].join(' ').toLowerCase(),
+        snippet: description,
+      };
+    }),
+  );
+
+  return [...lessons, ...topics];
 });
 
 /** Graph nodes: every lesson, plus whether its file exists. */

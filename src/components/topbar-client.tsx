@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { MODULES } from '@/lib/curriculum';
+import { TOPIC_INDEX } from '@/lib/topics';
 import { Icon } from './icons';
 
 /**
@@ -65,6 +66,19 @@ function crumbsFor(pathname: string): Crumb[] {
   if (pathname === '/') return [{ label: 'Dashboard' }];
   if (pathname === '/graph') return [{ label: 'Roadmap', href: '/' }, { label: 'Knowledge graph' }];
   if (pathname === '/bookmarks') return [{ label: 'Roadmap', href: '/' }, { label: 'Saved' }];
+  if (pathname === '/topics') return [{ label: 'Roadmap', href: '/' }, { label: 'Laravel topics' }];
+
+  // The topic title is parsed from the file at build time, so the breadcrumb
+  // can't see it client-side — the topic number is enough (the h1 is below).
+  const topic = pathname.match(/^\/topics\/([^/]+)/);
+  if (topic) {
+    const t = TOPIC_INDEX.find((x) => x.slug === topic[1]);
+    return [
+      { label: 'Roadmap', href: '/' },
+      { label: 'Laravel topics', href: '/topics' },
+      { label: t ? `Topic ${t.n}` : topic[1] },
+    ];
+  }
 
   const lesson = pathname.match(/^\/lessons\/([^/]+)\/([^/]+)/);
   if (lesson) {

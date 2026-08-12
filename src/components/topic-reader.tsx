@@ -4,15 +4,10 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
 
-import type { InterviewCard, Step } from '@/lib/content';
+import type { Topic } from '@/lib/content';
 import type { NarrationNotes } from '@/lib/narration';
-import {
-  BY_N,
-  DIFFICULTY_LABEL,
-  TOTAL_LESSONS,
-  hrefOf,
-  type IndexedLesson,
-} from '@/lib/curriculum';
+import { BY_N, hrefOf, type IndexedLesson } from '@/lib/curriculum';
+import { TIER_LABEL, TOTAL_TOPICS, hrefOfTopic } from '@/lib/topics';
 import { useStore } from '@/lib/store';
 import { useEnhancedCode } from './enhance-code';
 import { CompleteCard, EmptyState, InterviewCards, Quiz } from './lesson-parts';
@@ -20,70 +15,45 @@ import { MetaRow, RailCard } from './rail';
 import { ReadAloud } from './read-aloud';
 import { ReaderToolbar } from './reader-toolbar';
 
-type Props = {
-  lesson: IndexedLesson & {
-    steps: Step[];
-    cards: InterviewCard[];
-    minutes: number;
-    prev: IndexedLesson | null;
-    next: IndexedLesson | null;
-  };
-};
-
 /**
- * The rendered markdown for one step.
- *
- * Memoised on the HTML string, because `useEnhancedCode` mutates this subtree
- * afterwards — it replaces every `<pre>` with a Run/Debug panel. Any re-render
- * that re-applied `dangerouslySetInnerHTML` would throw that away along with
- * an open debugger, so React has to skip the element entirely when the markup
- * hasn't changed.
+ * The rendered markdown for one step — memoised on the HTML string because
+ * useEnhancedCode mutates this subtree (replacing every `<pre>` with a
+ * Run/Debug panel). Same contract as the lesson reader's ProseBlock.
  */
 const ProseBlock = memo(function ProseBlock({ html }: { html: string }) {
   return <div className="prose" dangerouslySetInnerHTML={{ __html: html }} />;
 });
 
 /**
- * One concept, one page.
- *
- * Sections flow top to bottom the way every good reference does; the sticky
- * rail on the right tracks position instead of a stepper chopping the page
- * into slides. Reading position is the navigation.
+ * The topic reader — the lesson reader's skeleton, without the progress
+ * machinery. Topics are reference pages: interview mode, focus mode, text
+ * settings and read-aloud all work (they're global prefs / narration), but
+ * there is no mark-complete or bookmark because topics never join the
+ * progress store. Prev/next walks the topic list, not the curriculum.
  */
-export function LessonReader({ lesson }: Props) {
-  const { state, toggleDone, setPrefs } = useStore();
+export function TopicReader({ topic }: { topic: Topic }) {
+  const { state, setPrefs } = useStore();
   const bodyRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState('');
   const [reachedEnd, setReachedEnd] = useState(false);
 
-  const done = state.done.includes(lesson.n);
-
-  /**
-   * Interview Mode drops the prose and keeps only the steps that carry
-   * question cards — the lesson collapses to the thing you'd actually be
-   * asked. Everything else (scroll-spy, the rail, progress) follows from
-   * this one list, so it stays honest in both modes.
-   */
   const interview = state.prefs.interview;
   const sections = useMemo(
-    () => (interview ? lesson.steps.filter((s) => s.cards.length > 0) : lesson.steps),
-    [interview, lesson.steps],
+    () => (interview ? topic.steps.filter((s) => s.cards.length > 0) : topic.steps),
+    [interview, topic.steps],
   );
 
-  // One lookup for the whole page: the narrator walks the rendered DOM in
-  // document order and only needs what it can't read off it, keyed by the id
-  // stamped on each block at build time.
   const narrationNotes = useMemo(
     () => Object.assign({}, ...sections.map((s) => s.narration)) as NarrationNotes,
     [sections],
   );
 
-  // Re-key on the mode: swapping cards for prose replaces the DOM the
-  // code enhancer attached to.
-  useEnhancedCode(bodyRef, `${lesson.n}:${interview}`);
+  // Re-key on the mode: swapping cards for prose replaces the DOM the code
+  // enhancer attached to.
+  useEnhancedCode(bodyRef, `t${topic.n}:${interview}`);
 
-  /* Scroll-spy — one observer, off the main thread. */
+  /* Scroll-spy — same observer as the lesson reader. */
   useEffect(() => {
     const nodes = sections
       .map((s) => document.getElementById(s.id))
@@ -152,9 +122,12 @@ export function LessonReader({ lesson }: Props) {
     '--reader-width': `${state.prefs.width}rem`,
   } as React.CSSProperties;
 
-  const prereqs = useMemo(
-    () => lesson.prereqs.map((n) => BY_N.get(n)).filter((l): l is IndexedLesson => Boolean(l)),
-    [lesson.prereqs],
+  const owningLessons = useMemo(
+    () =>
+      topic.owningLessons
+        .map((n) => BY_N.get(n))
+        .filter((l): l is IndexedLesson => Boolean(l)),
+    [topic.owningLessons],
   );
 
   return (
@@ -164,8 +137,8 @@ export function LessonReader({ lesson }: Props) {
         <div ref={bodyRef} className="space-y-12">
           {interview && sections.length === 0 && (
             <EmptyState
-              title="No interview cards in this lesson"
-              body="Interview Mode turns a lesson's “Common interview questions” step into flashcards. This one doesn't have that step yet — exit Interview Mode to read it normally."
+              title="No interview cards in this topic"
+              body="Interview Mode turns a topic's “Common interview questions” step into flashcards. This one doesn't have that step yet — exit Interview Mode to read it normally."
             />
           )}
           {sections.map((s) => (
@@ -174,8 +147,6 @@ export function LessonReader({ lesson }: Props) {
               id={s.id}
               className={`reveal scroll-mt-28 ${s.kind === 'objectives' ? 'will-learn' : ''}`}
             >
-              {/* The narrator announces the step it is moving into, so a
-                  listener knows where they are without watching the page. */}
               <h2
                 data-narrate={`${s.id}-title`}
                 className={
@@ -203,104 +174,68 @@ export function LessonReader({ lesson }: Props) {
         {reachedEnd && (
           <div className="mt-14">
             <CompleteCard
-              title={lesson.title}
-              nextHref={lesson.next ? hrefOf(lesson.next) : undefined}
-              nextTitle={lesson.next?.title}
-              nextN={lesson.next?.n}
+              title={topic.title}
+              label="Topic complete"
+              nextHref={topic.next ? hrefOfTopic(topic.next) : undefined}
+              nextTitle={topic.next?.title}
             />
           </div>
         )}
 
         <nav className="chrome no-print mt-6 grid gap-2 sm:grid-cols-2">
-          {lesson.prev ? (
-            <Link href={hrefOf(lesson.prev)} className="panel lift p-3">
+          {topic.prev ? (
+            <Link href={hrefOfTopic(topic.prev)} className="panel lift p-3">
               <span className="text-[10.5px] text-faint">← Previous</span>
-              <p className="mt-0.5 truncate text-[13px] font-medium">{lesson.prev.title}</p>
+              <p className="mt-0.5 truncate text-[13px] font-medium">{topic.prev.title}</p>
             </Link>
           ) : (
             <span />
           )}
-          {lesson.next && (
-            <Link href={hrefOf(lesson.next)} className="panel lift p-3 text-right sm:col-start-2">
+          {topic.next && (
+            <Link href={hrefOfTopic(topic.next)} className="panel lift p-3 text-right sm:col-start-2">
               <span className="text-[10.5px] text-faint">Next →</span>
-              <p className="mt-0.5 truncate text-[13px] font-medium">{lesson.next.title}</p>
+              <p className="mt-0.5 truncate text-[13px] font-medium">{topic.next.title}</p>
             </Link>
           )}
         </nav>
       </div>
 
-      {/* ---- right rail: General, then position ------------------- *
-       * The meta strip that used to sit above the prose lives here, so the
-       * page opens on the first sentence instead of on a row of stats. */}
+      {/* ---- right rail ------------------------------------------- */}
       <aside className="page-aside page-aside-first chrome no-print">
-        <ReaderToolbar n={lesson.n} />
+        <ReaderToolbar n={topic.n} variant="topic" />
 
         <ReadAloud bodyRef={bodyRef} notes={narrationNotes} />
 
         <RailCard title="General">
-          <MetaRow label="Module">{lesson.module.short}</MetaRow>
-          <MetaRow label="Lesson">
+          <MetaRow label="Milestone">{topic.milestone}</MetaRow>
+          <MetaRow label="Topic">
             <span className="num">
-              {lesson.n} of {TOTAL_LESSONS}
+              {topic.n} of {TOTAL_TOPICS}
             </span>
           </MetaRow>
-          <MetaRow label="Difficulty">
-            <span className="flex items-center justify-end gap-2">
-              <span className="flex gap-[2px]">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <span
-                    key={i}
-                    className={`h-1 w-2.5 rounded-full ${
-                      i < lesson.difficulty ? 'bg-[var(--acc)]' : 'bg-input'
-                    }`}
-                  />
-                ))}
-              </span>
-              {DIFFICULTY_LABEL[lesson.difficulty]}
-            </span>
-          </MetaRow>
-          <MetaRow label="Asked in">
-            <span className="num">{lesson.frequency}%</span>
-          </MetaRow>
+          <MetaRow label="Tier">{TIER_LABEL[topic.tier]}</MetaRow>
           <MetaRow label="Read time">
-            <span className="num">{lesson.minutes} min</span>
+            <span className="num">{topic.minutes} min</span>
           </MetaRow>
-          <MetaRow label="Prerequisites">
-            {prereqs.length === 0 ? (
-              <span className="text-faint">None</span>
-            ) : (
+          {owningLessons.length > 0 && (
+            <MetaRow label="Part of lesson">
               <span className="flex flex-wrap justify-end gap-1">
-                {prereqs.map((p) => (
+                {owningLessons.map((l) => (
                   <Link
-                    key={p.n}
-                    href={hrefOf(p)}
-                    title={p.title}
+                    key={l.n}
+                    href={hrefOf(l)}
+                    title={l.title}
                     className="max-w-[9rem] truncate rounded-md border px-1.5 py-0.5 text-[11.5px] text-muted-foreground transition-colors hover:border-input hover:text-foreground"
                   >
-                    {p.title}
+                    L{l.n} · {l.title}
                   </Link>
                 ))}
               </span>
-            )}
-          </MetaRow>
-
-          <button
-            onClick={() => toggleDone(lesson.n)}
-            className={`btn mt-3 w-full py-1.5 text-[12.5px] ${done ? 'text-success' : 'btn-ghost'}`}
-          >
-            <span
-              className={`grid h-3.5 w-3.5 place-items-center rounded-full border text-[9px] transition-colors ${
-                done ? 'border-success bg-success text-background' : 'border-input'
-              }`}
-            >
-              {done && '✓'}
-            </span>
-            {done ? 'Completed' : 'Mark complete'}
-          </button>
+            </MetaRow>
+          )}
         </RailCard>
 
-        {/* A 15-entry contents list ahead of the prose is worse than no
-            contents list, so it only appears once the rail is a real column. */}
+        {/* On-page contents — same scroll-spy as the lesson reader. */}
         <RailCard
           className="hidden xl:block"
           title="On this page"

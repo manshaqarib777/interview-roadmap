@@ -12,6 +12,7 @@ import { Lockup, LogoMark } from './logo';
 
 const NAV: { href: string; label: string; icon: IconName }[] = [
   { href: '/', label: 'Dashboard', icon: 'gauge' },
+  { href: '/topics', label: 'Laravel topics', icon: 'layers' },
   { href: '/graph', label: 'Knowledge graph', icon: 'network' },
   { href: '/bookmarks', label: 'Saved', icon: 'bookmark' },
 ];

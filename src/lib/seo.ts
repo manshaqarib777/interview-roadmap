@@ -7,7 +7,8 @@
  * common on-page SEO defect in content sites this size.
  */
 
-import { DIFFICULTY_LABEL, type IndexedLesson, type ModuleDef } from './curriculum';
+import { DIFFICULTY_LABEL, hrefOf, type IndexedLesson, type ModuleDef } from './curriculum';
+import { TIER_LABEL, type TopicRef } from './topics';
 
 /**
  * The canonical origin. Every absolute URL — canonicals, OG images, sitemap
@@ -87,6 +88,79 @@ export function lessonDescription(lesson: IndexedLesson, minutes: number) {
 /** `Closures — JavaScript Interview Prep` reads better in a SERP than a bare title. */
 export function lessonTitle(lesson: IndexedLesson) {
   return `${lesson.title} — ${lesson.module.short} Interview Prep`;
+}
+
+/* ---------------------------------------------------------------- */
+/* Topics                                                           */
+/*                                                                 */
+/* The same single-source discipline as lessons: the topic's title  */
+/* and description are parsed from the file at build time, and the  */
+/* SEO functions only shape them — they never invent a second      */
+/* source that could drift from the page's own h1.                 */
+/* ---------------------------------------------------------------- */
+
+export function topicTitle(topic: { title: string }) {
+  return `${topic.title} — Laravel Interview Topic`;
+}
+
+/** The checklist-anchor lead, then tier + milestone signals, capped near 155. */
+export function topicDescription(topic: TopicRef & { description: string }, minutes: number) {
+  const lead = topic.description.replace(/\s+/g, ' ').trim();
+  const tail = ` · ${TIER_LABEL[topic.tier]} · ${topic.milestone} · ${minutes} min read.`;
+  const budget = 158 - tail.length;
+  const head = lead.length > budget ? `${lead.slice(0, budget - 1).trimEnd()}…` : lead;
+  return head + tail;
+}
+
+export function topicKeywords(topic: { title: string }) {
+  return [
+    `${topic.title} interview question`,
+    `${topic.title} explained`,
+    'Laravel interview questions',
+    'Laravel interview preparation',
+  ];
+}
+
+/** A single topic — reference material, part of the same course graph. */
+export function topicNode(
+  topic: TopicRef & { title: string; description: string },
+  opts: { minutes: number; words: number; owningLessons: IndexedLesson[]; path: string },
+): Json {
+  return {
+    '@type': ['LearningResource', 'Article'],
+    '@id': url(`${opts.path}#topic`),
+    url: url(opts.path),
+    name: topic.title,
+    headline: topicTitle(topic),
+    description: topic.description,
+    inLanguage: 'en',
+    isPartOf: { '@id': COURSE_ID },
+    isAccessibleForFree: true,
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
+    learningResourceType: ['Reference material', 'Interview preparation'],
+    educationalLevel: TIER_LABEL[topic.tier],
+    teaches: topic.title,
+    about: {
+      '@type': 'DefinedTerm',
+      name: topic.title,
+      inDefinedTermSet: {
+        '@type': 'DefinedTermSet',
+        name: 'Laravel interview topics',
+      },
+    },
+    timeRequired: `PT${Math.max(1, opts.minutes)}M`,
+    ...(opts.words > 0 ? { wordCount: opts.words } : {}),
+    ...(opts.owningLessons.length > 0
+      ? {
+          competencyRequired: opts.owningLessons.map((l) => ({
+            '@type': 'DefinedTerm',
+            name: l.title,
+            url: url(hrefOf(l)),
+          })),
+        }
+      : {}),
+  };
 }
 
 /* ---------------------------------------------------------------- */

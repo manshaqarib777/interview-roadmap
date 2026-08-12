@@ -93,8 +93,11 @@ export function CommandPalette({ index }: { index: SearchRow[] }) {
     const term = q.trim().toLowerCase();
 
     if (!term) {
+      // Recents and suggestions are lesson-only: topics have no progress
+      // (nothing to suggest) and pushing a topic number into the recents key
+      // space would collide with lessons (t5 vs lesson 5).
       const recentItems: Item[] = recents
-        .map((n) => index.find((r) => r.n === n))
+        .map((n) => index.find((r) => r.kind === 'lesson' && r.n === n))
         .filter((r): r is SearchRow => Boolean(r))
         .map((r) => ({
           key: `r${r.n}`, group: 'Recent', icon: '↺', label: r.title, sub: r.module,
@@ -102,7 +105,7 @@ export function CommandPalette({ index }: { index: SearchRow[] }) {
         }));
 
       const suggested: Item[] = index
-        .filter((r) => r.written && !state.done.includes(r.n))
+        .filter((r) => r.kind === 'lesson' && r.written && !state.done.includes(r.n))
         .slice(0, 4)
         .map((r) => ({
           key: `s${r.n}`, group: 'Suggested', icon: '▸', label: r.title, sub: `${r.module} · asked in ${r.frequency}%`,
@@ -116,10 +119,15 @@ export function CommandPalette({ index }: { index: SearchRow[] }) {
       ];
     }
 
-    const lessons: Item[] = index
+    // Lessons and topics share a number space, so they get distinct keys and
+    // groups — the palette must never collapse t5 and L5 into one row.
+    const scored = index
       .map((r) => ({ r, s: scoreRow(r, term) }))
       .filter((x) => x.s > 0)
-      .sort((a, b) => b.s - a.s || a.r.n - b.r.n)
+      .sort((a, b) => b.s - a.s || a.r.n - b.r.n);
+
+    const lessons: Item[] = scored
+      .filter((x) => x.r.kind === 'lesson')
       .slice(0, 7)
       .map(({ r }) => ({
         key: `l${r.n}`,
@@ -130,11 +138,24 @@ export function CommandPalette({ index }: { index: SearchRow[] }) {
         run: () => { pushRecent(r.n); router.push(r.href); },
       }));
 
+    const topicItems: Item[] = scored
+      .filter((x) => x.r.kind === 'topic')
+      .slice(0, 7)
+      .map(({ r }) => ({
+        key: `t${r.n}`,
+        group: 'Topics',
+        icon: '◈',
+        label: r.title,
+        sub: `Topic ${r.n} · Laravel`,
+        // Topics are reference pages — they don't join the recents key space.
+        run: () => { router.push(r.href); },
+      }));
+
     const acts: Item[] = actions
       .filter((a) => (a.label + ' ' + (a.keywords ?? '')).toLowerCase().includes(term))
       .map((a) => ({ key: a.id, group: a.group, icon: a.icon, label: a.label, hint: a.hint, run: a.run }));
 
-    return [...lessons, ...acts];
+    return [...lessons, ...topicItems, ...acts];
   }, [q, index, actions, recents, router, state.done]);
 
   useEffect(() => setCursor(0), [q]);

@@ -323,11 +323,14 @@ export function CompleteCard({
   nextHref,
   nextTitle,
   nextN,
+  label = 'Lesson complete',
 }: {
   title: string;
   nextHref?: string;
   nextTitle?: string;
   nextN?: number;
+  /** Topics say "Topic complete" — the card is shared with the topic reader */
+  label?: string;
 }) {
   return (
     <motion.div
@@ -353,7 +356,7 @@ export function CompleteCard({
         </svg>
       </motion.div>
 
-      <h3 className="relative mt-4 text-lg font-semibold">Lesson complete</h3>
+      <h3 className="relative mt-4 text-lg font-semibold">{label}</h3>
       <p className="relative mt-1 text-sm text-muted-foreground">
         You now understand <span className="text-foreground">{title}</span>.
       </p>

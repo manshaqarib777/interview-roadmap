@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
 
-import type { IndexedLesson } from '@/lib/curriculum';
 import { useStore } from '@/lib/store';
 
 /**
@@ -14,35 +13,46 @@ import { useStore } from '@/lib/store';
  * has a real rail, the tools sit at the top of it as a single row — one right
  * edge instead of two competing for the same gutter.
  */
-export function ReaderToolbar({ lesson }: { lesson: IndexedLesson }) {
+export function ReaderToolbar({
+  n,
+  variant = 'lesson',
+}: {
+  n: number;
+  /** Topics are reference pages — no progress, so no done/bookmark tools */
+  variant?: 'lesson' | 'topic';
+}) {
   const { state, toggleBookmark, toggleDone, setPrefs } = useStore();
   const [panel, setPanel] = useState<'type' | null>(null);
 
-  const bookmarked = state.bookmarks.includes(lesson.n);
-  const done = state.done.includes(lesson.n);
+  const bookmarked = state.bookmarks.includes(n);
+  const done = state.done.includes(n);
   const { prefs } = state;
 
   return (
     <div className="chrome no-print relative">
       <div className="rail-card flex items-center gap-0.5 p-1.5">
-        <Tool
-          label={done ? 'Completed' : 'Mark complete'}
-          active={done}
-          activeColor="var(--success)"
-          onClick={() => toggleDone(lesson.n)}
-        >
-          <path d="M20 6 9 17l-5-5" />
-        </Tool>
+        {variant === 'lesson' && (
+          <>
+            <Tool
+              label={done ? 'Completed' : 'Mark complete'}
+              active={done}
+              activeColor="var(--success)"
+              onClick={() => toggleDone(n)}
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </Tool>
 
-        <Tool
-          label={bookmarked ? 'Saved' : 'Bookmark'}
-          active={bookmarked}
-          activeColor="var(--warning)"
-          fill={bookmarked}
-          onClick={() => toggleBookmark(lesson.n)}
-        >
-          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-        </Tool>
+            <Tool
+              label={bookmarked ? 'Saved' : 'Bookmark'}
+              active={bookmarked}
+              activeColor="var(--warning)"
+              fill={bookmarked}
+              onClick={() => toggleBookmark(n)}
+            >
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+            </Tool>
+          </>
+        )}
 
         <Tool
           label="Interview mode  (i)"
