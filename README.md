@@ -94,85 +94,172 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | # | Lesson | File | Status |
 |---|--------|------|--------|
 | 1 | Variables: `var`, `let`, `const` | [`01-variables.md`](./content/01-javascript/01-variables.md) | ✅ Written |
-| 2 | Scope & the Scope Chain | `02-scope.md` | ⬜ |
-| 3 | Hoisting | `03-hoisting.md` | ⬜ |
-| 4 | Temporal Dead Zone | `04-temporal-dead-zone.md` | ⬜ |
-| 5 | Closures | `05-closures.md` | ⬜ |
-| 6 | Primitive vs Reference Types | `06-primitive-vs-reference.md` | ⬜ |
-| 7 | Type Coercion, Truthy/Falsy, `==` vs `===` | `07-coercion-and-equality.md` | ⬜ |
-| 8 | Objects | `08-objects.md` | ⬜ |
-| 9 | Prototypes & Prototypal Inheritance | `09-prototypes.md` | ⬜ |
-| 10 | `this` and binding | `10-this-and-binding.md` | ⬜ |
+| 2 | Scope & the Scope Chain | [`02-scope.md`](./content/01-javascript/02-scope.md) | ✅ Written |
+| 3 | Hoisting | [`03-hoisting.md`](./content/01-javascript/03-hoisting.md) | ✅ Written |
+| 4 | Temporal Dead Zone | [`04-temporal-dead-zone.md`](./content/01-javascript/04-temporal-dead-zone.md) | ✅ Written |
+| 5 | Closures | [`05-closures.md`](./content/01-javascript/05-closures.md) | ✅ Written |
+| 6 | Primitive vs Reference Types | [`06-primitive-vs-reference.md`](./content/01-javascript/06-primitive-vs-reference.md) | ✅ Written |
+| 7 | Type Coercion, Truthy/Falsy, `==` vs `===` | [`07-coercion-and-equality.md`](./content/01-javascript/07-coercion-and-equality.md) | ✅ Written |
+| 8 | Objects | [`08-objects.md`](./content/01-javascript/08-objects.md) | ✅ Written |
+| 9 | Prototypes & Prototypal Inheritance | [`09-prototypes.md`](./content/01-javascript/09-prototypes.md) | ✅ Written |
+| 10 | `this` and binding | [`10-this-and-binding.md`](./content/01-javascript/10-this-and-binding.md) | ✅ Written |
 
 ### Milestone M2 — Data & Functions
 | # | Lesson | File | Status |
 |---|--------|------|--------|
-| 11 | Functions: declarations vs expressions | `11-functions.md` | ⬜ |
-| 12 | Arrow functions | `12-arrow-functions.md` | ⬜ |
-| 13 | Higher-order functions & callbacks | `13-higher-order-functions.md` | ⬜ |
-| 14 | Pure functions & side effects | `14-pure-functions.md` | ⬜ |
-| 15 | IIFE & module pattern | `15-iife.md` | ⬜ |
-| 16 | Currying & partial application | `16-currying.md` | ⬜ |
-| 17 | Memoization | `17-memoization.md` | ⬜ |
-| 18 | Debounce & Throttle | `18-debounce-throttle.md` | ⬜ |
-| 19 | Arrays & array methods | `19-arrays.md` | ⬜ |
-| 20 | Destructuring, spread & rest | `20-destructuring-spread-rest.md` | ⬜ |
+| 11 | Functions: declarations vs expressions | [`11-functions.md`](./content/01-javascript/11-functions.md) | ✅ Written |
+| 12 | Arrow functions | [`12-arrow-functions.md`](./content/01-javascript/12-arrow-functions.md) | ✅ Written |
+| 13 | Higher-order functions & callbacks | [`13-higher-order-functions.md`](./content/01-javascript/13-higher-order-functions.md) | ✅ Written |
+| 14 | Pure functions & side effects | [`14-pure-functions.md`](./content/01-javascript/14-pure-functions.md) | ✅ Written |
+| 15 | IIFE & module pattern | [`15-iife.md`](./content/01-javascript/15-iife.md) | ✅ Written |
+| 16 | Currying & partial application | [`16-currying.md`](./content/01-javascript/16-currying.md) | ✅ Written |
+| 17 | Memoization | [`17-memoization.md`](./content/01-javascript/17-memoization.md) | ✅ Written |
+| 18 | Debounce & Throttle | [`18-debounce-throttle.md`](./content/01-javascript/18-debounce-throttle.md) | ✅ Written |
+| 19 | Arrays & array methods | [`19-arrays.md`](./content/01-javascript/19-arrays.md) | ✅ Written |
+| 20 | Destructuring, spread & rest | [`20-destructuring-spread-rest.md`](./content/01-javascript/20-destructuring-spread-rest.md) | ✅ Written |
 
 ### Milestone M3 — Async JavaScript
 | # | Lesson | File | Status |
 |---|--------|------|--------|
-| 21 | Call Stack & execution contexts | `21-call-stack.md` | ⬜ |
-| 22 | The Event Loop | `22-event-loop.md` | ⬜ |
-| 23 | Microtasks vs Macrotasks | `23-microtasks-macrotasks.md` | ⬜ |
-| 24 | Promises from scratch | `24-promises.md` | ⬜ |
-| 25 | `async` / `await` | `25-async-await.md` | ⬜ |
-| 26 | Promise combinators (`all`/`allSettled`/`race`/`any`) | `26-promise-combinators.md` | ⬜ |
-| 27 | Error handling & propagation | `27-error-handling.md` | ⬜ |
-| 28 | ES6+ essentials (modules, optional chaining, generators) | `28-modern-es6plus.md` | ⬜ |
+| 21 | Call Stack & execution contexts | [`21-call-stack.md`](./content/01-javascript/21-call-stack.md) | ✅ Written |
+| 22 | The Event Loop | [`22-event-loop.md`](./content/01-javascript/22-event-loop.md) | ✅ Written |
+| 23 | Microtasks vs Macrotasks | [`23-microtasks-macrotasks.md`](./content/01-javascript/23-microtasks-macrotasks.md) | ✅ Written |
+| 24 | Promises from scratch | [`24-promises.md`](./content/01-javascript/24-promises.md) | ✅ Written |
+| 25 | `async` / `await` | [`25-async-await.md`](./content/01-javascript/25-async-await.md) | ✅ Written |
+| 26 | Promise combinators (`all`/`allSettled`/`race`/`any`) | [`26-promise-combinators.md`](./content/01-javascript/26-promise-combinators.md) | ✅ Written |
+| 27 | Error handling & propagation | [`27-error-handling.md`](./content/01-javascript/27-error-handling.md) | ✅ Written |
+| 28 | ES6+ essentials (modules, optional chaining, generators) | [`28-modern-es6plus.md`](./content/01-javascript/28-modern-es6plus.md) | ✅ Written |
 
 ---
 
 ## Module 2 — TypeScript
-> Folder: `content/02-typescript/`
+> Folder: [`02-typescript/`](./content/02-typescript/) · [Module overview](./content/02-typescript/00-module-overview.md)
 
-L29 Why TypeScript · L30 Primitives, arrays, tuples · L31 Objects, interfaces, type aliases ·
-L32 Union & intersection types · L33 Narrowing & type guards · L34 Functions & overloads ·
-L35 `keyof`, `typeof`, indexed access · L36 Generics · L37 Generic constraints ·
-L38 Discriminated unions · L39 Utility types · L40 Conditional types · L41 Mapped types ·
-L42 Template literal types · L43 `infer` · L44 `satisfies` & `as const` ·
-L45 `unknown` vs `any` vs `never` · L46 `tsconfig` & strict mode
+### Milestone M4 — Type System Fluency
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 29 | Why TypeScript? | [`29-why-typescript.md`](./content/02-typescript/29-why-typescript.md) | ✅ Written |
+| 30 | Primitives, arrays & tuples | [`30-primitives-arrays-tuples.md`](./content/02-typescript/30-primitives-arrays-tuples.md) | ✅ Written |
+| 31 | Objects, interfaces & type aliases | [`31-objects-interfaces-aliases.md`](./content/02-typescript/31-objects-interfaces-aliases.md) | ✅ Written |
+| 32 | Union & intersection types | [`32-unions-intersections.md`](./content/02-typescript/32-unions-intersections.md) | ✅ Written |
+| 33 | Narrowing & type guards | [`33-narrowing-type-guards.md`](./content/02-typescript/33-narrowing-type-guards.md) | ✅ Written |
+| 34 | Functions & overloads | [`34-functions-overloads.md`](./content/02-typescript/34-functions-overloads.md) | ✅ Written |
+| 35 | `keyof`, `typeof` & indexed access | [`35-keyof-typeof-indexed.md`](./content/02-typescript/35-keyof-typeof-indexed.md) | ✅ Written |
+| 36 | Generics | [`36-generics.md`](./content/02-typescript/36-generics.md) | ✅ Written |
+| 37 | Generic constraints | [`37-generic-constraints.md`](./content/02-typescript/37-generic-constraints.md) | ✅ Written |
+| 38 | Discriminated unions | [`38-discriminated-unions.md`](./content/02-typescript/38-discriminated-unions.md) | ✅ Written |
+
+### Milestone M5 — Type-Level Programming
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 39 | Utility types | [`39-utility-types.md`](./content/02-typescript/39-utility-types.md) | ✅ Written |
+| 40 | Conditional types | [`40-conditional-types.md`](./content/02-typescript/40-conditional-types.md) | ✅ Written |
+| 41 | Mapped types | [`41-mapped-types.md`](./content/02-typescript/41-mapped-types.md) | ✅ Written |
+| 42 | Template literal types | [`42-template-literal-types.md`](./content/02-typescript/42-template-literal-types.md) | ✅ Written |
+| 43 | `infer` | [`43-infer.md`](./content/02-typescript/43-infer.md) | ✅ Written |
+| 44 | `satisfies` & `as const` | [`44-satisfies-as-const.md`](./content/02-typescript/44-satisfies-as-const.md) | ✅ Written |
+| 45 | `unknown` vs `any` vs `never` | [`45-unknown-any-never.md`](./content/02-typescript/45-unknown-any-never.md) | ✅ Written |
+| 46 | `tsconfig` & strict mode | [`46-tsconfig-strict.md`](./content/02-typescript/46-tsconfig-strict.md) | ✅ Written |
 
 ## Module 3 — React
-> Folder: `content/03-react/`
+> Folder: [`03-react/`](./content/03-react/) · [Module overview](./content/03-react/00-module-overview.md)
 
-L47 JSX · L48 Components & composition · L49 Props · L50 State & `useState` ·
-L51 Rendering & reconciliation · L52 Lists & keys · L53 Events & synthetic events ·
-L54 Controlled vs uncontrolled forms · L55 Derived state & lifting state · L56 Virtual DOM ·
-L57 `useEffect` · L58 Dependency arrays & cleanup · L59 Lifecycle & effect order ·
-L60 `useRef` · L61 `useMemo` · L62 `useCallback` · L63 `useContext` · L64 `useReducer` ·
-L65 Custom hooks · L66 Rules of hooks internals · L67 `React.memo` · L68 Lazy loading & Suspense ·
-L69 Code splitting · L70 Virtualization · L71 When *not* to optimize · L72 Compound components ·
-L73 Render props · L74 HOCs · L75 Provider pattern · L76 Error boundaries ·
-L77 Context API · L78 Redux Toolkit · L79 Async thunks & selectors · L80 Zustand ·
-L81 TanStack Query · L82 Local vs global vs server state
+### Milestone M6 — React Fundamentals
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 47 | JSX | [`47-jsx.md`](./content/03-react/47-jsx.md) | ✅ Written |
+| 48 | Components & composition | [`48-components-composition.md`](./content/03-react/48-components-composition.md) | ✅ Written |
+| 49 | Props | [`49-props.md`](./content/03-react/49-props.md) | ✅ Written |
+| 50 | State & `useState` | [`50-state-usestate.md`](./content/03-react/50-state-usestate.md) | ✅ Written |
+| 51 | Rendering & reconciliation | [`51-rendering-reconciliation.md`](./content/03-react/51-rendering-reconciliation.md) | ✅ Written |
+| 52 | Lists & keys | [`52-lists-and-keys.md`](./content/03-react/52-lists-and-keys.md) | ✅ Written |
+| 53 | Events & synthetic events | [`53-events.md`](./content/03-react/53-events.md) | ✅ Written |
+| 54 | Controlled vs uncontrolled forms | [`54-forms.md`](./content/03-react/54-forms.md) | ✅ Written |
+| 55 | Derived state & lifting state | [`55-derived-and-lifted-state.md`](./content/03-react/55-derived-and-lifted-state.md) | ✅ Written |
+| 56 | The Virtual DOM | [`56-virtual-dom.md`](./content/03-react/56-virtual-dom.md) | ✅ Written |
+
+### Milestone M7 — Hooks Mastery
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 57 | `useEffect` | [`57-useeffect.md`](./content/03-react/57-useeffect.md) | ✅ Written |
+| 58 | Dependency arrays & cleanup | [`58-deps-and-cleanup.md`](./content/03-react/58-deps-and-cleanup.md) | ✅ Written |
+| 59 | Lifecycle & effect order | [`59-lifecycle.md`](./content/03-react/59-lifecycle.md) | ✅ Written |
+| 60 | `useRef` | [`60-useref.md`](./content/03-react/60-useref.md) | ✅ Written |
+| 61 | `useMemo` | [`61-usememo.md`](./content/03-react/61-usememo.md) | ✅ Written |
+| 62 | `useCallback` | [`62-usecallback.md`](./content/03-react/62-usecallback.md) | ✅ Written |
+| 63 | `useContext` | [`63-usecontext.md`](./content/03-react/63-usecontext.md) | ✅ Written |
+| 64 | `useReducer` | [`64-usereducer.md`](./content/03-react/64-usereducer.md) | ✅ Written |
+| 65 | Custom hooks | [`65-custom-hooks.md`](./content/03-react/65-custom-hooks.md) | ✅ Written |
+| 66 | Rules of hooks (internals) | [`66-rules-of-hooks.md`](./content/03-react/66-rules-of-hooks.md) | ✅ Written |
+
+### Milestone M8 — Performance & Patterns
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 67 | `React.memo` | [`67-react-memo.md`](./content/03-react/67-react-memo.md) | ✅ Written |
+| 68 | Lazy loading & Suspense | [`68-lazy-suspense.md`](./content/03-react/68-lazy-suspense.md) | ✅ Written |
+| 69 | Code splitting | [`69-code-splitting.md`](./content/03-react/69-code-splitting.md) | ✅ Written |
+| 70 | Virtualization | [`70-virtualization.md`](./content/03-react/70-virtualization.md) | ✅ Written |
+| 71 | When *not* to optimize | [`71-when-not-to-optimize.md`](./content/03-react/71-when-not-to-optimize.md) | ✅ Written |
+| 72 | Compound components | [`72-compound-components.md`](./content/03-react/72-compound-components.md) | ✅ Written |
+| 73 | Render props | [`73-render-props.md`](./content/03-react/73-render-props.md) | ✅ Written |
+| 74 | Higher-order components | [`74-hocs.md`](./content/03-react/74-hocs.md) | ✅ Written |
+| 75 | The provider pattern | [`75-provider-pattern.md`](./content/03-react/75-provider-pattern.md) | ✅ Written |
+| 76 | Error boundaries | [`76-error-boundaries.md`](./content/03-react/76-error-boundaries.md) | ✅ Written |
+
+### Milestone M9 — State Management
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 77 | Context API | [`77-context-api.md`](./content/03-react/77-context-api.md) | ✅ Written |
+| 78 | Redux Toolkit | [`78-redux-toolkit.md`](./content/03-react/78-redux-toolkit.md) | ✅ Written |
+| 79 | Async thunks & selectors | [`79-thunks-selectors.md`](./content/03-react/79-thunks-selectors.md) | ✅ Written |
+| 80 | Zustand | [`80-zustand.md`](./content/03-react/80-zustand.md) | ✅ Written |
+| 81 | TanStack Query | [`81-tanstack-query.md`](./content/03-react/81-tanstack-query.md) | ✅ Written |
+| 82 | Local vs global vs server state | [`82-state-strategy.md`](./content/03-react/82-state-strategy.md) | ✅ Written |
 
 ## Module 4 — Next.js
-> Folder: `content/04-nextjs/`
+> Folder: [`04-nextjs/`](./content/04-nextjs/) · [Module overview](./content/04-nextjs/00-module-overview.md)
 
-L83 App Router & file routing · L84 Layouts & nested layouts · L85 Dynamic routes ·
-L86 Server Components · L87 Client Components · L88 The server/client boundary ·
-L89 Data fetching & `fetch` · L90 Caching · L91 Revalidation, ISR, SSR, SSG ·
-L92 Route Handlers · L93 Server Actions · L94 Middleware · L95 Cookies, headers, metadata/SEO ·
-L96 Env vars, production build, deployment
+### Milestone M10 — App Router
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 83 | App Router & file routing | [`83-app-router.md`](./content/04-nextjs/83-app-router.md) | ✅ Written |
+| 84 | Layouts & nested layouts | [`84-layouts.md`](./content/04-nextjs/84-layouts.md) | ✅ Written |
+| 85 | Dynamic routes | [`85-dynamic-routes.md`](./content/04-nextjs/85-dynamic-routes.md) | ✅ Written |
+| 86 | Server Components | [`86-server-components.md`](./content/04-nextjs/86-server-components.md) | ✅ Written |
+| 87 | Client Components | [`87-client-components.md`](./content/04-nextjs/87-client-components.md) | ✅ Written |
+| 88 | The server/client boundary | [`88-server-client-boundary.md`](./content/04-nextjs/88-server-client-boundary.md) | ✅ Written |
+| 89 | Data fetching & `fetch` | [`89-data-fetching.md`](./content/04-nextjs/89-data-fetching.md) | ✅ Written |
+| 90 | Caching | [`90-caching.md`](./content/04-nextjs/90-caching.md) | ✅ Written |
+| 91 | Revalidation, ISR, SSR & SSG | [`91-revalidation-isr-ssr-ssg.md`](./content/04-nextjs/91-revalidation-isr-ssr-ssg.md) | ✅ Written |
+| 92 | Route Handlers | [`92-route-handlers.md`](./content/04-nextjs/92-route-handlers.md) | ✅ Written |
+| 93 | Server Actions | [`93-server-actions.md`](./content/04-nextjs/93-server-actions.md) | ✅ Written |
+| 94 | Middleware | [`94-middleware.md`](./content/04-nextjs/94-middleware.md) | ✅ Written |
+| 95 | Cookies, headers, metadata/SEO | [`95-cookies-headers-metadata.md`](./content/04-nextjs/95-cookies-headers-metadata.md) | ✅ Written |
+| 96 | Env vars, production build, deployment | [`96-deployment.md`](./content/04-nextjs/96-deployment.md) | ✅ Written |
 
 ## Module 5 — Interview Preparation
-> Folder: `content/05-interview-prep/`
+> Folder: [`05-interview-prep/`](./content/05-interview-prep/) · [Module overview](./content/05-interview-prep/00-module-overview.md)
 
-L97 Frequently asked JS questions · L98 Frequently asked TS questions ·
-L99 Frequently asked React questions · L100 Frequently asked Next.js questions ·
-L101 Common coding tasks (debounced search, infinite scroll, modal, tabs, toast…) ·
-L102 Frontend system design · L103 Portfolio projects · L104 Mock interview playbook
+### Milestone M11 — Production Concerns
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 97 | Frequently asked JS questions | [`97-js-questions.md`](./content/05-interview-prep/97-js-questions.md) | ✅ Written |
+| 98 | Frequently asked TS questions | [`98-ts-questions.md`](./content/05-interview-prep/98-ts-questions.md) | ✅ Written |
+| 99 | Frequently asked React questions | [`99-react-questions.md`](./content/05-interview-prep/99-react-questions.md) | ✅ Written |
+| 100 | Frequently asked Next.js questions | [`100-nextjs-questions.md`](./content/05-interview-prep/100-nextjs-questions.md) | ✅ Written |
+| 101 | Common coding tasks | [`101-coding-tasks.md`](./content/05-interview-prep/101-coding-tasks.md) | ✅ Written |
+| 102 | Frontend system design | [`102-system-design.md`](./content/05-interview-prep/102-system-design.md) | ✅ Written |
+
+### Milestone M12 — Interview Ready
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 103 | Portfolio projects | [`103-portfolio-projects.md`](./content/05-interview-prep/103-portfolio-projects.md) | ✅ Written |
+| 104 | Mock interview playbook | [`104-mock-interviews.md`](./content/05-interview-prep/104-mock-interviews.md) | ✅ Written |
 
 ---
 
-## Reply `Next` to unlock Lesson 2.
+**All 104 lessons are written.** Work through them in order, mark them off in
+[`PROGRESS.md`](./PROGRESS.md), and claim each milestone when you can meet its
+"claim it when" criterion. The final lesson, the [Mock Interview
+Playbook](./content/05-interview-prep/104-mock-interviews.md), tells you how to rehearse the whole
+thing.
