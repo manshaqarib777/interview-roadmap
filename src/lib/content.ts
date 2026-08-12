@@ -714,6 +714,23 @@ export const getTopics = cache(async (): Promise<{ ref: TopicRef; title: string;
   );
 });
 
+/**
+ * Header-only read of ONE topic — the OG images' input. They only need the
+ * title, the checklist anchor and a minutes figure, so running the full
+ * markdown pipeline here would do the heavy work 75 times over for no gain.
+ */
+export const getTopicMeta = cache(
+  async (slug: string): Promise<{ ref: TopicRef; title: string; description: string; minutes: number } | null> => {
+    const ref = TOPIC_BY_SLUG.get(slug);
+    if (!ref) return null;
+    const raw = await readTopicFile(ref);
+    if (!raw) return null;
+    const { title, description, body } = parseTopicHeader(raw);
+    const words = body.split(/\s+/).filter(Boolean).length;
+    return { ref, title, description, minutes: Math.max(1, Math.round(words / WPM)) };
+  },
+);
+
 export const getWrittenLessons = cache(async (): Promise<number[]> => {
   const written: number[] = [];
   await Promise.all(
