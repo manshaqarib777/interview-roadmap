@@ -267,12 +267,12 @@ exercise runs correctly.
 - [x] L201 — Tool Calling for Agents
 - [x] L202 — Planning (ReAct, plan-and-execute)
 - [x] L203 — Reasoning Patterns
-- [ ] L204 — Tool Selection & Routing
-- [ ] L205 — Agent Loops & Termination
-- [ ] L206 — Agent Memory
-- [ ] L207 — Agent State & Persistence
-- [ ] L208 — Human-in-the-Loop
-- [ ] L209 — Guardrails for Agents
+- [x] L204 — Tool Selection & Routing
+- [x] L205 — Agent Loops & Termination
+- [x] L206 — Agent Memory
+- [x] L207 — Agent State & Persistence
+- [x] L208 — Human-in-the-Loop
+- [x] L209 — Guardrails for Agents
 - [ ] L210 — Multi-Agent Systems
 - [ ] L211 — Agent Failure Modes
 - [ ] L212 — Agent Security

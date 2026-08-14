@@ -423,12 +423,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 201 | Tool Calling for Agents | [`201-agent-tools.md`](./content/10-ai-agents/201-agent-tools.md) | ✅ Written |
 | 202 | Planning (ReAct, plan-and-execute) | [`202-planning.md`](./content/10-ai-agents/202-planning.md) | ✅ Written |
 | 203 | Reasoning Patterns | [`203-reasoning-patterns.md`](./content/10-ai-agents/203-reasoning-patterns.md) | ✅ Written |
-| 204 | Tool Selection & Routing | [`204-tool-selection.md`](./content/10-ai-agents/204-tool-selection.md) | 📝 Queued |
-| 205 | Agent Loops & Termination | [`205-agent-loops.md`](./content/10-ai-agents/205-agent-loops.md) | 📝 Queued |
-| 206 | Agent Memory | [`206-agent-memory.md`](./content/10-ai-agents/206-agent-memory.md) | 📝 Queued |
-| 207 | Agent State & Persistence | [`207-agent-state.md`](./content/10-ai-agents/207-agent-state.md) | 📝 Queued |
-| 208 | Human-in-the-Loop | [`208-human-in-the-loop.md`](./content/10-ai-agents/208-human-in-the-loop.md) | 📝 Queued |
-| 209 | Guardrails for Agents | [`209-guardrails.md`](./content/10-ai-agents/209-guardrails.md) | 📝 Queued |
+| 204 | Tool Selection & Routing | [`204-tool-selection.md`](./content/10-ai-agents/204-tool-selection.md) | ✅ Written |
+| 205 | Agent Loops & Termination | [`205-agent-loops.md`](./content/10-ai-agents/205-agent-loops.md) | ✅ Written |
+| 206 | Agent Memory | [`206-agent-memory.md`](./content/10-ai-agents/206-agent-memory.md) | ✅ Written |
+| 207 | Agent State & Persistence | [`207-agent-state.md`](./content/10-ai-agents/207-agent-state.md) | ✅ Written |
+| 208 | Human-in-the-Loop | [`208-human-in-the-loop.md`](./content/10-ai-agents/208-human-in-the-loop.md) | ✅ Written |
+| 209 | Guardrails for Agents | [`209-guardrails.md`](./content/10-ai-agents/209-guardrails.md) | ✅ Written |
 | 210 | Multi-Agent Systems | [`210-multi-agent.md`](./content/10-ai-agents/210-multi-agent.md) | 📝 Queued |
 | 211 | Agent Failure Modes | [`211-agent-failure-modes.md`](./content/10-ai-agents/211-agent-failure-modes.md) | 📝 Queued |
 | 212 | Agent Security | [`212-agent-security.md`](./content/10-ai-agents/212-agent-security.md) | 📝 Queued |
