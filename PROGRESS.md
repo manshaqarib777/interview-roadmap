@@ -225,10 +225,10 @@ exercise runs correctly.
 - [x] L167 — AI memory
 - [x] L168 — Error handling for LLM calls
 - [x] L169 — Retry strategies & backoff
-- [ ] L170 — Rate limiting
-- [ ] L171 — Caching LLM responses
-- [ ] L172 — AI API security fundamentals
-- [ ] L173 — Production AI patterns (synthesis)
+- [x] L170 — Rate limiting
+- [x] L171 — Caching LLM responses
+- [x] L172 — AI API security fundamentals
+- [x] L173 — Production AI patterns (synthesis)
 
 ---
 

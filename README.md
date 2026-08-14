@@ -375,10 +375,10 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 167 | AI Memory | [`167-ai-memory.md`](./content/08-ai-app-engineering/167-ai-memory.md) | ✅ Written |
 | 168 | Error Handling for LLM Calls | [`168-llm-error-handling.md`](./content/08-ai-app-engineering/168-llm-error-handling.md) | ✅ Written |
 | 169 | Retry Strategies & Backoff | [`169-retry-backoff.md`](./content/08-ai-app-engineering/169-retry-backoff.md) | ✅ Written |
-| 170 | Rate Limiting | [`170-rate-limiting.md`](./content/08-ai-app-engineering/170-rate-limiting.md) | 📝 Queued |
-| 171 | Caching LLM Responses | [`171-caching.md`](./content/08-ai-app-engineering/171-caching.md) | 📝 Queued |
-| 172 | AI API Security Fundamentals | [`172-ai-api-security.md`](./content/08-ai-app-engineering/172-ai-api-security.md) | 📝 Queued |
-| 173 | Production AI Patterns (synthesis) | [`173-production-ai-patterns.md`](./content/08-ai-app-engineering/173-production-ai-patterns.md) | 📝 Queued |
+| 170 | Rate Limiting | [`170-rate-limiting.md`](./content/08-ai-app-engineering/170-rate-limiting.md) | ✅ Written |
+| 171 | Caching LLM Responses | [`171-caching.md`](./content/08-ai-app-engineering/171-caching.md) | ✅ Written |
+| 172 | AI API Security Fundamentals | [`172-ai-api-security.md`](./content/08-ai-app-engineering/172-ai-api-security.md) | ✅ Written |
+| 173 | Production AI Patterns (synthesis) | [`173-production-ai-patterns.md`](./content/08-ai-app-engineering/173-production-ai-patterns.md) | ✅ Written |
 
 ---
 
