@@ -411,6 +411,32 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 196 | RAG Failure Modes | [`196-rag-failure-modes.md`](./content/09-rag-knowledge/196-rag-failure-modes.md) | ✅ Written |
 | 197 | Production RAG Architecture (synthesis) | [`197-production-rag.md`](./content/09-rag-knowledge/197-production-rag.md) | ✅ Written |
 
+## Module 10 — AI Agents
+> Folder: [`10-ai-agents/`](./content/10-ai-agents/) · [Module overview](./content/10-ai-agents/00-module-overview.md)
+
+### Milestone M21 — AI Agents
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 198 | What Agents Are | [`198-what-agents-are.md`](./content/10-ai-agents/198-what-agents-are.md) | ✅ Written |
+| 199 | Agent vs Workflow | [`199-agent-vs-workflow.md`](./content/10-ai-agents/199-agent-vs-workflow.md) | ✅ Written |
+| 200 | Agent Architecture (the loop) | [`200-agent-architecture.md`](./content/10-ai-agents/200-agent-architecture.md) | ✅ Written |
+| 201 | Tool Calling for Agents | [`201-agent-tools.md`](./content/10-ai-agents/201-agent-tools.md) | ✅ Written |
+| 202 | Planning (ReAct, plan-and-execute) | [`202-planning.md`](./content/10-ai-agents/202-planning.md) | ✅ Written |
+| 203 | Reasoning Patterns | [`203-reasoning-patterns.md`](./content/10-ai-agents/203-reasoning-patterns.md) | ✅ Written |
+| 204 | Tool Selection & Routing | [`204-tool-selection.md`](./content/10-ai-agents/204-tool-selection.md) | 📝 Queued |
+| 205 | Agent Loops & Termination | [`205-agent-loops.md`](./content/10-ai-agents/205-agent-loops.md) | 📝 Queued |
+| 206 | Agent Memory | [`206-agent-memory.md`](./content/10-ai-agents/206-agent-memory.md) | 📝 Queued |
+| 207 | Agent State & Persistence | [`207-agent-state.md`](./content/10-ai-agents/207-agent-state.md) | 📝 Queued |
+| 208 | Human-in-the-Loop | [`208-human-in-the-loop.md`](./content/10-ai-agents/208-human-in-the-loop.md) | 📝 Queued |
+| 209 | Guardrails for Agents | [`209-guardrails.md`](./content/10-ai-agents/209-guardrails.md) | 📝 Queued |
+| 210 | Multi-Agent Systems | [`210-multi-agent.md`](./content/10-ai-agents/210-multi-agent.md) | 📝 Queued |
+| 211 | Agent Failure Modes | [`211-agent-failure-modes.md`](./content/10-ai-agents/211-agent-failure-modes.md) | 📝 Queued |
+| 212 | Agent Security | [`212-agent-security.md`](./content/10-ai-agents/212-agent-security.md) | 📝 Queued |
+| 213 | Agent Observability | [`213-agent-observability.md`](./content/10-ai-agents/213-agent-observability.md) | 📝 Queued |
+| 214 | LangChain | [`214-langchain.md`](./content/10-ai-agents/214-langchain.md) | 📝 Queued |
+| 215 | LangGraph | [`215-langgraph.md`](./content/10-ai-agents/215-langgraph.md) | 📝 Queued |
+| 216 | MCP & Production Agent Architecture (synthesis) | [`216-mcp-agent-architecture.md`](./content/10-ai-agents/216-mcp-agent-architecture.md) | 📝 Queued |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)

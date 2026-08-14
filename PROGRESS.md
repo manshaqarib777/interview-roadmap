@@ -258,6 +258,29 @@ exercise runs correctly.
 - [x] L196 — RAG Failure Modes
 - [x] L197 — Production RAG Architecture (synthesis)
 
+## Module 10 — AI Agents
+
+### M21 · AI Agents
+- [x] L198 — What Agents Are
+- [x] L199 — Agent vs Workflow
+- [x] L200 — Agent Architecture (the loop)
+- [x] L201 — Tool Calling for Agents
+- [x] L202 — Planning (ReAct, plan-and-execute)
+- [x] L203 — Reasoning Patterns
+- [ ] L204 — Tool Selection & Routing
+- [ ] L205 — Agent Loops & Termination
+- [ ] L206 — Agent Memory
+- [ ] L207 — Agent State & Persistence
+- [ ] L208 — Human-in-the-Loop
+- [ ] L209 — Guardrails for Agents
+- [ ] L210 — Multi-Agent Systems
+- [ ] L211 — Agent Failure Modes
+- [ ] L212 — Agent Security
+- [ ] L213 — Agent Observability
+- [ ] L214 — LangChain
+- [ ] L215 — LangGraph
+- [ ] L216 — MCP & Production Agent Architecture (synthesis)
+
 ---
 
 ## Interview Readiness Checklist
