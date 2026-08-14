@@ -192,12 +192,12 @@ exercise runs correctly.
 - [x] L138 — Context windows & input limits
 - [x] L139 — Temperature, top-p & sampling
 - [x] L140 — Model capabilities
-- [ ] L141 — Model limitations
-- [ ] L142 — Prompt engineering & system/user/developer instructions
-- [ ] L143 — Structured outputs & JSON schemas
-- [ ] L144 — Function calling & tool calling
-- [ ] L145 — Streaming responses
-- [ ] L146 — Multimodal models
+- [x] L141 — Model limitations
+- [x] L142 — Prompt engineering & system/user/developer instructions
+- [x] L143 — Structured outputs & JSON schemas
+- [x] L144 — Function calling & tool calling
+- [x] L145 — Streaming responses
+- [x] L146 — Multimodal models
 - [ ] L147 — Embeddings & vector semantics
 - [ ] L148 — Model selection & frontier families
 - [ ] L149 — Token management & budgeting

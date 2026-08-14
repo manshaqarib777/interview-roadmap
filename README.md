@@ -339,12 +339,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 138 | Context Windows & Input Limits | [`138-context-windows.md`](./content/07-ai-foundations/138-context-windows.md) | ✅ Written |
 | 139 | Temperature, Top-p & Sampling | [`139-temperature-top-p.md`](./content/07-ai-foundations/139-temperature-top-p.md) | ✅ Written |
 | 140 | Model Capabilities | [`140-model-capabilities.md`](./content/07-ai-foundations/140-model-capabilities.md) | ✅ Written |
-| 141 | Model Limitations | [`141-model-limitations.md`](./content/07-ai-foundations/141-model-limitations.md) | 📝 Queued |
-| 142 | Prompt Engineering & System/User/Developer Instructions | [`142-prompt-engineering.md`](./content/07-ai-foundations/142-prompt-engineering.md) | 📝 Queued |
-| 143 | Structured Outputs & JSON Schemas | [`143-structured-outputs.md`](./content/07-ai-foundations/143-structured-outputs.md) | 📝 Queued |
-| 144 | Function Calling & Tool Calling | [`144-function-calling.md`](./content/07-ai-foundations/144-function-calling.md) | 📝 Queued |
-| 145 | Streaming Responses | [`145-streaming.md`](./content/07-ai-foundations/145-streaming.md) | 📝 Queued |
-| 146 | Multimodal Models | [`146-multimodal.md`](./content/07-ai-foundations/146-multimodal.md) | 📝 Queued |
+| 141 | Model Limitations | [`141-model-limitations.md`](./content/07-ai-foundations/141-model-limitations.md) | ✅ Written |
+| 142 | Prompt Engineering & System/User/Developer Instructions | [`142-prompt-engineering.md`](./content/07-ai-foundations/142-prompt-engineering.md) | ✅ Written |
+| 143 | Structured Outputs & JSON Schemas | [`143-structured-outputs.md`](./content/07-ai-foundations/143-structured-outputs.md) | ✅ Written |
+| 144 | Function Calling & Tool Calling | [`144-function-calling.md`](./content/07-ai-foundations/144-function-calling.md) | ✅ Written |
+| 145 | Streaming Responses | [`145-streaming.md`](./content/07-ai-foundations/145-streaming.md) | ✅ Written |
+| 146 | Multimodal Models | [`146-multimodal.md`](./content/07-ai-foundations/146-multimodal.md) | ✅ Written |
 | 147 | Embeddings & Vector Semantics | [`147-embeddings.md`](./content/07-ai-foundations/147-embeddings.md) | 📝 Queued |
 | 148 | Model Selection & Frontier Families | [`148-model-selection.md`](./content/07-ai-foundations/148-model-selection.md) | 📝 Queued |
 | 149 | Token Management & Budgeting | [`149-token-budgeting.md`](./content/07-ai-foundations/149-token-budgeting.md) | 📝 Queued |
