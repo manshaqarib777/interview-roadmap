@@ -333,12 +333,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 ### Milestone M18 — AI & LLM Foundations
 | # | Lesson | File | Status |
 |---|--------|------|--------|
-| 135 | What an LLM Is | [`135-what-is-an-llm.md`](./content/07-ai-foundations/135-what-is-an-llm.md) | 📝 Queued |
-| 136 | The Transformer & Attention Mechanism | [`136-transformer-attention.md`](./content/07-ai-foundations/136-transformer-attention.md) | 📝 Queued |
-| 137 | Tokens & Tokenization | [`137-tokens-tokenization.md`](./content/07-ai-foundations/137-tokens-tokenization.md) | 📝 Queued |
-| 138 | Context Windows & Input Limits | [`138-context-windows.md`](./content/07-ai-foundations/138-context-windows.md) | 📝 Queued |
-| 139 | Temperature, Top-p & Sampling | [`139-temperature-top-p.md`](./content/07-ai-foundations/139-temperature-top-p.md) | 📝 Queued |
-| 140 | Model Capabilities | [`140-model-capabilities.md`](./content/07-ai-foundations/140-model-capabilities.md) | 📝 Queued |
+| 135 | What an LLM Is | [`135-what-is-an-llm.md`](./content/07-ai-foundations/135-what-is-an-llm.md) | ✅ Written |
+| 136 | The Transformer & Attention Mechanism | [`136-transformer-attention.md`](./content/07-ai-foundations/136-transformer-attention.md) | ✅ Written |
+| 137 | Tokens & Tokenization | [`137-tokens-tokenization.md`](./content/07-ai-foundations/137-tokens-tokenization.md) | ✅ Written |
+| 138 | Context Windows & Input Limits | [`138-context-windows.md`](./content/07-ai-foundations/138-context-windows.md) | ✅ Written |
+| 139 | Temperature, Top-p & Sampling | [`139-temperature-top-p.md`](./content/07-ai-foundations/139-temperature-top-p.md) | ✅ Written |
+| 140 | Model Capabilities | [`140-model-capabilities.md`](./content/07-ai-foundations/140-model-capabilities.md) | ✅ Written |
 | 141 | Model Limitations | [`141-model-limitations.md`](./content/07-ai-foundations/141-model-limitations.md) | 📝 Queued |
 | 142 | Prompt Engineering & System/User/Developer Instructions | [`142-prompt-engineering.md`](./content/07-ai-foundations/142-prompt-engineering.md) | 📝 Queued |
 | 143 | Structured Outputs & JSON Schemas | [`143-structured-outputs.md`](./content/07-ai-foundations/143-structured-outputs.md) | 📝 Queued |

@@ -186,12 +186,12 @@ exercise runs correctly.
 ## Module 7 — AI & LLM Foundations
 
 ### M18 · AI & LLM Foundations
-- [ ] L135 — What an LLM is
-- [ ] L136 — The Transformer & attention mechanism
-- [ ] L137 — Tokens & tokenization
-- [ ] L138 — Context windows & input limits
-- [ ] L139 — Temperature, top-p & sampling
-- [ ] L140 — Model capabilities
+- [x] L135 — What an LLM is
+- [x] L136 — The Transformer & attention mechanism
+- [x] L137 — Tokens & tokenization
+- [x] L138 — Context windows & input limits
+- [x] L139 — Temperature, top-p & sampling
+- [x] L140 — Model capabilities
 - [ ] L141 — Model limitations
 - [ ] L142 — Prompt engineering & system/user/developer instructions
 - [ ] L143 — Structured outputs & JSON schemas
