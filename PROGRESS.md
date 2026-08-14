@@ -210,6 +210,26 @@ exercise runs correctly.
 - [x] L156 — Comparing the three providers
 - [x] L157 — Foundations review — the model decision rule
 
+## Module 8 — AI Application Engineering
+
+### M19 · AI Application Engineering
+- [x] L158 — AI application architecture
+- [x] L159 — LLM API integration patterns
+- [x] L160 — The Vercel AI SDK
+- [x] L161 — AI SDK patterns (streams, parts, tool calls)
+- [x] L162 — Streaming UI
+- [x] L163 — Structured generation in apps
+- [ ] L164 — Tool calling in applications
+- [ ] L165 — AI application state
+- [ ] L166 — Conversation management
+- [ ] L167 — AI memory
+- [ ] L168 — Error handling for LLM calls
+- [ ] L169 — Retry strategies & backoff
+- [ ] L170 — Rate limiting
+- [ ] L171 — Caching LLM responses
+- [ ] L172 — AI API security fundamentals
+- [ ] L173 — Production AI patterns (synthesis)
+
 ---
 
 ## Interview Readiness Checklist

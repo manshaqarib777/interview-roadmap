@@ -357,6 +357,29 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 156 | Comparing the Three Providers | [`156-provider-comparison.md`](./content/07-ai-foundations/156-provider-comparison.md) | ✅ Written |
 | 157 | Foundations Review — the Model Decision Rule | [`157-model-decision-rule.md`](./content/07-ai-foundations/157-model-decision-rule.md) | ✅ Written |
 
+## Module 8 — AI Application Engineering
+> Folder: [`08-ai-app-engineering/`](./content/08-ai-app-engineering/) · [Module overview](./content/08-ai-app-engineering/00-module-overview.md)
+
+### Milestone M19 — AI Application Engineering
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 158 | AI Application Architecture | [`158-ai-app-architecture.md`](./content/08-ai-app-engineering/158-ai-app-architecture.md) | ✅ Written |
+| 159 | LLM API Integration Patterns | [`159-llm-integration.md`](./content/08-ai-app-engineering/159-llm-integration.md) | ✅ Written |
+| 160 | The Vercel AI SDK | [`160-vercel-ai-sdk.md`](./content/08-ai-app-engineering/160-vercel-ai-sdk.md) | ✅ Written |
+| 161 | AI SDK Patterns (streams, parts, tool calls) | [`161-ai-sdk-patterns.md`](./content/08-ai-app-engineering/161-ai-sdk-patterns.md) | ✅ Written |
+| 162 | Streaming UI | [`162-streaming-ui.md`](./content/08-ai-app-engineering/162-streaming-ui.md) | ✅ Written |
+| 163 | Structured Generation in Apps | [`163-structured-generation.md`](./content/08-ai-app-engineering/163-structured-generation.md) | ✅ Written |
+| 164 | Tool Calling in Applications | [`164-tool-calling-apps.md`](./content/08-ai-app-engineering/164-tool-calling-apps.md) | 📝 Queued |
+| 165 | AI Application State | [`165-ai-app-state.md`](./content/08-ai-app-engineering/165-ai-app-state.md) | 📝 Queued |
+| 166 | Conversation Management | [`166-conversation-management.md`](./content/08-ai-app-engineering/166-conversation-management.md) | 📝 Queued |
+| 167 | AI Memory | [`167-ai-memory.md`](./content/08-ai-app-engineering/167-ai-memory.md) | 📝 Queued |
+| 168 | Error Handling for LLM Calls | [`168-llm-error-handling.md`](./content/08-ai-app-engineering/168-llm-error-handling.md) | 📝 Queued |
+| 169 | Retry Strategies & Backoff | [`169-retry-backoff.md`](./content/08-ai-app-engineering/169-retry-backoff.md) | 📝 Queued |
+| 170 | Rate Limiting | [`170-rate-limiting.md`](./content/08-ai-app-engineering/170-rate-limiting.md) | 📝 Queued |
+| 171 | Caching LLM Responses | [`171-caching.md`](./content/08-ai-app-engineering/171-caching.md) | 📝 Queued |
+| 172 | AI API Security Fundamentals | [`172-ai-api-security.md`](./content/08-ai-app-engineering/172-ai-api-security.md) | 📝 Queued |
+| 173 | Production AI Patterns (synthesis) | [`173-production-ai-patterns.md`](./content/08-ai-app-engineering/173-production-ai-patterns.md) | 📝 Queued |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
