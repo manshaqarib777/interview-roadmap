@@ -369,12 +369,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 161 | AI SDK Patterns (streams, parts, tool calls) | [`161-ai-sdk-patterns.md`](./content/08-ai-app-engineering/161-ai-sdk-patterns.md) | ✅ Written |
 | 162 | Streaming UI | [`162-streaming-ui.md`](./content/08-ai-app-engineering/162-streaming-ui.md) | ✅ Written |
 | 163 | Structured Generation in Apps | [`163-structured-generation.md`](./content/08-ai-app-engineering/163-structured-generation.md) | ✅ Written |
-| 164 | Tool Calling in Applications | [`164-tool-calling-apps.md`](./content/08-ai-app-engineering/164-tool-calling-apps.md) | 📝 Queued |
-| 165 | AI Application State | [`165-ai-app-state.md`](./content/08-ai-app-engineering/165-ai-app-state.md) | 📝 Queued |
-| 166 | Conversation Management | [`166-conversation-management.md`](./content/08-ai-app-engineering/166-conversation-management.md) | 📝 Queued |
-| 167 | AI Memory | [`167-ai-memory.md`](./content/08-ai-app-engineering/167-ai-memory.md) | 📝 Queued |
-| 168 | Error Handling for LLM Calls | [`168-llm-error-handling.md`](./content/08-ai-app-engineering/168-llm-error-handling.md) | 📝 Queued |
-| 169 | Retry Strategies & Backoff | [`169-retry-backoff.md`](./content/08-ai-app-engineering/169-retry-backoff.md) | 📝 Queued |
+| 164 | Tool Calling in Applications | [`164-tool-calling-apps.md`](./content/08-ai-app-engineering/164-tool-calling-apps.md) | ✅ Written |
+| 165 | AI Application State | [`165-ai-app-state.md`](./content/08-ai-app-engineering/165-ai-app-state.md) | ✅ Written |
+| 166 | Conversation Management | [`166-conversation-management.md`](./content/08-ai-app-engineering/166-conversation-management.md) | ✅ Written |
+| 167 | AI Memory | [`167-ai-memory.md`](./content/08-ai-app-engineering/167-ai-memory.md) | ✅ Written |
+| 168 | Error Handling for LLM Calls | [`168-llm-error-handling.md`](./content/08-ai-app-engineering/168-llm-error-handling.md) | ✅ Written |
+| 169 | Retry Strategies & Backoff | [`169-retry-backoff.md`](./content/08-ai-app-engineering/169-retry-backoff.md) | ✅ Written |
 | 170 | Rate Limiting | [`170-rate-limiting.md`](./content/08-ai-app-engineering/170-rate-limiting.md) | 📝 Queued |
 | 171 | Caching LLM Responses | [`171-caching.md`](./content/08-ai-app-engineering/171-caching.md) | 📝 Queued |
 | 172 | AI API Security Fundamentals | [`172-ai-api-security.md`](./content/08-ai-app-engineering/172-ai-api-security.md) | 📝 Queued |
