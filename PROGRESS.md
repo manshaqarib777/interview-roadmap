@@ -198,12 +198,12 @@ exercise runs correctly.
 - [x] L144 — Function calling & tool calling
 - [x] L145 — Streaming responses
 - [x] L146 — Multimodal models
-- [ ] L147 — Embeddings & vector semantics
-- [ ] L148 — Model selection & frontier families
-- [ ] L149 — Token management & budgeting
-- [ ] L150 — Cost optimization
-- [ ] L151 — Latency optimization
-- [ ] L152 — The OpenAI API
+- [x] L147 — Embeddings & vector semantics
+- [x] L148 — Model selection & frontier families
+- [x] L149 — Token management & budgeting
+- [x] L150 — Cost optimization
+- [x] L151 — Latency optimization
+- [x] L152 — The OpenAI API
 - [ ] L153 — The Anthropic API
 - [ ] L154 — The Google Gemini API
 - [ ] L155 — Provider abstraction & model routing

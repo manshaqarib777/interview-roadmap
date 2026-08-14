@@ -345,12 +345,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 144 | Function Calling & Tool Calling | [`144-function-calling.md`](./content/07-ai-foundations/144-function-calling.md) | ✅ Written |
 | 145 | Streaming Responses | [`145-streaming.md`](./content/07-ai-foundations/145-streaming.md) | ✅ Written |
 | 146 | Multimodal Models | [`146-multimodal.md`](./content/07-ai-foundations/146-multimodal.md) | ✅ Written |
-| 147 | Embeddings & Vector Semantics | [`147-embeddings.md`](./content/07-ai-foundations/147-embeddings.md) | 📝 Queued |
-| 148 | Model Selection & Frontier Families | [`148-model-selection.md`](./content/07-ai-foundations/148-model-selection.md) | 📝 Queued |
-| 149 | Token Management & Budgeting | [`149-token-budgeting.md`](./content/07-ai-foundations/149-token-budgeting.md) | 📝 Queued |
-| 150 | Cost Optimization | [`150-cost-optimization.md`](./content/07-ai-foundations/150-cost-optimization.md) | 📝 Queued |
-| 151 | Latency Optimization | [`151-latency-optimization.md`](./content/07-ai-foundations/151-latency-optimization.md) | 📝 Queued |
-| 152 | The OpenAI API | [`152-openai-api.md`](./content/07-ai-foundations/152-openai-api.md) | 📝 Queued |
+| 147 | Embeddings & Vector Semantics | [`147-embeddings.md`](./content/07-ai-foundations/147-embeddings.md) | ✅ Written |
+| 148 | Model Selection & Frontier Families | [`148-model-selection.md`](./content/07-ai-foundations/148-model-selection.md) | ✅ Written |
+| 149 | Token Management & Budgeting | [`149-token-budgeting.md`](./content/07-ai-foundations/149-token-budgeting.md) | ✅ Written |
+| 150 | Cost Optimization | [`150-cost-optimization.md`](./content/07-ai-foundations/150-cost-optimization.md) | ✅ Written |
+| 151 | Latency Optimization | [`151-latency-optimization.md`](./content/07-ai-foundations/151-latency-optimization.md) | ✅ Written |
+| 152 | The OpenAI API | [`152-openai-api.md`](./content/07-ai-foundations/152-openai-api.md) | ✅ Written |
 | 153 | The Anthropic API | [`153-anthropic-api.md`](./content/07-ai-foundations/153-anthropic-api.md) | 📝 Queued |
 | 154 | The Google Gemini API | [`154-gemini-api.md`](./content/07-ai-foundations/154-gemini-api.md) | 📝 Queued |
 | 155 | Provider Abstraction & Model Routing | [`155-provider-abstraction.md`](./content/07-ai-foundations/155-provider-abstraction.md) | 📝 Queued |
