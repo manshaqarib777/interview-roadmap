@@ -437,6 +437,29 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 215 | LangGraph | [`215-langgraph.md`](./content/10-ai-agents/215-langgraph.md) | ✅ Written |
 | 216 | MCP & Production Agent Architecture (synthesis) | [`216-mcp-agent-architecture.md`](./content/10-ai-agents/216-mcp-agent-architecture.md) | ✅ Written |
 
+## Module 11 — AI Automation
+> Folder: [`11-ai-automation/`](./content/11-ai-automation/) · [Module overview](./content/11-ai-automation/00-module-overview.md)
+
+### Milestone M22 — AI Automation
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 217 | AI Workflows | [`217-ai-workflows.md`](./content/11-ai-automation/217-ai-workflows.md) | ✅ Written |
+| 218 | n8n | [`218-n8n.md`](./content/11-ai-automation/218-n8n.md) | ✅ Written |
+| 219 | Make | [`219-make.md`](./content/11-ai-automation/219-make.md) | ✅ Written |
+| 220 | Webhooks & Event-Driven Automation | [`220-webhooks.md`](./content/11-ai-automation/220-webhooks.md) | ✅ Written |
+| 221 | Scheduled Jobs & Cron for AI | [`221-scheduled-jobs.md`](./content/11-ai-automation/221-scheduled-jobs.md) | ✅ Written |
+| 222 | Queues & Background Workers for AI | [`222-queues-workers.md`](./content/11-ai-automation/222-queues-workers.md) | ✅ Written |
+| 223 | AI + CRM | [`223-ai-crm.md`](./content/11-ai-automation/223-ai-crm.md) | 📝 Queued |
+| 224 | AI + Email | [`224-ai-email.md`](./content/11-ai-automation/224-ai-email.md) | 📝 Queued |
+| 225 | AI + Slack / Messaging | [`225-ai-slack.md`](./content/11-ai-automation/225-ai-slack.md) | 📝 Queued |
+| 226 | AI + Databases | [`226-ai-databases.md`](./content/11-ai-automation/226-ai-databases.md) | 📝 Queued |
+| 227 | AI + External APIs | [`227-ai-external-apis.md`](./content/11-ai-automation/227-ai-external-apis.md) | 📝 Queued |
+| 228 | Human Approval Workflows | [`228-approval-workflows.md`](./content/11-ai-automation/228-approval-workflows.md) | 📝 Queued |
+| 229 | Business Process Automation | [`229-business-process.md`](./content/11-ai-automation/229-business-process.md) | 📝 Queued |
+| 230 | AI Automation Architecture | [`230-automation-architecture.md`](./content/11-ai-automation/230-automation-architecture.md) | 📝 Queued |
+| 231 | Multi-Agent Automation | [`231-multi-agent-automation.md`](./content/11-ai-automation/231-multi-agent-automation.md) | 📝 Queued |
+| 232 | Automation Failure & Recovery | [`232-automation-recovery.md`](./content/11-ai-automation/232-automation-recovery.md) | 📝 Queued |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
