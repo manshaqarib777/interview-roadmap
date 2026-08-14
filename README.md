@@ -429,13 +429,13 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 207 | Agent State & Persistence | [`207-agent-state.md`](./content/10-ai-agents/207-agent-state.md) | ✅ Written |
 | 208 | Human-in-the-Loop | [`208-human-in-the-loop.md`](./content/10-ai-agents/208-human-in-the-loop.md) | ✅ Written |
 | 209 | Guardrails for Agents | [`209-guardrails.md`](./content/10-ai-agents/209-guardrails.md) | ✅ Written |
-| 210 | Multi-Agent Systems | [`210-multi-agent.md`](./content/10-ai-agents/210-multi-agent.md) | 📝 Queued |
-| 211 | Agent Failure Modes | [`211-agent-failure-modes.md`](./content/10-ai-agents/211-agent-failure-modes.md) | 📝 Queued |
-| 212 | Agent Security | [`212-agent-security.md`](./content/10-ai-agents/212-agent-security.md) | 📝 Queued |
-| 213 | Agent Observability | [`213-agent-observability.md`](./content/10-ai-agents/213-agent-observability.md) | 📝 Queued |
-| 214 | LangChain | [`214-langchain.md`](./content/10-ai-agents/214-langchain.md) | 📝 Queued |
-| 215 | LangGraph | [`215-langgraph.md`](./content/10-ai-agents/215-langgraph.md) | 📝 Queued |
-| 216 | MCP & Production Agent Architecture (synthesis) | [`216-mcp-agent-architecture.md`](./content/10-ai-agents/216-mcp-agent-architecture.md) | 📝 Queued |
+| 210 | Multi-Agent Systems | [`210-multi-agent.md`](./content/10-ai-agents/210-multi-agent.md) | ✅ Written |
+| 211 | Agent Failure Modes | [`211-agent-failure-modes.md`](./content/10-ai-agents/211-agent-failure-modes.md) | ✅ Written |
+| 212 | Agent Security | [`212-agent-security.md`](./content/10-ai-agents/212-agent-security.md) | ✅ Written |
+| 213 | Agent Observability | [`213-agent-observability.md`](./content/10-ai-agents/213-agent-observability.md) | ✅ Written |
+| 214 | LangChain | [`214-langchain.md`](./content/10-ai-agents/214-langchain.md) | ✅ Written |
+| 215 | LangGraph | [`215-langgraph.md`](./content/10-ai-agents/215-langgraph.md) | ✅ Written |
+| 216 | MCP & Production Agent Architecture (synthesis) | [`216-mcp-agent-architecture.md`](./content/10-ai-agents/216-mcp-agent-architecture.md) | ✅ Written |
 
 ---
 

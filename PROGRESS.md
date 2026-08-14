@@ -273,13 +273,13 @@ exercise runs correctly.
 - [x] L207 — Agent State & Persistence
 - [x] L208 — Human-in-the-Loop
 - [x] L209 — Guardrails for Agents
-- [ ] L210 — Multi-Agent Systems
-- [ ] L211 — Agent Failure Modes
-- [ ] L212 — Agent Security
-- [ ] L213 — Agent Observability
-- [ ] L214 — LangChain
-- [ ] L215 — LangGraph
-- [ ] L216 — MCP & Production Agent Architecture (synthesis)
+- [x] L210 — Multi-Agent Systems
+- [x] L211 — Agent Failure Modes
+- [x] L212 — Agent Security
+- [x] L213 — Agent Observability
+- [x] L214 — LangChain
+- [x] L215 — LangGraph
+- [x] L216 — MCP & Production Agent Architecture (synthesis)
 
 ---
 
