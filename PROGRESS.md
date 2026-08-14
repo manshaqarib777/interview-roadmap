@@ -245,12 +245,12 @@ exercise runs correctly.
 - [x] L183 — PostgreSQL + pgvector
 - [x] L184 — Pinecone
 - [x] L185 — Qdrant
-- [ ] L186 — Vector Database Selection
-- [ ] L187 — Hybrid Search
-- [ ] L188 — Keyword vs Semantic Search
-- [ ] L189 — Retrieval (top-k, filters, scoring)
-- [ ] L190 — Reranking
-- [ ] L191 — Context Construction
+- [x] L186 — Vector Database Selection
+- [x] L187 — Hybrid Search
+- [x] L188 — Keyword vs Semantic Search
+- [x] L189 — Retrieval (top-k, filters, scoring)
+- [x] L190 — Reranking
+- [x] L191 — Context Construction
 - [ ] L192 — Citations & Source Attribution
 - [ ] L193 — Query Rewriting
 - [ ] L194 — Contextual Retrieval

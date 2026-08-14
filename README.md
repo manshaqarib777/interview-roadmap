@@ -398,12 +398,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 183 | PostgreSQL + pgvector | [`183-pgvector.md`](./content/09-rag-knowledge/183-pgvector.md) | ✅ Written |
 | 184 | Pinecone | [`184-pinecone.md`](./content/09-rag-knowledge/184-pinecone.md) | ✅ Written |
 | 185 | Qdrant | [`185-qdrant.md`](./content/09-rag-knowledge/185-qdrant.md) | ✅ Written |
-| 186 | Vector Database Selection | [`186-vector-db-selection.md`](./content/09-rag-knowledge/186-vector-db-selection.md) | 📝 Queued |
-| 187 | Hybrid Search | [`187-hybrid-search.md`](./content/09-rag-knowledge/187-hybrid-search.md) | 📝 Queued |
-| 188 | Keyword vs Semantic Search | [`188-keyword-vs-semantic.md`](./content/09-rag-knowledge/188-keyword-vs-semantic.md) | 📝 Queued |
-| 189 | Retrieval (top-k, filters, scoring) | [`189-retrieval.md`](./content/09-rag-knowledge/189-retrieval.md) | 📝 Queued |
-| 190 | Reranking | [`190-reranking.md`](./content/09-rag-knowledge/190-reranking.md) | 📝 Queued |
-| 191 | Context Construction | [`191-context-construction.md`](./content/09-rag-knowledge/191-context-construction.md) | 📝 Queued |
+| 186 | Vector Database Selection | [`186-vector-db-selection.md`](./content/09-rag-knowledge/186-vector-db-selection.md) | ✅ Written |
+| 187 | Hybrid Search | [`187-hybrid-search.md`](./content/09-rag-knowledge/187-hybrid-search.md) | ✅ Written |
+| 188 | Keyword vs Semantic Search | [`188-keyword-vs-semantic.md`](./content/09-rag-knowledge/188-keyword-vs-semantic.md) | ✅ Written |
+| 189 | Retrieval (top-k, filters, scoring) | [`189-retrieval.md`](./content/09-rag-knowledge/189-retrieval.md) | ✅ Written |
+| 190 | Reranking | [`190-reranking.md`](./content/09-rag-knowledge/190-reranking.md) | ✅ Written |
+| 191 | Context Construction | [`191-context-construction.md`](./content/09-rag-knowledge/191-context-construction.md) | ✅ Written |
 | 192 | Citations & Source Attribution | [`192-citations.md`](./content/09-rag-knowledge/192-citations.md) | 📝 Queued |
 | 193 | Query Rewriting | [`193-query-rewriting.md`](./content/09-rag-knowledge/193-query-rewriting.md) | 📝 Queued |
 | 194 | Contextual Retrieval | [`194-contextual-retrieval.md`](./content/09-rag-knowledge/194-contextual-retrieval.md) | 📝 Queued |
