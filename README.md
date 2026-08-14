@@ -449,12 +449,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 220 | Webhooks & Event-Driven Automation | [`220-webhooks.md`](./content/11-ai-automation/220-webhooks.md) | ✅ Written |
 | 221 | Scheduled Jobs & Cron for AI | [`221-scheduled-jobs.md`](./content/11-ai-automation/221-scheduled-jobs.md) | ✅ Written |
 | 222 | Queues & Background Workers for AI | [`222-queues-workers.md`](./content/11-ai-automation/222-queues-workers.md) | ✅ Written |
-| 223 | AI + CRM | [`223-ai-crm.md`](./content/11-ai-automation/223-ai-crm.md) | 📝 Queued |
-| 224 | AI + Email | [`224-ai-email.md`](./content/11-ai-automation/224-ai-email.md) | 📝 Queued |
-| 225 | AI + Slack / Messaging | [`225-ai-slack.md`](./content/11-ai-automation/225-ai-slack.md) | 📝 Queued |
-| 226 | AI + Databases | [`226-ai-databases.md`](./content/11-ai-automation/226-ai-databases.md) | 📝 Queued |
-| 227 | AI + External APIs | [`227-ai-external-apis.md`](./content/11-ai-automation/227-ai-external-apis.md) | 📝 Queued |
-| 228 | Human Approval Workflows | [`228-approval-workflows.md`](./content/11-ai-automation/228-approval-workflows.md) | 📝 Queued |
+| 223 | AI + CRM | [`223-ai-crm.md`](./content/11-ai-automation/223-ai-crm.md) | ✅ Written |
+| 224 | AI + Email | [`224-ai-email.md`](./content/11-ai-automation/224-ai-email.md) | ✅ Written |
+| 225 | AI + Slack / Messaging | [`225-ai-slack.md`](./content/11-ai-automation/225-ai-slack.md) | ✅ Written |
+| 226 | AI + Databases | [`226-ai-databases.md`](./content/11-ai-automation/226-ai-databases.md) | ✅ Written |
+| 227 | AI + External APIs | [`227-ai-external-apis.md`](./content/11-ai-automation/227-ai-external-apis.md) | ✅ Written |
+| 228 | Human Approval Workflows | [`228-approval-workflows.md`](./content/11-ai-automation/228-approval-workflows.md) | ✅ Written |
 | 229 | Business Process Automation | [`229-business-process.md`](./content/11-ai-automation/229-business-process.md) | 📝 Queued |
 | 230 | AI Automation Architecture | [`230-automation-architecture.md`](./content/11-ai-automation/230-automation-architecture.md) | 📝 Queued |
 | 231 | Multi-Agent Automation | [`231-multi-agent-automation.md`](./content/11-ai-automation/231-multi-agent-automation.md) | 📝 Queued |

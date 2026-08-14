@@ -290,12 +290,12 @@ exercise runs correctly.
 - [x] L220 — Webhooks & Event-Driven Automation
 - [x] L221 — Scheduled Jobs & Cron for AI
 - [x] L222 — Queues & Background Workers for AI
-- [ ] L223 — AI + CRM
-- [ ] L224 — AI + Email
-- [ ] L225 — AI + Slack / Messaging
-- [ ] L226 — AI + Databases
-- [ ] L227 — AI + External APIs
-- [ ] L228 — Human Approval Workflows
+- [x] L223 — AI + CRM
+- [x] L224 — AI + Email
+- [x] L225 — AI + Slack / Messaging
+- [x] L226 — AI + Databases
+- [x] L227 — AI + External APIs
+- [x] L228 — Human Approval Workflows
 - [ ] L229 — Business Process Automation
 - [ ] L230 — AI Automation Architecture
 - [ ] L231 — Multi-Agent Automation
