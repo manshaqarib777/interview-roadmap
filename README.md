@@ -351,11 +351,11 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 150 | Cost Optimization | [`150-cost-optimization.md`](./content/07-ai-foundations/150-cost-optimization.md) | ✅ Written |
 | 151 | Latency Optimization | [`151-latency-optimization.md`](./content/07-ai-foundations/151-latency-optimization.md) | ✅ Written |
 | 152 | The OpenAI API | [`152-openai-api.md`](./content/07-ai-foundations/152-openai-api.md) | ✅ Written |
-| 153 | The Anthropic API | [`153-anthropic-api.md`](./content/07-ai-foundations/153-anthropic-api.md) | 📝 Queued |
-| 154 | The Google Gemini API | [`154-gemini-api.md`](./content/07-ai-foundations/154-gemini-api.md) | 📝 Queued |
-| 155 | Provider Abstraction & Model Routing | [`155-provider-abstraction.md`](./content/07-ai-foundations/155-provider-abstraction.md) | 📝 Queued |
-| 156 | Comparing the Three Providers | [`156-provider-comparison.md`](./content/07-ai-foundations/156-provider-comparison.md) | 📝 Queued |
-| 157 | Foundations Review — the Model Decision Rule | [`157-model-decision-rule.md`](./content/07-ai-foundations/157-model-decision-rule.md) | 📝 Queued |
+| 153 | The Anthropic API | [`153-anthropic-api.md`](./content/07-ai-foundations/153-anthropic-api.md) | ✅ Written |
+| 154 | The Google Gemini API | [`154-gemini-api.md`](./content/07-ai-foundations/154-gemini-api.md) | ✅ Written |
+| 155 | Provider Abstraction & Model Routing | [`155-provider-abstraction.md`](./content/07-ai-foundations/155-provider-abstraction.md) | ✅ Written |
+| 156 | Comparing the Three Providers | [`156-provider-comparison.md`](./content/07-ai-foundations/156-provider-comparison.md) | ✅ Written |
+| 157 | Foundations Review — the Model Decision Rule | [`157-model-decision-rule.md`](./content/07-ai-foundations/157-model-decision-rule.md) | ✅ Written |
 
 ---
 

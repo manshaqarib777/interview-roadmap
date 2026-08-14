@@ -204,11 +204,11 @@ exercise runs correctly.
 - [x] L150 — Cost optimization
 - [x] L151 — Latency optimization
 - [x] L152 — The OpenAI API
-- [ ] L153 — The Anthropic API
-- [ ] L154 — The Google Gemini API
-- [ ] L155 — Provider abstraction & model routing
-- [ ] L156 — Comparing the three providers
-- [ ] L157 — Foundations review — the model decision rule
+- [x] L153 — The Anthropic API
+- [x] L154 — The Google Gemini API
+- [x] L155 — Provider abstraction & model routing
+- [x] L156 — Comparing the three providers
+- [x] L157 — Foundations review — the model decision rule
 
 ---
 
