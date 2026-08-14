@@ -230,6 +230,34 @@ exercise runs correctly.
 - [x] L172 — AI API security fundamentals
 - [x] L173 — Production AI patterns (synthesis)
 
+## Module 9 — RAG / Knowledge Systems
+
+### M20 · RAG / Knowledge Systems
+- [x] L174 — RAG Fundamentals
+- [x] L175 — RAG Architecture
+- [x] L176 — Document Ingestion Pipelines
+- [x] L177 — PDF Processing & Text Extraction
+- [x] L178 — Chunking Fundamentals
+- [x] L179 — Chunking Strategies
+- [x] L180 — Metadata for Retrieval
+- [x] L181 — Embeddings for RAG
+- [x] L182 — Vector Databases
+- [x] L183 — PostgreSQL + pgvector
+- [x] L184 — Pinecone
+- [x] L185 — Qdrant
+- [ ] L186 — Vector Database Selection
+- [ ] L187 — Hybrid Search
+- [ ] L188 — Keyword vs Semantic Search
+- [ ] L189 — Retrieval (top-k, filters, scoring)
+- [ ] L190 — Reranking
+- [ ] L191 — Context Construction
+- [ ] L192 — Citations & Source Attribution
+- [ ] L193 — Query Rewriting
+- [ ] L194 — Contextual Retrieval
+- [ ] L195 — RAG Evaluation
+- [ ] L196 — RAG Failure Modes
+- [ ] L197 — Production RAG Architecture (synthesis)
+
 ---
 
 ## Interview Readiness Checklist

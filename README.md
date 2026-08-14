@@ -380,6 +380,37 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 172 | AI API Security Fundamentals | [`172-ai-api-security.md`](./content/08-ai-app-engineering/172-ai-api-security.md) | ✅ Written |
 | 173 | Production AI Patterns (synthesis) | [`173-production-ai-patterns.md`](./content/08-ai-app-engineering/173-production-ai-patterns.md) | ✅ Written |
 
+## Module 9 — RAG / Knowledge Systems
+> Folder: [`09-rag-knowledge/`](./content/09-rag-knowledge/) · [Module overview](./content/09-rag-knowledge/00-module-overview.md)
+
+### Milestone M20 — RAG / Knowledge Systems
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 174 | RAG Fundamentals | [`174-rag-fundamentals.md`](./content/09-rag-knowledge/174-rag-fundamentals.md) | ✅ Written |
+| 175 | RAG Architecture | [`175-rag-architecture.md`](./content/09-rag-knowledge/175-rag-architecture.md) | ✅ Written |
+| 176 | Document Ingestion Pipelines | [`176-document-ingestion.md`](./content/09-rag-knowledge/176-document-ingestion.md) | ✅ Written |
+| 177 | PDF Processing & Text Extraction | [`177-pdf-processing.md`](./content/09-rag-knowledge/177-pdf-processing.md) | ✅ Written |
+| 178 | Chunking Fundamentals | [`178-chunking.md`](./content/09-rag-knowledge/178-chunking.md) | ✅ Written |
+| 179 | Chunking Strategies | [`179-chunking-strategies.md`](./content/09-rag-knowledge/179-chunking-strategies.md) | ✅ Written |
+| 180 | Metadata for Retrieval | [`180-metadata.md`](./content/09-rag-knowledge/180-metadata.md) | ✅ Written |
+| 181 | Embeddings for RAG | [`181-embeddings-rag.md`](./content/09-rag-knowledge/181-embeddings-rag.md) | ✅ Written |
+| 182 | Vector Databases | [`182-vector-databases.md`](./content/09-rag-knowledge/182-vector-databases.md) | ✅ Written |
+| 183 | PostgreSQL + pgvector | [`183-pgvector.md`](./content/09-rag-knowledge/183-pgvector.md) | ✅ Written |
+| 184 | Pinecone | [`184-pinecone.md`](./content/09-rag-knowledge/184-pinecone.md) | ✅ Written |
+| 185 | Qdrant | [`185-qdrant.md`](./content/09-rag-knowledge/185-qdrant.md) | ✅ Written |
+| 186 | Vector Database Selection | [`186-vector-db-selection.md`](./content/09-rag-knowledge/186-vector-db-selection.md) | 📝 Queued |
+| 187 | Hybrid Search | [`187-hybrid-search.md`](./content/09-rag-knowledge/187-hybrid-search.md) | 📝 Queued |
+| 188 | Keyword vs Semantic Search | [`188-keyword-vs-semantic.md`](./content/09-rag-knowledge/188-keyword-vs-semantic.md) | 📝 Queued |
+| 189 | Retrieval (top-k, filters, scoring) | [`189-retrieval.md`](./content/09-rag-knowledge/189-retrieval.md) | 📝 Queued |
+| 190 | Reranking | [`190-reranking.md`](./content/09-rag-knowledge/190-reranking.md) | 📝 Queued |
+| 191 | Context Construction | [`191-context-construction.md`](./content/09-rag-knowledge/191-context-construction.md) | 📝 Queued |
+| 192 | Citations & Source Attribution | [`192-citations.md`](./content/09-rag-knowledge/192-citations.md) | 📝 Queued |
+| 193 | Query Rewriting | [`193-query-rewriting.md`](./content/09-rag-knowledge/193-query-rewriting.md) | 📝 Queued |
+| 194 | Contextual Retrieval | [`194-contextual-retrieval.md`](./content/09-rag-knowledge/194-contextual-retrieval.md) | 📝 Queued |
+| 195 | RAG Evaluation | [`195-rag-evaluation.md`](./content/09-rag-knowledge/195-rag-evaluation.md) | 📝 Queued |
+| 196 | RAG Failure Modes | [`196-rag-failure-modes.md`](./content/09-rag-knowledge/196-rag-failure-modes.md) | 📝 Queued |
+| 197 | Production RAG Architecture (synthesis) | [`197-production-rag.md`](./content/09-rag-knowledge/197-production-rag.md) | 📝 Queued |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
