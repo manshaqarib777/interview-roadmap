@@ -455,10 +455,10 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 226 | AI + Databases | [`226-ai-databases.md`](./content/11-ai-automation/226-ai-databases.md) | ✅ Written |
 | 227 | AI + External APIs | [`227-ai-external-apis.md`](./content/11-ai-automation/227-ai-external-apis.md) | ✅ Written |
 | 228 | Human Approval Workflows | [`228-approval-workflows.md`](./content/11-ai-automation/228-approval-workflows.md) | ✅ Written |
-| 229 | Business Process Automation | [`229-business-process.md`](./content/11-ai-automation/229-business-process.md) | 📝 Queued |
-| 230 | AI Automation Architecture | [`230-automation-architecture.md`](./content/11-ai-automation/230-automation-architecture.md) | 📝 Queued |
-| 231 | Multi-Agent Automation | [`231-multi-agent-automation.md`](./content/11-ai-automation/231-multi-agent-automation.md) | 📝 Queued |
-| 232 | Automation Failure & Recovery | [`232-automation-recovery.md`](./content/11-ai-automation/232-automation-recovery.md) | 📝 Queued |
+| 229 | Business Process Automation | [`229-business-process.md`](./content/11-ai-automation/229-business-process.md) | ✅ Written |
+| 230 | AI Automation Architecture | [`230-automation-architecture.md`](./content/11-ai-automation/230-automation-architecture.md) | ✅ Written |
+| 231 | Multi-Agent Automation | [`231-multi-agent-automation.md`](./content/11-ai-automation/231-multi-agent-automation.md) | ✅ Written |
+| 232 | Automation Failure & Recovery | [`232-automation-recovery.md`](./content/11-ai-automation/232-automation-recovery.md) | ✅ Written |
 
 ---
 

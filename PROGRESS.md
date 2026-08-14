@@ -296,10 +296,10 @@ exercise runs correctly.
 - [x] L226 — AI + Databases
 - [x] L227 — AI + External APIs
 - [x] L228 — Human Approval Workflows
-- [ ] L229 — Business Process Automation
-- [ ] L230 — AI Automation Architecture
-- [ ] L231 — Multi-Agent Automation
-- [ ] L232 — Automation Failure & Recovery
+- [x] L229 — Business Process Automation
+- [x] L230 — AI Automation Architecture
+- [x] L231 — Multi-Agent Automation
+- [x] L232 — Automation Failure & Recovery
 
 ---
 
