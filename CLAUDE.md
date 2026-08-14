@@ -22,7 +22,7 @@ Markdown → HTML and syntax highlighting happen **at build time** (`src/lib/con
 Nothing is per-request; every route is prerendered. Editing a `.md` file is all it
 takes to change a page — never hard-code lesson prose into a component.
 
-**The curriculum is data.** `src/lib/curriculum.ts` holds all 104 lessons as tuples
+**The curriculum is data.** `src/lib/curriculum.ts` holds all lessons as tuples
 (number, title, file, difficulty, interview frequency, prerequisites, why-it-matters).
 The dashboard, the knowledge graph, breadcrumbs, sitemap, OG cards and JSON-LD are all
 projections of that one table. Add a lesson there, and every one of those updates.
@@ -34,7 +34,7 @@ Never duplicate curriculum facts in a component.
 
 ```bash
 npm run dev        # http://localhost:3000
-npm run build      # prerenders 109 pages + 104 OG images (~50s)
+npm run build      # prerenders all lesson pages + OG images (~1-2 min)
 npm run typecheck  # tsc --noEmit
 npm run verify     # typecheck + build — run this before every commit
 npm run narrate    # regenerate code narration (needs ANTHROPIC_API_KEY)

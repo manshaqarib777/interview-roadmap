@@ -4,7 +4,7 @@ import { MODULES, TOTAL_LESSONS } from '@/lib/curriculum';
 import { Chip, Footer, Frame, OG_SIZE, Wordmark } from '@/lib/og';
 import { SITE_URL } from '@/lib/seo';
 
-export const alt = `Interview Roadmap — ${TOTAL_LESSONS} React, TypeScript and Next.js concepts, each revisable in ten minutes`;
+export const alt = `Interview Roadmap — ${TOTAL_LESSONS} concepts, each revisable in ten minutes`;
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 

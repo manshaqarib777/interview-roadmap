@@ -51,7 +51,7 @@ export default async function DashboardPage() {
             <span className="pill">In progress</span>
           </div>
           <p className="mt-1.5 max-w-xl text-[15px] text-muted-foreground">
-            {TOTAL_LESSONS} concepts across JavaScript, TypeScript, React, Next.js and Laravel. Each one
+            {TOTAL_LESSONS} concepts across JavaScript, TypeScript, React, Next.js, Laravel and AI. Each one
             is built to be revised in under ten minutes — definition, mental model, internals,
             trade-offs, cheat sheet.
           </p>

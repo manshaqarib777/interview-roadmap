@@ -1,9 +1,11 @@
 import {
-  ArrowLeft, ArrowRight, Atom, BookOpen, Bookmark, Braces, Check, CheckCircle2,
-  ChevronDown, ChevronRight, Clock, Command, Copy, Eye, Flame, Gauge, Layers,
-  Lock, Menu, MessageSquare, Minus, Moon, Network, Pencil, Play, Plus,
-  RotateCcw, Search, Server, SlidersHorizontal, Sparkles, Square, Sun, Target, Terminal,
-  Triangle, Trophy, Type, X, Zap, type LucideIcon,
+  Activity, ArrowLeft, ArrowRight, Atom, BookOpen, Bookmark, Bot, Braces,
+  Building2, Check, CheckCircle2, ChevronDown, ChevronRight, Clock, Cloud,
+  Command, Container, Copy, Cpu, Database, Eye, Flame, Gauge, GitBranch,
+  Layers, Lock, Menu, MessageSquare, Minus, Moon, Network, Pencil, Play,
+  Plus, RotateCcw, Search, Server, Shield, SlidersHorizontal, Sparkles,
+  Square, Sun, Target, Terminal, Triangle, Trophy, Type, Workflow, X, Zap,
+  type LucideIcon,
 } from 'lucide-react';
 
 /**
@@ -25,6 +27,10 @@ const MAP = {
   clock: Clock, trophy: Trophy, eye: Eye, sliders: SlidersHorizontal,
   menu: Menu, x: X, plus: Plus, minus: Minus, gauge: Gauge, lock: Lock,
   server: Server,
+  // AI-module glyphs (Modules 7-19)
+  activity: Activity, bot: Bot, building: Building2, cloud: Cloud,
+  container: Container, cpu: Cpu, database: Database, gitBranch: GitBranch,
+  shield: Shield, workflow: Workflow,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof MAP;
@@ -65,4 +71,17 @@ export const MODULE_ICON: Record<string, IconName> = {
   nextjs: 'triangle',
   'interview-prep': 'message',
   laravel: 'server',
+  'ai-foundations': 'sparkles',
+  'ai-app-engineering': 'cpu',
+  'rag-knowledge': 'database',
+  'ai-agents': 'bot',
+  'ai-automation': 'workflow',
+  'backend-ai': 'server',
+  'cloud-aws-ai': 'cloud',
+  'docker-devops-ai': 'container',
+  'ai-security': 'shield',
+  'ai-observability': 'activity',
+  'ai-system-design': 'gitBranch',
+  'enterprise-ai': 'building',
+  'ai-capstones': 'target',
 };

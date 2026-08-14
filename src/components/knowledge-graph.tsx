@@ -27,6 +27,19 @@ const ACCENT: Record<string, string> = {
   violet: 'var(--acc-violet)',
   emerald: 'var(--acc-emerald)',
   red: 'var(--acc-red)',
+  lime: 'var(--acc-lime)',
+  teal: 'var(--acc-teal)',
+  indigo: 'var(--acc-indigo)',
+  fuchsia: 'var(--acc-fuchsia)',
+  orange: 'var(--acc-orange)',
+  pink: 'var(--acc-pink)',
+  slate: 'var(--acc-slate)',
+  blue: 'var(--acc-blue)',
+  green: 'var(--acc-green)',
+  purple: 'var(--acc-purple)',
+  rose: 'var(--acc-rose)',
+  copper: 'var(--acc-copper)',
+  steel: 'var(--acc-steel)',
 };
 
 /** var() can't take a hex alpha suffix — mix instead. */

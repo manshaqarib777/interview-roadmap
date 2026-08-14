@@ -183,6 +183,33 @@ exercise runs correctly.
 - [ ] L133 — Laravel API + Next.js & payments
 - [ ] L134 — Multi-tenancy & system design
 
+## Module 7 — AI & LLM Foundations
+
+### M18 · AI & LLM Foundations
+- [ ] L135 — What an LLM is
+- [ ] L136 — The Transformer & attention mechanism
+- [ ] L137 — Tokens & tokenization
+- [ ] L138 — Context windows & input limits
+- [ ] L139 — Temperature, top-p & sampling
+- [ ] L140 — Model capabilities
+- [ ] L141 — Model limitations
+- [ ] L142 — Prompt engineering & system/user/developer instructions
+- [ ] L143 — Structured outputs & JSON schemas
+- [ ] L144 — Function calling & tool calling
+- [ ] L145 — Streaming responses
+- [ ] L146 — Multimodal models
+- [ ] L147 — Embeddings & vector semantics
+- [ ] L148 — Model selection & frontier families
+- [ ] L149 — Token management & budgeting
+- [ ] L150 — Cost optimization
+- [ ] L151 — Latency optimization
+- [ ] L152 — The OpenAI API
+- [ ] L153 — The Anthropic API
+- [ ] L154 — The Google Gemini API
+- [ ] L155 — Provider abstraction & model routing
+- [ ] L156 — Comparing the three providers
+- [ ] L157 — Foundations review — the model decision rule
+
 ---
 
 ## Interview Readiness Checklist

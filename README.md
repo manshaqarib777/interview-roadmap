@@ -86,6 +86,19 @@ layers interaction on top. Editing a `.md` file is all it takes to update a page
 | M15 | **Eloquent & the Database** | 6 (L115–L121) | You can model any relationship, kill N+1 with eager loading, and design a schema with migrations and transactions |
 | M16 | **Auth, Queues & Async** | 6 (L122–L129) | You can explain auth vs authorization, why queues exist, how caching invalidation works, and the full test pyramid |
 | M17 | **Senior & Full-Stack** | 6 (L130–L134) | You can answer the senior scenarios — slow API, overselling, dead Redis, broken deploy, leaking tenants — with a decision rule, not a guess |
+| M18 | **AI & LLM Foundations** | 7 (L135–L157) | You can classify any model, budget tokens, and pick a provider with a decision rule |
+| M19 | **AI Application Engineering** | 8 (L158–L173) | You can build a streaming, tool-calling AI app with the Vercel AI SDK |
+| M20 | **RAG / Knowledge Systems** | 9 (L174–L197) | You can design an ingestion → retrieval → synthesis pipeline and evaluate it |
+| M21 | **AI Agents** | 10 (L198–L216) | You can build a guarded, observable agent loop with tools + HITL |
+| M22 | **AI Automation** | 11 (L217–L232) | You can turn a business process into an event-driven AI workflow |
+| M23 | **Backend & Distributed** | 12 (L233–L260) | You can design the async, fault-tolerant backend of an AI SaaS |
+| M24 | **Cloud & AWS for AI** | 13 (L261–L287) | You can deploy a Bedrock + Lambda + pgvector AI stack with cost controls |
+| M25 | **Docker / DevOps** | 14 (L288–L307) | You can ship an AI service through CI/CD with rollbacks |
+| M26 | **AI Security** | 15 (L308–L327) | You can threat-model an LLM app and close the OWASP LLM Top 10 |
+| M27 | **Observability & Evaluation** | 16 (L328–L346) | You can detect regressions and ground an eval dataset in CI |
+| M28 | **AI System Design** | 17 (L347–L358) | You can run any AI system-design prompt through the 4-phase spine |
+| M29 | **Enterprise AI Architecture** | 18 (L359–L380) | You can take a business requirement to an ADR + costed architecture |
+| M30 | **Capstone Projects** | 19 (L381–L386) | Six production-grade projects + a complete architecture case study |
 
 Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 
@@ -314,11 +327,41 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 133 | Laravel API + Next.js & Payments | [`133-api-nextjs-stripe.md`](./content/06-laravel/133-api-nextjs-stripe.md) | ✅ Written |
 | 134 | Multi-Tenancy & System Design | [`134-multitenancy.md`](./content/06-laravel/134-multitenancy.md) | ✅ Written |
 
+## Module 7 — AI & LLM Foundations
+> Folder: [`07-ai-foundations/`](./content/07-ai-foundations/) · [Module overview](./content/07-ai-foundations/00-module-overview.md)
+
+### Milestone M18 — AI & LLM Foundations
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 135 | What an LLM Is | [`135-what-is-an-llm.md`](./content/07-ai-foundations/135-what-is-an-llm.md) | 📝 Queued |
+| 136 | The Transformer & Attention Mechanism | [`136-transformer-attention.md`](./content/07-ai-foundations/136-transformer-attention.md) | 📝 Queued |
+| 137 | Tokens & Tokenization | [`137-tokens-tokenization.md`](./content/07-ai-foundations/137-tokens-tokenization.md) | 📝 Queued |
+| 138 | Context Windows & Input Limits | [`138-context-windows.md`](./content/07-ai-foundations/138-context-windows.md) | 📝 Queued |
+| 139 | Temperature, Top-p & Sampling | [`139-temperature-top-p.md`](./content/07-ai-foundations/139-temperature-top-p.md) | 📝 Queued |
+| 140 | Model Capabilities | [`140-model-capabilities.md`](./content/07-ai-foundations/140-model-capabilities.md) | 📝 Queued |
+| 141 | Model Limitations | [`141-model-limitations.md`](./content/07-ai-foundations/141-model-limitations.md) | 📝 Queued |
+| 142 | Prompt Engineering & System/User/Developer Instructions | [`142-prompt-engineering.md`](./content/07-ai-foundations/142-prompt-engineering.md) | 📝 Queued |
+| 143 | Structured Outputs & JSON Schemas | [`143-structured-outputs.md`](./content/07-ai-foundations/143-structured-outputs.md) | 📝 Queued |
+| 144 | Function Calling & Tool Calling | [`144-function-calling.md`](./content/07-ai-foundations/144-function-calling.md) | 📝 Queued |
+| 145 | Streaming Responses | [`145-streaming.md`](./content/07-ai-foundations/145-streaming.md) | 📝 Queued |
+| 146 | Multimodal Models | [`146-multimodal.md`](./content/07-ai-foundations/146-multimodal.md) | 📝 Queued |
+| 147 | Embeddings & Vector Semantics | [`147-embeddings.md`](./content/07-ai-foundations/147-embeddings.md) | 📝 Queued |
+| 148 | Model Selection & Frontier Families | [`148-model-selection.md`](./content/07-ai-foundations/148-model-selection.md) | 📝 Queued |
+| 149 | Token Management & Budgeting | [`149-token-budgeting.md`](./content/07-ai-foundations/149-token-budgeting.md) | 📝 Queued |
+| 150 | Cost Optimization | [`150-cost-optimization.md`](./content/07-ai-foundations/150-cost-optimization.md) | 📝 Queued |
+| 151 | Latency Optimization | [`151-latency-optimization.md`](./content/07-ai-foundations/151-latency-optimization.md) | 📝 Queued |
+| 152 | The OpenAI API | [`152-openai-api.md`](./content/07-ai-foundations/152-openai-api.md) | 📝 Queued |
+| 153 | The Anthropic API | [`153-anthropic-api.md`](./content/07-ai-foundations/153-anthropic-api.md) | 📝 Queued |
+| 154 | The Google Gemini API | [`154-gemini-api.md`](./content/07-ai-foundations/154-gemini-api.md) | 📝 Queued |
+| 155 | Provider Abstraction & Model Routing | [`155-provider-abstraction.md`](./content/07-ai-foundations/155-provider-abstraction.md) | 📝 Queued |
+| 156 | Comparing the Three Providers | [`156-provider-comparison.md`](./content/07-ai-foundations/156-provider-comparison.md) | 📝 Queued |
+| 157 | Foundations Review — the Model Decision Rule | [`157-model-decision-rule.md`](./content/07-ai-foundations/157-model-decision-rule.md) | 📝 Queued |
+
 ---
 
-**All 134 lessons are written.** Work through them in order, mark them off in
-[`PROGRESS.md`](./PROGRESS.md), and claim each milestone when you can meet its
-"claim it when" criterion. The final frontend lesson, the [Mock Interview
-Playbook](./content/05-interview-prep/104-mock-interviews.md), tells you how to rehearse the whole
-thing — and the final Laravel lesson, [Multi-Tenancy & System Design](./content/06-laravel/134-multitenancy.md),
-closes the backend half.
+**All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
+is scaffolded in the curriculum and tracked in [`PROGRESS.md`](./PROGRESS.md); its lessons are being
+written milestone by milestone — see the [AI Solutions Architect Curriculum Plan](./docs/ai-solutions-architect-curriculum.md).
+The original roadmap closes with the [Mock Interview Playbook](./content/05-interview-prep/104-mock-interviews.md)
+and [Multi-Tenancy & System Design](./content/06-laravel/134-multitenancy.md).
+

@@ -8,7 +8,7 @@ import { KnowledgeGraph } from '@/components/knowledge-graph';
 
 export const metadata: Metadata = {
   title: 'Knowledge Graph — Every Concept and Its Prerequisites',
-  description: `All ${TOTAL_LESSONS} JavaScript, TypeScript, React, Next.js and Laravel concepts as one dependency map: nodes are concepts, edges are prerequisites, laid out left to right in the order you should learn them.`,
+  description: `All ${TOTAL_LESSONS} JavaScript, TypeScript, React, Next.js, Laravel and AI concepts as one dependency map: nodes are concepts, edges are prerequisites, laid out left to right in the order you should learn them.`,
   keywords: [
     'frontend learning path',
     'react learning roadmap',
