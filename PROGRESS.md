@@ -251,12 +251,12 @@ exercise runs correctly.
 - [x] L189 — Retrieval (top-k, filters, scoring)
 - [x] L190 — Reranking
 - [x] L191 — Context Construction
-- [ ] L192 — Citations & Source Attribution
-- [ ] L193 — Query Rewriting
-- [ ] L194 — Contextual Retrieval
-- [ ] L195 — RAG Evaluation
-- [ ] L196 — RAG Failure Modes
-- [ ] L197 — Production RAG Architecture (synthesis)
+- [x] L192 — Citations & Source Attribution
+- [x] L193 — Query Rewriting
+- [x] L194 — Contextual Retrieval
+- [x] L195 — RAG Evaluation
+- [x] L196 — RAG Failure Modes
+- [x] L197 — Production RAG Architecture (synthesis)
 
 ---
 

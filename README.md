@@ -404,12 +404,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 189 | Retrieval (top-k, filters, scoring) | [`189-retrieval.md`](./content/09-rag-knowledge/189-retrieval.md) | ✅ Written |
 | 190 | Reranking | [`190-reranking.md`](./content/09-rag-knowledge/190-reranking.md) | ✅ Written |
 | 191 | Context Construction | [`191-context-construction.md`](./content/09-rag-knowledge/191-context-construction.md) | ✅ Written |
-| 192 | Citations & Source Attribution | [`192-citations.md`](./content/09-rag-knowledge/192-citations.md) | 📝 Queued |
-| 193 | Query Rewriting | [`193-query-rewriting.md`](./content/09-rag-knowledge/193-query-rewriting.md) | 📝 Queued |
-| 194 | Contextual Retrieval | [`194-contextual-retrieval.md`](./content/09-rag-knowledge/194-contextual-retrieval.md) | 📝 Queued |
-| 195 | RAG Evaluation | [`195-rag-evaluation.md`](./content/09-rag-knowledge/195-rag-evaluation.md) | 📝 Queued |
-| 196 | RAG Failure Modes | [`196-rag-failure-modes.md`](./content/09-rag-knowledge/196-rag-failure-modes.md) | 📝 Queued |
-| 197 | Production RAG Architecture (synthesis) | [`197-production-rag.md`](./content/09-rag-knowledge/197-production-rag.md) | 📝 Queued |
+| 192 | Citations & Source Attribution | [`192-citations.md`](./content/09-rag-knowledge/192-citations.md) | ✅ Written |
+| 193 | Query Rewriting | [`193-query-rewriting.md`](./content/09-rag-knowledge/193-query-rewriting.md) | ✅ Written |
+| 194 | Contextual Retrieval | [`194-contextual-retrieval.md`](./content/09-rag-knowledge/194-contextual-retrieval.md) | ✅ Written |
+| 195 | RAG Evaluation | [`195-rag-evaluation.md`](./content/09-rag-knowledge/195-rag-evaluation.md) | ✅ Written |
+| 196 | RAG Failure Modes | [`196-rag-failure-modes.md`](./content/09-rag-knowledge/196-rag-failure-modes.md) | ✅ Written |
+| 197 | Production RAG Architecture (synthesis) | [`197-production-rag.md`](./content/09-rag-knowledge/197-production-rag.md) | ✅ Written |
 
 ---
 
