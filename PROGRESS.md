@@ -310,12 +310,12 @@ exercise runs correctly.
 - [x] L236 — API Gateways
 - [x] L237 — Authentication
 - [x] L238 — Authorization
-- [ ] L239 — OAuth 2.0 & OIDC
-- [ ] L240 — JWT
-- [ ] L241 — RBAC & Fine-Grained Access
-- [ ] L242 — Rate Limiting
-- [ ] L243 — Redis
-- [ ] L244 — Caching Strategies
+- [x] L239 — OAuth 2.0 & OIDC
+- [x] L240 — JWT
+- [x] L241 — RBAC & Fine-Grained Access
+- [x] L242 — Rate Limiting
+- [x] L243 — Redis
+- [x] L244 — Caching Strategies
 - [ ] L245 — Message Queues & DLQs
 - [ ] L246 — Amazon SQS
 - [ ] L247 — SNS & Pub/Sub

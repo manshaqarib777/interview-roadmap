@@ -472,12 +472,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 236 | API Gateways | [`236-api-gateways.md`](./content/12-backend-ai/236-api-gateways.md) | ✅ Written |
 | 237 | Authentication | [`237-authentication.md`](./content/12-backend-ai/237-authentication.md) | ✅ Written |
 | 238 | Authorization | [`238-authorization.md`](./content/12-backend-ai/238-authorization.md) | ✅ Written |
-| 239 | OAuth 2.0 & OIDC | [`239-oauth-oidc.md`](./content/12-backend-ai/239-oauth-oidc.md) | 📝 Queued |
-| 240 | JWT | [`240-jwt.md`](./content/12-backend-ai/240-jwt.md) | 📝 Queued |
-| 241 | RBAC & Fine-Grained Access | [`241-rbac.md`](./content/12-backend-ai/241-rbac.md) | 📝 Queued |
-| 242 | Rate Limiting | [`242-rate-limiting.md`](./content/12-backend-ai/242-rate-limiting.md) | 📝 Queued |
-| 243 | Redis | [`243-redis.md`](./content/12-backend-ai/243-redis.md) | 📝 Queued |
-| 244 | Caching Strategies | [`244-caching-strategies.md`](./content/12-backend-ai/244-caching-strategies.md) | 📝 Queued |
+| 239 | OAuth 2.0 & OIDC | [`239-oauth-oidc.md`](./content/12-backend-ai/239-oauth-oidc.md) | ✅ Written |
+| 240 | JWT | [`240-jwt.md`](./content/12-backend-ai/240-jwt.md) | ✅ Written |
+| 241 | RBAC & Fine-Grained Access | [`241-rbac.md`](./content/12-backend-ai/241-rbac.md) | ✅ Written |
+| 242 | Rate Limiting | [`242-rate-limiting.md`](./content/12-backend-ai/242-rate-limiting.md) | ✅ Written |
+| 243 | Redis | [`243-redis.md`](./content/12-backend-ai/243-redis.md) | ✅ Written |
+| 244 | Caching Strategies | [`244-caching-strategies.md`](./content/12-backend-ai/244-caching-strategies.md) | ✅ Written |
 | 245 | Message Queues & DLQs | [`245-message-queues.md`](./content/12-backend-ai/245-message-queues.md) | 📝 Queued |
 | 246 | Amazon SQS | [`246-sqs.md`](./content/12-backend-ai/246-sqs.md) | 📝 Queued |
 | 247 | SNS & Pub/Sub | [`247-sns-pubsub.md`](./content/12-backend-ai/247-sns-pubsub.md) | 📝 Queued |
