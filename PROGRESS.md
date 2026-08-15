@@ -316,12 +316,12 @@ exercise runs correctly.
 - [x] L242 — Rate Limiting
 - [x] L243 — Redis
 - [x] L244 — Caching Strategies
-- [ ] L245 — Message Queues & DLQs
-- [ ] L246 — Amazon SQS
-- [ ] L247 — SNS & Pub/Sub
-- [ ] L248 — Event-Driven Architecture
-- [ ] L249 — Background Jobs & Workers
-- [ ] L250 — WebSockets
+- [x] L245 — Message Queues & DLQs
+- [x] L246 — Amazon SQS
+- [x] L247 — SNS & Pub/Sub
+- [x] L248 — Event-Driven Architecture
+- [x] L249 — Background Jobs & Workers
+- [x] L250 — WebSockets
 - [ ] L251 — SSE & Streaming Protocols
 - [ ] L252 — Microservices
 - [ ] L253 — Modular Monoliths

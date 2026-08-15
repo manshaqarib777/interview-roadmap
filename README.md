@@ -478,12 +478,12 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 242 | Rate Limiting | [`242-rate-limiting.md`](./content/12-backend-ai/242-rate-limiting.md) | ✅ Written |
 | 243 | Redis | [`243-redis.md`](./content/12-backend-ai/243-redis.md) | ✅ Written |
 | 244 | Caching Strategies | [`244-caching-strategies.md`](./content/12-backend-ai/244-caching-strategies.md) | ✅ Written |
-| 245 | Message Queues & DLQs | [`245-message-queues.md`](./content/12-backend-ai/245-message-queues.md) | 📝 Queued |
-| 246 | Amazon SQS | [`246-sqs.md`](./content/12-backend-ai/246-sqs.md) | 📝 Queued |
-| 247 | SNS & Pub/Sub | [`247-sns-pubsub.md`](./content/12-backend-ai/247-sns-pubsub.md) | 📝 Queued |
-| 248 | Event-Driven Architecture | [`248-event-driven.md`](./content/12-backend-ai/248-event-driven.md) | 📝 Queued |
-| 249 | Background Jobs & Workers | [`249-background-jobs.md`](./content/12-backend-ai/249-background-jobs.md) | 📝 Queued |
-| 250 | WebSockets | [`250-websockets.md`](./content/12-backend-ai/250-websockets.md) | 📝 Queued |
+| 245 | Message Queues & DLQs | [`245-message-queues.md`](./content/12-backend-ai/245-message-queues.md) | ✅ Written |
+| 246 | Amazon SQS | [`246-sqs.md`](./content/12-backend-ai/246-sqs.md) | ✅ Written |
+| 247 | SNS & Pub/Sub | [`247-sns-pubsub.md`](./content/12-backend-ai/247-sns-pubsub.md) | ✅ Written |
+| 248 | Event-Driven Architecture | [`248-event-driven.md`](./content/12-backend-ai/248-event-driven.md) | ✅ Written |
+| 249 | Background Jobs & Workers | [`249-background-jobs.md`](./content/12-backend-ai/249-background-jobs.md) | ✅ Written |
+| 250 | WebSockets | [`250-websockets.md`](./content/12-backend-ai/250-websockets.md) | ✅ Written |
 | 251 | SSE & Streaming Protocols | [`251-sse-streaming.md`](./content/12-backend-ai/251-sse-streaming.md) | 📝 Queued |
 | 252 | Microservices | [`252-microservices.md`](./content/12-backend-ai/252-microservices.md) | 📝 Queued |
 | 253 | Modular Monoliths | [`253-modular-monolith.md`](./content/12-backend-ai/253-modular-monolith.md) | 📝 Queued |
