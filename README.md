@@ -484,11 +484,11 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 248 | Event-Driven Architecture | [`248-event-driven.md`](./content/12-backend-ai/248-event-driven.md) | ✅ Written |
 | 249 | Background Jobs & Workers | [`249-background-jobs.md`](./content/12-backend-ai/249-background-jobs.md) | ✅ Written |
 | 250 | WebSockets | [`250-websockets.md`](./content/12-backend-ai/250-websockets.md) | ✅ Written |
-| 251 | SSE & Streaming Protocols | [`251-sse-streaming.md`](./content/12-backend-ai/251-sse-streaming.md) | 📝 Queued |
-| 252 | Microservices | [`252-microservices.md`](./content/12-backend-ai/252-microservices.md) | 📝 Queued |
-| 253 | Modular Monoliths | [`253-modular-monolith.md`](./content/12-backend-ai/253-modular-monolith.md) | 📝 Queued |
-| 254 | Service-to-Service Communication | [`254-service-to-service.md`](./content/12-backend-ai/254-service-to-service.md) | 📝 Queued |
-| 255 | Idempotency | [`255-idempotency.md`](./content/12-backend-ai/255-idempotency.md) | 📝 Queued |
+| 251 | SSE & Streaming Protocols | [`251-sse-streaming.md`](./content/12-backend-ai/251-sse-streaming.md) | ✅ Written |
+| 252 | Microservices | [`252-microservices.md`](./content/12-backend-ai/252-microservices.md) | ✅ Written |
+| 253 | Modular Monoliths | [`253-modular-monolith.md`](./content/12-backend-ai/253-modular-monolith.md) | ✅ Written |
+| 254 | Service-to-Service Communication | [`254-service-to-service.md`](./content/12-backend-ai/254-service-to-service.md) | ✅ Written |
+| 255 | Idempotency | [`255-idempotency.md`](./content/12-backend-ai/255-idempotency.md) | ✅ Written |
 | 256 | Retries & Backoff | [`256-retries-backoff.md`](./content/12-backend-ai/256-retries-backoff.md) | 📝 Queued |
 | 257 | Circuit Breakers & Bulkheads | [`257-circuit-breakers.md`](./content/12-backend-ai/257-circuit-breakers.md) | 📝 Queued |
 | 258 | Fault Tolerance & Graceful Degradation | [`258-fault-tolerance.md`](./content/12-backend-ai/258-fault-tolerance.md) | 📝 Queued |

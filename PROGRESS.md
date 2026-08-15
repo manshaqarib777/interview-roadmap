@@ -322,11 +322,11 @@ exercise runs correctly.
 - [x] L248 — Event-Driven Architecture
 - [x] L249 — Background Jobs & Workers
 - [x] L250 — WebSockets
-- [ ] L251 — SSE & Streaming Protocols
-- [ ] L252 — Microservices
-- [ ] L253 — Modular Monoliths
-- [ ] L254 — Service-to-Service Communication
-- [ ] L255 — Idempotency
+- [x] L251 — SSE & Streaming Protocols
+- [x] L252 — Microservices
+- [x] L253 — Modular Monoliths
+- [x] L254 — Service-to-Service Communication
+- [x] L255 — Idempotency
 - [ ] L256 — Retries & Backoff
 - [ ] L257 — Circuit Breakers & Bulkheads
 - [ ] L258 — Fault Tolerance & Graceful Degradation
