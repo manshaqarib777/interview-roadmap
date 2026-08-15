@@ -327,11 +327,11 @@ exercise runs correctly.
 - [x] L253 — Modular Monoliths
 - [x] L254 — Service-to-Service Communication
 - [x] L255 — Idempotency
-- [ ] L256 — Retries & Backoff
-- [ ] L257 — Circuit Breakers & Bulkheads
-- [ ] L258 — Fault Tolerance & Graceful Degradation
-- [ ] L259 — Distributed Systems Concepts (review)
-- [ ] L260 — Backend Architecture for AI SaaS (synthesis)
+- [x] L256 — Retries & Backoff
+- [x] L257 — Circuit Breakers & Bulkheads
+- [x] L258 — Fault Tolerance & Graceful Degradation
+- [x] L259 — Distributed Systems Concepts (review)
+- [x] L260 — Backend Architecture for AI SaaS (synthesis)
 
 ---
 

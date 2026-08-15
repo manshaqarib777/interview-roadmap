@@ -489,11 +489,11 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 253 | Modular Monoliths | [`253-modular-monolith.md`](./content/12-backend-ai/253-modular-monolith.md) | ✅ Written |
 | 254 | Service-to-Service Communication | [`254-service-to-service.md`](./content/12-backend-ai/254-service-to-service.md) | ✅ Written |
 | 255 | Idempotency | [`255-idempotency.md`](./content/12-backend-ai/255-idempotency.md) | ✅ Written |
-| 256 | Retries & Backoff | [`256-retries-backoff.md`](./content/12-backend-ai/256-retries-backoff.md) | 📝 Queued |
-| 257 | Circuit Breakers & Bulkheads | [`257-circuit-breakers.md`](./content/12-backend-ai/257-circuit-breakers.md) | 📝 Queued |
-| 258 | Fault Tolerance & Graceful Degradation | [`258-fault-tolerance.md`](./content/12-backend-ai/258-fault-tolerance.md) | 📝 Queued |
-| 259 | Distributed Systems Concepts (review) | [`259-distributed-concepts.md`](./content/12-backend-ai/259-distributed-concepts.md) | 📝 Queued |
-| 260 | Backend Architecture for AI SaaS (synthesis) | [`260-ai-saas-backend.md`](./content/12-backend-ai/260-ai-saas-backend.md) | 📝 Queued |
+| 256 | Retries & Backoff | [`256-retries-backoff.md`](./content/12-backend-ai/256-retries-backoff.md) | ✅ Written |
+| 257 | Circuit Breakers & Bulkheads | [`257-circuit-breakers.md`](./content/12-backend-ai/257-circuit-breakers.md) | ✅ Written |
+| 258 | Fault Tolerance & Graceful Degradation | [`258-fault-tolerance.md`](./content/12-backend-ai/258-fault-tolerance.md) | ✅ Written |
+| 259 | Distributed Systems Concepts (review) | [`259-distributed-concepts.md`](./content/12-backend-ai/259-distributed-concepts.md) | ✅ Written |
+| 260 | Backend Architecture for AI SaaS (synthesis) | [`260-ai-saas-backend.md`](./content/12-backend-ai/260-ai-saas-backend.md) | ✅ Written |
 
 ---
 
