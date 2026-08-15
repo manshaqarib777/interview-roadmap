@@ -301,6 +301,38 @@ exercise runs correctly.
 - [x] L231 — Multi-Agent Automation
 - [x] L232 — Automation Failure & Recovery
 
+## Module 12 — Backend & Distributed Systems for AI
+
+### M23 · Backend & Distributed Systems
+- [x] L233 — API Architecture for AI Products
+- [x] L234 — REST Best Practices (review)
+- [x] L235 — GraphQL Basics
+- [x] L236 — API Gateways
+- [x] L237 — Authentication
+- [x] L238 — Authorization
+- [ ] L239 — OAuth 2.0 & OIDC
+- [ ] L240 — JWT
+- [ ] L241 — RBAC & Fine-Grained Access
+- [ ] L242 — Rate Limiting
+- [ ] L243 — Redis
+- [ ] L244 — Caching Strategies
+- [ ] L245 — Message Queues & DLQs
+- [ ] L246 — Amazon SQS
+- [ ] L247 — SNS & Pub/Sub
+- [ ] L248 — Event-Driven Architecture
+- [ ] L249 — Background Jobs & Workers
+- [ ] L250 — WebSockets
+- [ ] L251 — SSE & Streaming Protocols
+- [ ] L252 — Microservices
+- [ ] L253 — Modular Monoliths
+- [ ] L254 — Service-to-Service Communication
+- [ ] L255 — Idempotency
+- [ ] L256 — Retries & Backoff
+- [ ] L257 — Circuit Breakers & Bulkheads
+- [ ] L258 — Fault Tolerance & Graceful Degradation
+- [ ] L259 — Distributed Systems Concepts (review)
+- [ ] L260 — Backend Architecture for AI SaaS (synthesis)
+
 ---
 
 ## Interview Readiness Checklist

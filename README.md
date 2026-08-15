@@ -460,6 +460,41 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 231 | Multi-Agent Automation | [`231-multi-agent-automation.md`](./content/11-ai-automation/231-multi-agent-automation.md) | ✅ Written |
 | 232 | Automation Failure & Recovery | [`232-automation-recovery.md`](./content/11-ai-automation/232-automation-recovery.md) | ✅ Written |
 
+## Module 12 — Backend & Distributed Systems for AI
+> Folder: [`12-backend-ai/`](./content/12-backend-ai/) · [Module overview](./content/12-backend-ai/00-module-overview.md)
+
+### Milestone M23 — Backend & Distributed Systems
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 233 | API Architecture for AI Products | [`233-api-architecture.md`](./content/12-backend-ai/233-api-architecture.md) | ✅ Written |
+| 234 | REST Best Practices (review) | [`234-rest-review.md`](./content/12-backend-ai/234-rest-review.md) | ✅ Written |
+| 235 | GraphQL Basics | [`235-graphql-basics.md`](./content/12-backend-ai/235-graphql-basics.md) | ✅ Written |
+| 236 | API Gateways | [`236-api-gateways.md`](./content/12-backend-ai/236-api-gateways.md) | ✅ Written |
+| 237 | Authentication | [`237-authentication.md`](./content/12-backend-ai/237-authentication.md) | ✅ Written |
+| 238 | Authorization | [`238-authorization.md`](./content/12-backend-ai/238-authorization.md) | ✅ Written |
+| 239 | OAuth 2.0 & OIDC | [`239-oauth-oidc.md`](./content/12-backend-ai/239-oauth-oidc.md) | 📝 Queued |
+| 240 | JWT | [`240-jwt.md`](./content/12-backend-ai/240-jwt.md) | 📝 Queued |
+| 241 | RBAC & Fine-Grained Access | [`241-rbac.md`](./content/12-backend-ai/241-rbac.md) | 📝 Queued |
+| 242 | Rate Limiting | [`242-rate-limiting.md`](./content/12-backend-ai/242-rate-limiting.md) | 📝 Queued |
+| 243 | Redis | [`243-redis.md`](./content/12-backend-ai/243-redis.md) | 📝 Queued |
+| 244 | Caching Strategies | [`244-caching-strategies.md`](./content/12-backend-ai/244-caching-strategies.md) | 📝 Queued |
+| 245 | Message Queues & DLQs | [`245-message-queues.md`](./content/12-backend-ai/245-message-queues.md) | 📝 Queued |
+| 246 | Amazon SQS | [`246-sqs.md`](./content/12-backend-ai/246-sqs.md) | 📝 Queued |
+| 247 | SNS & Pub/Sub | [`247-sns-pubsub.md`](./content/12-backend-ai/247-sns-pubsub.md) | 📝 Queued |
+| 248 | Event-Driven Architecture | [`248-event-driven.md`](./content/12-backend-ai/248-event-driven.md) | 📝 Queued |
+| 249 | Background Jobs & Workers | [`249-background-jobs.md`](./content/12-backend-ai/249-background-jobs.md) | 📝 Queued |
+| 250 | WebSockets | [`250-websockets.md`](./content/12-backend-ai/250-websockets.md) | 📝 Queued |
+| 251 | SSE & Streaming Protocols | [`251-sse-streaming.md`](./content/12-backend-ai/251-sse-streaming.md) | 📝 Queued |
+| 252 | Microservices | [`252-microservices.md`](./content/12-backend-ai/252-microservices.md) | 📝 Queued |
+| 253 | Modular Monoliths | [`253-modular-monolith.md`](./content/12-backend-ai/253-modular-monolith.md) | 📝 Queued |
+| 254 | Service-to-Service Communication | [`254-service-to-service.md`](./content/12-backend-ai/254-service-to-service.md) | 📝 Queued |
+| 255 | Idempotency | [`255-idempotency.md`](./content/12-backend-ai/255-idempotency.md) | 📝 Queued |
+| 256 | Retries & Backoff | [`256-retries-backoff.md`](./content/12-backend-ai/256-retries-backoff.md) | 📝 Queued |
+| 257 | Circuit Breakers & Bulkheads | [`257-circuit-breakers.md`](./content/12-backend-ai/257-circuit-breakers.md) | 📝 Queued |
+| 258 | Fault Tolerance & Graceful Degradation | [`258-fault-tolerance.md`](./content/12-backend-ai/258-fault-tolerance.md) | 📝 Queued |
+| 259 | Distributed Systems Concepts (review) | [`259-distributed-concepts.md`](./content/12-backend-ai/259-distributed-concepts.md) | 📝 Queued |
+| 260 | Backend Architecture for AI SaaS (synthesis) | [`260-ai-saas-backend.md`](./content/12-backend-ai/260-ai-saas-backend.md) | 📝 Queued |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
