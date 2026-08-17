@@ -364,6 +364,30 @@ exercise runs correctly.
 - [x] L286 — Multi-Region & DR on AWS
 - [x] L287 — Cloud Architecture for an AI SaaS (synthesis)
 
+## Module 14 — Docker / DevOps / Infrastructure
+
+### M25 · Docker / DevOps / Infrastructure
+- [x] L288 — Docker & Containers
+- [x] L289 — Dockerfiles
+- [x] L290 — Docker Compose
+- [x] L291 — Multi-Stage Builds
+- [x] L292 — Container Networking
+- [x] L293 — Container Security
+- [x] L294 — ECR
+- [x] L295 — ECS & Fargate
+- [x] L296 — CI/CD Fundamentals
+- [x] L297 — GitHub Actions for AI Apps
+- [x] L298 — Infrastructure as Code
+- [x] L299 — Terraform Fundamentals
+- [x] L300 — Environment Management
+- [x] L301 — Secrets in CI/CD
+- [x] L302 — Deployment Strategies
+- [x] L303 — Canary Deployments
+- [x] L304 — Rollbacks & Recovery
+- [x] L305 — Observability for AI Deployments
+- [x] L306 — Kubernetes for the AI Architect (concepts only)
+- [x] L307 — The AI Deployment Pipeline (synthesis)
+
 ---
 
 ## Interview Readiness Checklist

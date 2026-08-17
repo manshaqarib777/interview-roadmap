@@ -529,6 +529,33 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 286 | Multi-Region & DR on AWS | [`286-multi-region-dr.md`](./content/13-cloud-aws-ai/286-multi-region-dr.md) | ✅ Written |
 | 287 | Cloud Architecture for an AI SaaS (synthesis) | [`287-ai-saas-cloud.md`](./content/13-cloud-aws-ai/287-ai-saas-cloud.md) | ✅ Written |
 
+## Module 14 — Docker / DevOps / Infrastructure
+> Folder: [`14-docker-devops-ai/`](./content/14-docker-devops-ai/) · [Module overview](./content/14-docker-devops-ai/00-module-overview.md)
+
+### Milestone M25 — Docker / DevOps / Infrastructure
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 288 | Docker & Containers | [`288-docker-basics.md`](./content/14-docker-devops-ai/288-docker-basics.md) | ✅ Written |
+| 289 | Dockerfiles | [`289-dockerfiles.md`](./content/14-docker-devops-ai/289-dockerfiles.md) | ✅ Written |
+| 290 | Docker Compose | [`290-docker-compose.md`](./content/14-docker-devops-ai/290-docker-compose.md) | ✅ Written |
+| 291 | Multi-Stage Builds | [`291-multi-stage-builds.md`](./content/14-docker-devops-ai/291-multi-stage-builds.md) | ✅ Written |
+| 292 | Container Networking | [`292-container-networking.md`](./content/14-docker-devops-ai/292-container-networking.md) | ✅ Written |
+| 293 | Container Security | [`293-container-security.md`](./content/14-docker-devops-ai/293-container-security.md) | ✅ Written |
+| 294 | ECR | [`294-ecr.md`](./content/14-docker-devops-ai/294-ecr.md) | ✅ Written |
+| 295 | ECS & Fargate | [`295-ecs-fargate.md`](./content/14-docker-devops-ai/295-ecs-fargate.md) | ✅ Written |
+| 296 | CI/CD Fundamentals | [`296-ci-cd.md`](./content/14-docker-devops-ai/296-ci-cd.md) | ✅ Written |
+| 297 | GitHub Actions for AI Apps | [`297-github-actions.md`](./content/14-docker-devops-ai/297-github-actions.md) | ✅ Written |
+| 298 | Infrastructure as Code | [`298-iac.md`](./content/14-docker-devops-ai/298-iac.md) | ✅ Written |
+| 299 | Terraform Fundamentals | [`299-terraform.md`](./content/14-docker-devops-ai/299-terraform.md) | ✅ Written |
+| 300 | Environment Management | [`300-environments.md`](./content/14-docker-devops-ai/300-environments.md) | ✅ Written |
+| 301 | Secrets in CI/CD | [`301-secrets-cicd.md`](./content/14-docker-devops-ai/301-secrets-cicd.md) | ✅ Written |
+| 302 | Deployment Strategies | [`302-deployment-strategies.md`](./content/14-docker-devops-ai/302-deployment-strategies.md) | ✅ Written |
+| 303 | Canary Deployments | [`303-canary-deployments.md`](./content/14-docker-devops-ai/303-canary-deployments.md) | ✅ Written |
+| 304 | Rollbacks & Recovery | [`304-rollbacks.md`](./content/14-docker-devops-ai/304-rollbacks.md) | ✅ Written |
+| 305 | Observability for AI Deployments | [`305-observability-deployments.md`](./content/14-docker-devops-ai/305-observability-deployments.md) | ✅ Written |
+| 306 | Kubernetes for the AI Architect (concepts only) | [`306-kubernetes-basics.md`](./content/14-docker-devops-ai/306-kubernetes-basics.md) | ✅ Written |
+| 307 | The AI Deployment Pipeline (synthesis) | [`307-ai-deploy-pipeline.md`](./content/14-docker-devops-ai/307-ai-deploy-pipeline.md) | ✅ Written |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
