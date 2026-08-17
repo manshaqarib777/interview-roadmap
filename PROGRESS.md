@@ -388,6 +388,105 @@ exercise runs correctly.
 - [x] L306 — Kubernetes for the AI Architect (concepts only)
 - [x] L307 — The AI Deployment Pipeline (synthesis)
 
+## Module 15 — AI Security
+
+### M26 · AI Security
+- [x] L308 — AI Security Threat Model (OWASP LLM Top 10)
+- [x] L309 — Prompt Injection
+- [x] L310 — Jailbreaks
+- [x] L311 — Indirect Prompt Injection
+- [x] L312 — Data Leakage
+- [x] L313 — Sensitive Data & PII
+- [x] L314 — Excessive Agency
+- [x] L315 — Unsafe Tool Calling
+- [x] L316 — Malicious Documents & RAG Poisoning
+- [x] L317 — Model Abuse
+- [x] L318 — Rate Limiting & Abuse Prevention
+- [x] L319 — Auth for AI APIs
+- [x] L320 — Tenant Isolation for AI (L134 payoff)
+- [x] L321 — Secret Management
+- [x] L322 — Audit Logs & Governance Records
+- [x] L323 — Secure Tool Architecture
+- [x] L324 — Human Approval as a Security Control
+- [x] L325 — AI Security Architecture (defense in depth)
+- [x] L326 — OWASP LLM Top 10 Walkthrough
+- [x] L327 — Securing the RAG + Agent Stack (synthesis)
+
+## Module 16 — AI Observability & Evaluation
+
+### M27 · AI Observability & Evaluation
+- [x] L328 — AI Observability Fundamentals
+- [x] L329 — Logging
+- [x] L330 — Tracing
+- [x] L331 — Metrics
+- [x] L332 — Token Usage Tracking
+- [x] L333 — Latency & TTFT Monitoring
+- [x] L334 — Cost Tracking
+- [x] L335 — Model Performance Monitoring
+- [x] L336 — Hallucination Detection
+- [x] L337 — Groundedness Evaluation
+- [x] L338 — Retrieval Evaluation
+- [x] L339 — Tool Success Rate
+- [x] L340 — Agent Evaluation
+- [x] L341 — Regression Testing for AI
+- [x] L342 — Evaluation Datasets
+- [x] L343 — LLM-as-a-Judge
+- [x] L344 — LangSmith
+- [x] L345 — Langfuse
+- [x] L346 — OpenTelemetry for AI (synthesis)
+
+## Module 17 — AI System Design
+
+### M28 · AI System Design
+- [x] L347 — System Design Protocol for AI (L102 spine applied)
+- [x] L348 — AI Chat System
+- [x] L349 — RAG Platform
+- [x] L350 — AI Customer Support
+- [x] L351 — AI Sales Assistant
+- [x] L352 — AI Recruiting Platform
+- [x] L353 — AI Document Processing System
+- [x] L354 — AI Coding Assistant
+- [x] L355 — AI E-commerce Assistant
+- [x] L356 — AI Automation Platform
+- [x] L357 — Multi-Tenant AI SaaS
+- [x] L358 — High-Scale AI System
+
+## Module 18 — Enterprise AI Solutions Architecture
+
+### M29 · Enterprise AI Solutions Architecture
+- [x] L359 — Requirements Gathering for AI
+- [x] L360 — Stakeholder Communication
+- [x] L361 — Architecture Decision Records
+- [x] L362 — Technology Selection
+- [x] L363 — Build vs Buy
+- [x] L364 — Vendor Selection
+- [x] L365 — Model Selection at Scale
+- [x] L366 — Cloud Selection
+- [x] L367 — Architecture Trade-offs
+- [x] L368 — Cost Estimation & Budgeting
+- [x] L369 — Capacity Planning
+- [x] L370 — Scalability Planning
+- [x] L371 — Security & Compliance (SOC 2, GDPR, HIPAA)
+- [x] L372 — Data Governance
+- [x] L373 — AI Governance
+- [x] L374 — Disaster Recovery & Business Continuity
+- [x] L375 — Enterprise Integration
+- [x] L376 — Legacy System Integration
+- [x] L377 — Multi-Cloud Concepts
+- [x] L378 — AI Platform Architecture
+- [x] L379 — Enterprise AI Case Study
+- [x] L380 — The Architect's Toolkit (synthesis)
+
+## Module 19 — Capstone Projects
+
+### M30 · Capstone Projects
+- [x] L381 — Project 1 — Production RAG SaaS
+- [x] L382 — Project 2 — AI Agent with Tools + Human Approval
+- [x] L383 — Project 3 — AI Business Automation Platform
+- [x] L384 — Project 4 — Multi-Tenant AI SaaS
+- [x] L385 — Project 5 — Enterprise AI Assistant
+- [x] L386 — Project 6 — Complete AI Solutions Architecture Case Study
+
 ---
 
 ## Interview Readiness Checklist

@@ -556,6 +556,120 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 306 | Kubernetes for the AI Architect (concepts only) | [`306-kubernetes-basics.md`](./content/14-docker-devops-ai/306-kubernetes-basics.md) | ✅ Written |
 | 307 | The AI Deployment Pipeline (synthesis) | [`307-ai-deploy-pipeline.md`](./content/14-docker-devops-ai/307-ai-deploy-pipeline.md) | ✅ Written |
 
+## Module 15 — AI Security
+> Folder: [`15-ai-security/`](./content/15-ai-security/) · [Module overview](./content/15-ai-security/00-module-overview.md)
+
+### Milestone M26 — AI Security
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 308 | AI Security Threat Model (OWASP LLM Top 10) | [`308-threat-model.md`](./content/15-ai-security/308-threat-model.md) | ✅ Written |
+| 309 | Prompt Injection | [`309-prompt-injection.md`](./content/15-ai-security/309-prompt-injection.md) | ✅ Written |
+| 310 | Jailbreaks | [`310-jailbreaks.md`](./content/15-ai-security/310-jailbreaks.md) | ✅ Written |
+| 311 | Indirect Prompt Injection | [`311-indirect-injection.md`](./content/15-ai-security/311-indirect-injection.md) | ✅ Written |
+| 312 | Data Leakage | [`312-data-leakage.md`](./content/15-ai-security/312-data-leakage.md) | ✅ Written |
+| 313 | Sensitive Data & PII | [`313-sensitive-data.md`](./content/15-ai-security/313-sensitive-data.md) | ✅ Written |
+| 314 | Excessive Agency | [`314-excessive-agency.md`](./content/15-ai-security/314-excessive-agency.md) | ✅ Written |
+| 315 | Unsafe Tool Calling | [`315-unsafe-tools.md`](./content/15-ai-security/315-unsafe-tools.md) | ✅ Written |
+| 316 | Malicious Documents & RAG Poisoning | [`316-rag-poisoning.md`](./content/15-ai-security/316-rag-poisoning.md) | ✅ Written |
+| 317 | Model Abuse | [`317-model-abuse.md`](./content/15-ai-security/317-model-abuse.md) | ✅ Written |
+| 318 | Rate Limiting & Abuse Prevention | [`318-rate-limit-security.md`](./content/15-ai-security/318-rate-limit-security.md) | ✅ Written |
+| 319 | Auth for AI APIs | [`319-ai-api-auth.md`](./content/15-ai-security/319-ai-api-auth.md) | ✅ Written |
+| 320 | Tenant Isolation for AI (L134 payoff) | [`320-ai-tenant-isolation.md`](./content/15-ai-security/320-ai-tenant-isolation.md) | ✅ Written |
+| 321 | Secret Management | [`321-secret-management.md`](./content/15-ai-security/321-secret-management.md) | ✅ Written |
+| 322 | Audit Logs & Governance Records | [`322-audit-logs.md`](./content/15-ai-security/322-audit-logs.md) | ✅ Written |
+| 323 | Secure Tool Architecture | [`323-secure-tools.md`](./content/15-ai-security/323-secure-tools.md) | ✅ Written |
+| 324 | Human Approval as a Security Control | [`324-human-approval-security.md`](./content/15-ai-security/324-human-approval-security.md) | ✅ Written |
+| 325 | AI Security Architecture (defense in depth) | [`325-ai-security-architecture.md`](./content/15-ai-security/325-ai-security-architecture.md) | ✅ Written |
+| 326 | OWASP LLM Top 10 Walkthrough | [`326-owasp-llm-top10.md`](./content/15-ai-security/326-owasp-llm-top10.md) | ✅ Written |
+| 327 | Securing the RAG + Agent Stack (synthesis) | [`327-secure-rag-agents.md`](./content/15-ai-security/327-secure-rag-agents.md) | ✅ Written |
+
+## Module 16 — AI Observability & Evaluation
+> Folder: [`16-ai-observability/`](./content/16-ai-observability/) · [Module overview](./content/16-ai-observability/00-module-overview.md)
+
+### Milestone M27 — AI Observability & Evaluation
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 328 | AI Observability Fundamentals | [`328-ai-observability.md`](./content/16-ai-observability/328-ai-observability.md) | ✅ Written |
+| 329 | Logging | [`329-logging.md`](./content/16-ai-observability/329-logging.md) | ✅ Written |
+| 330 | Tracing | [`330-tracing.md`](./content/16-ai-observability/330-tracing.md) | ✅ Written |
+| 331 | Metrics | [`331-metrics.md`](./content/16-ai-observability/331-metrics.md) | ✅ Written |
+| 332 | Token Usage Tracking | [`332-token-usage.md`](./content/16-ai-observability/332-token-usage.md) | ✅ Written |
+| 333 | Latency & TTFT Monitoring | [`333-latency-ttft.md`](./content/16-ai-observability/333-latency-ttft.md) | ✅ Written |
+| 334 | Cost Tracking | [`334-cost-tracking.md`](./content/16-ai-observability/334-cost-tracking.md) | ✅ Written |
+| 335 | Model Performance Monitoring | [`335-model-performance.md`](./content/16-ai-observability/335-model-performance.md) | ✅ Written |
+| 336 | Hallucination Detection | [`336-hallucination-detection.md`](./content/16-ai-observability/336-hallucination-detection.md) | ✅ Written |
+| 337 | Groundedness Evaluation | [`337-groundedness.md`](./content/16-ai-observability/337-groundedness.md) | ✅ Written |
+| 338 | Retrieval Evaluation | [`338-retrieval-evaluation.md`](./content/16-ai-observability/338-retrieval-evaluation.md) | ✅ Written |
+| 339 | Tool Success Rate | [`339-tool-success.md`](./content/16-ai-observability/339-tool-success.md) | ✅ Written |
+| 340 | Agent Evaluation | [`340-agent-evaluation.md`](./content/16-ai-observability/340-agent-evaluation.md) | ✅ Written |
+| 341 | Regression Testing for AI | [`341-regression-testing.md`](./content/16-ai-observability/341-regression-testing.md) | ✅ Written |
+| 342 | Evaluation Datasets | [`342-eval-datasets.md`](./content/16-ai-observability/342-eval-datasets.md) | ✅ Written |
+| 343 | LLM-as-a-Judge | [`343-llm-as-a-judge.md`](./content/16-ai-observability/343-llm-as-a-judge.md) | ✅ Written |
+| 344 | LangSmith | [`344-langsmith.md`](./content/16-ai-observability/344-langsmith.md) | ✅ Written |
+| 345 | Langfuse | [`345-langfuse.md`](./content/16-ai-observability/345-langfuse.md) | ✅ Written |
+| 346 | OpenTelemetry for AI (synthesis) | [`346-opentelemetry.md`](./content/16-ai-observability/346-opentelemetry.md) | ✅ Written |
+
+## Module 17 — AI System Design
+> Folder: [`17-ai-system-design/`](./content/17-ai-system-design/) · [Module overview](./content/17-ai-system-design/00-module-overview.md)
+
+### Milestone M28 — AI System Design
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 347 | System Design Protocol for AI (L102 spine applied) | [`347-ai-system-design-protocol.md`](./content/17-ai-system-design/347-ai-system-design-protocol.md) | ✅ Written |
+| 348 | AI Chat System | [`348-ai-chat-system.md`](./content/17-ai-system-design/348-ai-chat-system.md) | ✅ Written |
+| 349 | RAG Platform | [`349-rag-platform.md`](./content/17-ai-system-design/349-rag-platform.md) | ✅ Written |
+| 350 | AI Customer Support | [`350-ai-support.md`](./content/17-ai-system-design/350-ai-support.md) | ✅ Written |
+| 351 | AI Sales Assistant | [`351-ai-sales.md`](./content/17-ai-system-design/351-ai-sales.md) | ✅ Written |
+| 352 | AI Recruiting Platform | [`352-ai-recruiting.md`](./content/17-ai-system-design/352-ai-recruiting.md) | ✅ Written |
+| 353 | AI Document Processing System | [`353-ai-doc-processing.md`](./content/17-ai-system-design/353-ai-doc-processing.md) | ✅ Written |
+| 354 | AI Coding Assistant | [`354-ai-coding-assistant.md`](./content/17-ai-system-design/354-ai-coding-assistant.md) | ✅ Written |
+| 355 | AI E-commerce Assistant | [`355-ai-ecommerce.md`](./content/17-ai-system-design/355-ai-ecommerce.md) | ✅ Written |
+| 356 | AI Automation Platform | [`356-ai-automation-platform.md`](./content/17-ai-system-design/356-ai-automation-platform.md) | ✅ Written |
+| 357 | Multi-Tenant AI SaaS | [`357-multi-tenant-ai-saas.md`](./content/17-ai-system-design/357-multi-tenant-ai-saas.md) | ✅ Written |
+| 358 | High-Scale AI System | [`358-high-scale-ai.md`](./content/17-ai-system-design/358-high-scale-ai.md) | ✅ Written |
+
+## Module 18 — Enterprise AI Solutions Architecture
+> Folder: [`18-enterprise-ai/`](./content/18-enterprise-ai/) · [Module overview](./content/18-enterprise-ai/00-module-overview.md)
+
+### Milestone M29 — Enterprise AI Solutions Architecture
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 359 | Requirements Gathering for AI | [`359-requirements-gathering.md`](./content/18-enterprise-ai/359-requirements-gathering.md) | ✅ Written |
+| 360 | Stakeholder Communication | [`360-stakeholders.md`](./content/18-enterprise-ai/360-stakeholders.md) | ✅ Written |
+| 361 | Architecture Decision Records | [`361-adrs.md`](./content/18-enterprise-ai/361-adrs.md) | ✅ Written |
+| 362 | Technology Selection | [`362-technology-selection.md`](./content/18-enterprise-ai/362-technology-selection.md) | ✅ Written |
+| 363 | Build vs Buy | [`363-build-vs-buy.md`](./content/18-enterprise-ai/363-build-vs-buy.md) | ✅ Written |
+| 364 | Vendor Selection | [`364-vendor-selection.md`](./content/18-enterprise-ai/364-vendor-selection.md) | ✅ Written |
+| 365 | Model Selection at Scale | [`365-model-selection-scale.md`](./content/18-enterprise-ai/365-model-selection-scale.md) | ✅ Written |
+| 366 | Cloud Selection | [`366-cloud-selection.md`](./content/18-enterprise-ai/366-cloud-selection.md) | ✅ Written |
+| 367 | Architecture Trade-offs | [`367-trade-offs.md`](./content/18-enterprise-ai/367-trade-offs.md) | ✅ Written |
+| 368 | Cost Estimation & Budgeting | [`368-cost-estimation.md`](./content/18-enterprise-ai/368-cost-estimation.md) | ✅ Written |
+| 369 | Capacity Planning | [`369-capacity-planning.md`](./content/18-enterprise-ai/369-capacity-planning.md) | ✅ Written |
+| 370 | Scalability Planning | [`370-scalability-planning.md`](./content/18-enterprise-ai/370-scalability-planning.md) | ✅ Written |
+| 371 | Security & Compliance (SOC 2, GDPR, HIPAA) | [`371-compliance.md`](./content/18-enterprise-ai/371-compliance.md) | ✅ Written |
+| 372 | Data Governance | [`372-data-governance.md`](./content/18-enterprise-ai/372-data-governance.md) | ✅ Written |
+| 373 | AI Governance | [`373-ai-governance.md`](./content/18-enterprise-ai/373-ai-governance.md) | ✅ Written |
+| 374 | Disaster Recovery & Business Continuity | [`374-disaster-recovery.md`](./content/18-enterprise-ai/374-disaster-recovery.md) | ✅ Written |
+| 375 | Enterprise Integration | [`375-enterprise-integration.md`](./content/18-enterprise-ai/375-enterprise-integration.md) | ✅ Written |
+| 376 | Legacy System Integration | [`376-legacy-integration.md`](./content/18-enterprise-ai/376-legacy-integration.md) | ✅ Written |
+| 377 | Multi-Cloud Concepts | [`377-multi-cloud.md`](./content/18-enterprise-ai/377-multi-cloud.md) | ✅ Written |
+| 378 | AI Platform Architecture | [`378-ai-platform-architecture.md`](./content/18-enterprise-ai/378-ai-platform-architecture.md) | ✅ Written |
+| 379 | Enterprise AI Case Study | [`379-enterprise-case-study.md`](./content/18-enterprise-ai/379-enterprise-case-study.md) | ✅ Written |
+| 380 | The Architect's Toolkit (synthesis) | [`380-architects-toolkit.md`](./content/18-enterprise-ai/380-architects-toolkit.md) | ✅ Written |
+
+## Module 19 — Capstone Projects
+> Folder: [`19-ai-capstones/`](./content/19-ai-capstones/) · [Module overview](./content/19-ai-capstones/00-module-overview.md)
+
+### Milestone M30 — Capstone Projects
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 381 | Project 1 — Production RAG SaaS | [`381-rag-saas.md`](./content/19-ai-capstones/381-rag-saas.md) | ✅ Written |
+| 382 | Project 2 — AI Agent with Tools + Human Approval | [`382-agent-hittl.md`](./content/19-ai-capstones/382-agent-hittl.md) | ✅ Written |
+| 383 | Project 3 — AI Business Automation Platform | [`383-automation-platform.md`](./content/19-ai-capstones/383-automation-platform.md) | ✅ Written |
+| 384 | Project 4 — Multi-Tenant AI SaaS | [`384-ai-saas.md`](./content/19-ai-capstones/384-ai-saas.md) | ✅ Written |
+| 385 | Project 5 — Enterprise AI Assistant | [`385-enterprise-assistant.md`](./content/19-ai-capstones/385-enterprise-assistant.md) | ✅ Written |
+| 386 | Project 6 — Complete AI Solutions Architecture Case Study | [`386-architecture-case-study.md`](./content/19-ai-capstones/386-architecture-case-study.md) | ✅ Written |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
