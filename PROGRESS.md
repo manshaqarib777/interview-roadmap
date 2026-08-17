@@ -333,6 +333,37 @@ exercise runs correctly.
 - [x] L259 — Distributed Systems Concepts (review)
 - [x] L260 — Backend Architecture for AI SaaS (synthesis)
 
+## Module 13 — Cloud & AWS for AI
+
+### M24 · Cloud & AWS for AI
+- [x] L261 — AWS Fundamentals (regions, AZs)
+- [x] L262 — IAM
+- [x] L263 — VPC & Networking
+- [x] L264 — EC2
+- [x] L265 — S3
+- [x] L266 — Lambda
+- [x] L267 — API Gateway
+- [x] L268 — RDS & PostgreSQL on AWS
+- [x] L269 — ElastiCache & Redis
+- [x] L270 — SQS & SNS on AWS
+- [x] L271 — ECS & ECR
+- [x] L272 — CloudFront
+- [x] L273 — Route 53
+- [x] L274 — CloudWatch
+- [x] L275 — Secrets Manager
+- [x] L276 — EventBridge
+- [x] L277 — Step Functions
+- [x] L278 — Amazon Bedrock
+- [x] L279 — Bedrock Agents
+- [x] L280 — Bedrock Knowledge Bases
+- [x] L281 — Bedrock Guardrails
+- [x] L282 — AWS AI Architecture Patterns
+- [x] L283 — Serverless AI Architecture
+- [x] L284 — Containerized AI Architecture
+- [x] L285 — AWS Cost Optimization for AI
+- [x] L286 — Multi-Region & DR on AWS
+- [x] L287 — Cloud Architecture for an AI SaaS (synthesis)
+
 ---
 
 ## Interview Readiness Checklist

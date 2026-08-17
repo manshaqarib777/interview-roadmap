@@ -495,6 +495,40 @@ Progress is tracked in [`PROGRESS.md`](./PROGRESS.md).
 | 259 | Distributed Systems Concepts (review) | [`259-distributed-concepts.md`](./content/12-backend-ai/259-distributed-concepts.md) | ✅ Written |
 | 260 | Backend Architecture for AI SaaS (synthesis) | [`260-ai-saas-backend.md`](./content/12-backend-ai/260-ai-saas-backend.md) | ✅ Written |
 
+## Module 13 — Cloud & AWS for AI
+> Folder: [`13-cloud-aws-ai/`](./content/13-cloud-aws-ai/) · [Module overview](./content/13-cloud-aws-ai/00-module-overview.md)
+
+### Milestone M24 — Cloud & AWS for AI
+| # | Lesson | File | Status |
+|---|--------|------|--------|
+| 261 | AWS Fundamentals (regions, AZs) | [`261-aws-fundamentals.md`](./content/13-cloud-aws-ai/261-aws-fundamentals.md) | ✅ Written |
+| 262 | IAM | [`262-iam.md`](./content/13-cloud-aws-ai/262-iam.md) | ✅ Written |
+| 263 | VPC & Networking | [`263-vpc.md`](./content/13-cloud-aws-ai/263-vpc.md) | ✅ Written |
+| 264 | EC2 | [`264-ec2.md`](./content/13-cloud-aws-ai/264-ec2.md) | ✅ Written |
+| 265 | S3 | [`265-s3.md`](./content/13-cloud-aws-ai/265-s3.md) | ✅ Written |
+| 266 | Lambda | [`266-lambda.md`](./content/13-cloud-aws-ai/266-lambda.md) | ✅ Written |
+| 267 | API Gateway | [`267-api-gateway.md`](./content/13-cloud-aws-ai/267-api-gateway.md) | ✅ Written |
+| 268 | RDS & PostgreSQL on AWS | [`268-rds-postgresql.md`](./content/13-cloud-aws-ai/268-rds-postgresql.md) | ✅ Written |
+| 269 | ElastiCache & Redis | [`269-elasticache.md`](./content/13-cloud-aws-ai/269-elasticache.md) | ✅ Written |
+| 270 | SQS & SNS on AWS | [`270-sqs-sns-aws.md`](./content/13-cloud-aws-ai/270-sqs-sns-aws.md) | ✅ Written |
+| 271 | ECS & ECR | [`271-ecs-ecr.md`](./content/13-cloud-aws-ai/271-ecs-ecr.md) | ✅ Written |
+| 272 | CloudFront | [`272-cloudfront.md`](./content/13-cloud-aws-ai/272-cloudfront.md) | ✅ Written |
+| 273 | Route 53 | [`273-route-53.md`](./content/13-cloud-aws-ai/273-route-53.md) | ✅ Written |
+| 274 | CloudWatch | [`274-cloudwatch.md`](./content/13-cloud-aws-ai/274-cloudwatch.md) | ✅ Written |
+| 275 | Secrets Manager | [`275-secrets-manager.md`](./content/13-cloud-aws-ai/275-secrets-manager.md) | ✅ Written |
+| 276 | EventBridge | [`276-eventbridge.md`](./content/13-cloud-aws-ai/276-eventbridge.md) | ✅ Written |
+| 277 | Step Functions | [`277-step-functions.md`](./content/13-cloud-aws-ai/277-step-functions.md) | ✅ Written |
+| 278 | Amazon Bedrock | [`278-bedrock.md`](./content/13-cloud-aws-ai/278-bedrock.md) | ✅ Written |
+| 279 | Bedrock Agents | [`279-bedrock-agents.md`](./content/13-cloud-aws-ai/279-bedrock-agents.md) | ✅ Written |
+| 280 | Bedrock Knowledge Bases | [`280-bedrock-knowledge-bases.md`](./content/13-cloud-aws-ai/280-bedrock-knowledge-bases.md) | ✅ Written |
+| 281 | Bedrock Guardrails | [`281-bedrock-guardrails.md`](./content/13-cloud-aws-ai/281-bedrock-guardrails.md) | ✅ Written |
+| 282 | AWS AI Architecture Patterns | [`282-aws-ai-patterns.md`](./content/13-cloud-aws-ai/282-aws-ai-patterns.md) | ✅ Written |
+| 283 | Serverless AI Architecture | [`283-serverless-ai.md`](./content/13-cloud-aws-ai/283-serverless-ai.md) | ✅ Written |
+| 284 | Containerized AI Architecture | [`284-containerized-ai.md`](./content/13-cloud-aws-ai/284-containerized-ai.md) | ✅ Written |
+| 285 | AWS Cost Optimization for AI | [`285-aws-cost-optimization.md`](./content/13-cloud-aws-ai/285-aws-cost-optimization.md) | ✅ Written |
+| 286 | Multi-Region & DR on AWS | [`286-multi-region-dr.md`](./content/13-cloud-aws-ai/286-multi-region-dr.md) | ✅ Written |
+| 287 | Cloud Architecture for an AI SaaS (synthesis) | [`287-ai-saas-cloud.md`](./content/13-cloud-aws-ai/287-ai-saas-cloud.md) | ✅ Written |
+
 ---
 
 **All 134 original lessons are written.** The AI Solutions Architect half (Modules 7–19, L135–L386)
